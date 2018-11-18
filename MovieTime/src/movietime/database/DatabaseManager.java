@@ -6,46 +6,67 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.DateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DatabaseManager {
     private static final String API_KEY = "2a3f76ac51ab2751b4d89e6da5052462";
     
-    //TODO: get movies by genres
+    //TODO: get movies by genre
+    //TODO: create a copy of this function and remove the genre 
     public ArrayList<Movie> getMoviesByGenre(HashSet<Integer> genres){
-        StringBuilder builder = new StringBuilder();
+        ArrayList<Movie> movies = new ArrayList<>();
         
-        for(int genre : genres){
-            builder.append(genre).append(",");
+        String genre = genreListToString(genres);
+        String date = getLocalDateNow();
+        
+        String query = getData("https://api.themoviedb.org/3/discover/movie?api_key=" + 
+                    API_KEY + "&language=pt-PT&region=PT&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=" +
+                    date + "&release_date.gte=" + date + "&with_genres=" + genre);
+        
+        JSONObject global = new JSONObject(query);
+        int pages = global.getInt("total_pages");
+        int quantity = global.getInt("total_results");
+        if(pages > 10)
+            pages = 10;
+        
+        for(int i = 1; i < pages+1;i++){
+            
+            query = getData("https://api.themoviedb.org/3/discover/movie?api_key=" + 
+                    API_KEY + "&language=pt-PT&region=PT&sort_by=popularity.desc&include_adult=false&include_video=false&page="+ i +"&primary_release_date.gte=" +
+                    date + "&release_date.gte=" + date + "&with_genres=" + genre);
+
+            
+            System.out.println(query);
+            
+            global = new JSONObject(query);
+            JSONArray list = global.getJSONArray("results");
+            System.out.println(list);
+            
+            for(int j = 0; j < list.length(); j++){
+                JSONObject temp = list.getJSONObject(j);
+                movies.add(extractDataFromJSON(temp));
+            }
         }
         
-        String result = builder.toString();
-        result = result.substring(0, result.length()-1);
-        
-        return null;
+        return movies;
     }
-//    
-//    //TODO: get prefered movies
-//    public ArrayList<Movie> getMoviesByPreference(UserPreferences userPref){
-//        
-//    }
+    
 //    
 //    //TODO: get movies for search
 //    public ArrayList<Movie> getMoviesByKeyword(String keyword, Integer genre){
 //        
 //    }
     
-    //TODO: get movie By ID
     public Movie getMovieByID(int id){
         String result = getData("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + API_KEY + "&language=pt-PT");
         return extractDataFromJSONSingleID(new JSONObject(result));
     }
+    
     
     private Movie extractDataFromJSON(JSONObject m){
         JSONArray genres = m.getJSONArray("genre_ids");
@@ -55,14 +76,29 @@ public class DatabaseManager {
             gen.add((Integer) num);
         }
         
-        Movie result = new Movie(m.getInt("id"),
-                                 m.getString("title"),
-                                 m.getString("release_date"),
-                                 gen,
-                                 m.getString("overview"),
-                                 m.getString("poster_path"),
-                                 m.getString("backdrop_path"));
+        String poster;
+        String backdrop;
         
+        try{
+            poster = m.getString("poster_path");
+        }catch(JSONException e){
+            poster = "";//TODO: put Default URL
+        }
+
+        try{
+            backdrop = m.getString("backdrop_path");
+        }catch(JSONException e){
+            backdrop = "";//TODO: put Default URL
+        }
+
+        Movie result = new Movie(m.getInt("id"),
+                             m.getString("title"),
+                             m.getString("release_date"),
+                             gen,
+                             m.getString("overview"),
+                             poster,
+                             backdrop);
+
         return result;
     }
     
@@ -75,13 +111,28 @@ public class DatabaseManager {
             gen.add(temp.getInt("id"));
         }
         
+        String poster;
+        String backdrop;
+        
+        try{
+            poster = m.getString("poster_path");
+        }catch(JSONException e){
+            poster = "";//TODO: put Default URL
+        }
+
+        try{
+            backdrop = m.getString("backdrop_path");
+        }catch(JSONException e){
+            backdrop = "";//TODO: put Default URL
+        }
+
         Movie result = new Movie(m.getInt("id"),
-                                 m.getString("title"),
-                                 m.getString("release_date"),
-                                 gen,
-                                 m.getString("overview"),
-                                 m.getString("poster_path"),
-                                 m.getString("backdrop_path"));
+                             m.getString("title"),
+                             m.getString("release_date"),
+                             gen,
+                             m.getString("overview"),
+                             poster,
+                             backdrop);
         
         return result;
     }
@@ -115,5 +166,27 @@ public class DatabaseManager {
             //TODO: solve this e.printStackTrace();
         }
         return resp.toString();
+    }
+    
+    
+    private String genreListToString(HashSet<Integer> genres){
+        StringBuilder builder = new StringBuilder();
+        
+        for(int genre : genres){
+            builder.append(genre).append("|");
+        }
+        
+        String result = builder.toString();
+        result = result.substring(0, result.length()-1);
+        
+        return result;
+    }
+    
+    private String getLocalDateNow(){
+        String date = LocalDate.now().getYear() + "-" +
+                    LocalDate.now().getMonthValue() + "-" + 
+                    LocalDate.now().getDayOfMonth();
+        
+        return date;
     }
 }
