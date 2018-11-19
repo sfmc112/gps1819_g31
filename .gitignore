@@ -28,3 +28,7 @@
 hs_err_pid*
 
 MovieTime/build/built-jar\.properties
+
+MovieTime/build/classes/\.netbeans_automatic_build
+
+MovieTime/build/classes/\.netbeans_update_resources
