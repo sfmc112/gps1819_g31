@@ -16,8 +16,8 @@ import org.json.JSONObject;
 public class DatabaseManager {
     private static final String API_KEY = "2a3f76ac51ab2751b4d89e6da5052462";
     
-    //TODO: get movies by genre
-    //TODO: create a copy of this function and remove the genre 
+    //TODO: create a copy of this function and remove the genre
+    //This function receives the a list of genres and returns a movie list with said genres.
     public ArrayList<Movie> getUpcomingMoviesByGenre(HashSet<Integer> genres){
         ArrayList<Movie> movies = new ArrayList<>();
         
@@ -61,12 +61,14 @@ public class DatabaseManager {
 //        
 //    }
     
+    
     public Movie getMovieByID(int id){
         String result = getData("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + API_KEY + "&language=pt-PT");
         return extractDataFromJSONSingleID(new JSONObject(result));
     }
     
-    
+    //Must be used with the JSON data that contains a large ammounts of data
+    //This extrancts data from the JSON data received from the API
     private Movie extractDataFromJSON(JSONObject m){
         JSONArray genres = m.getJSONArray("genre_ids");
         HashSet<Integer> gen = new HashSet<>();
@@ -101,6 +103,8 @@ public class DatabaseManager {
         return result;
     }
     
+    //Only to be used while getting a single movie from an ID.
+    //This function get's data from the JSON data from movies with a selected ID
     private Movie extractDataFromJSONSingleID(JSONObject m){
         JSONArray genres = m.getJSONArray("genres");
         HashSet<Integer> gen = new HashSet<>();
@@ -136,6 +140,7 @@ public class DatabaseManager {
         return result;
     }
     
+    //Function that establises connection and makes the query to the Database API
     private String getData(String address) 
     {
         StringBuilder resp = new StringBuilder();
@@ -167,7 +172,7 @@ public class DatabaseManager {
         return resp.toString();
     }
     
-    
+    //Converts genre array to string
     private String genreListToString(HashSet<Integer> genres){
         StringBuilder builder = new StringBuilder();
         
@@ -181,6 +186,7 @@ public class DatabaseManager {
         return result;
     }
     
+    //get localdate in YYYY-MM-DD string
     private String getLocalDateNow(){
         String date = LocalDate.now().getYear() + "-" +
                     LocalDate.now().getMonthValue() + "-" + 
