@@ -16,7 +16,7 @@ public class MovieTime {
         genres.add(Movie.ADVENTURE);
         genres.add(Movie.ANIMATION);
         
-        List<Movie> list = db.getMoviesByGenre(genres);
+        List<Movie> list = db.getUpcomingMoviesByGenre(genres);
         
         for(Movie movie : list)
         System.out.println(movie);

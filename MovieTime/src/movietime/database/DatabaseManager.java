@@ -18,7 +18,7 @@ public class DatabaseManager {
     
     //TODO: get movies by genre
     //TODO: create a copy of this function and remove the genre 
-    public ArrayList<Movie> getMoviesByGenre(HashSet<Integer> genres){
+    public ArrayList<Movie> getUpcomingMoviesByGenre(HashSet<Integer> genres){
         ArrayList<Movie> movies = new ArrayList<>();
         
         String genre = genreListToString(genres);
@@ -56,7 +56,6 @@ public class DatabaseManager {
         return movies;
     }
     
-//    
 //    //TODO: get movies for search
 //    public ArrayList<Movie> getMoviesByKeyword(String keyword, Integer genre){
 //        
@@ -70,7 +69,7 @@ public class DatabaseManager {
     
     private Movie extractDataFromJSON(JSONObject m){
         JSONArray genres = m.getJSONArray("genre_ids");
-        ArrayList<Integer> gen = new ArrayList<>();
+        HashSet<Integer> gen = new HashSet<>();
         
         for(Object num : genres.toList()){
             gen.add((Integer) num);
@@ -98,13 +97,13 @@ public class DatabaseManager {
                              m.getString("overview"),
                              poster,
                              backdrop);
-
+        
         return result;
     }
     
     private Movie extractDataFromJSONSingleID(JSONObject m){
         JSONArray genres = m.getJSONArray("genres");
-        ArrayList<Integer> gen = new ArrayList<>();
+        HashSet<Integer> gen = new HashSet<>();
         
         for(int i = 0; i < genres.length(); i++){
             JSONObject temp = genres.getJSONObject(i);
