@@ -5,6 +5,7 @@
  */
 package movietime.database;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Movie {
@@ -52,10 +53,13 @@ public class Movie {
     final private String overview;
     final private String poster;
     final private String backdrop;
+    final private ArrayList<String> cast;
+    final private String director;
     
-    //TODO: add Actors and Director
-    
-    public Movie(int id, String title, String release_date, HashSet<Integer> genres, String overview, String poster, String backdrop) {
+    public Movie(int id, String title, String release_date,
+            HashSet<Integer> genres, String overview, String poster,
+            String backdrop, ArrayList<String> cast, String director) {
+        
         this.id = id;
         this.title = title;
         this.release_date = release_date;
@@ -63,12 +67,34 @@ public class Movie {
         this.overview = overview;
         this.poster = poster;
         this.backdrop = backdrop;
+        this.cast = cast;
+        this.director = director;
+    }
+
+    public String getDirector() {
+        return director;
     }
 
     public int getId() {
         return id;
     }
 
+    public Movie(int id, String title, String release_date,
+            HashSet<Integer> genres, String overview,
+            String poster, String backdrop) {
+        
+        this.id = id;
+        this.title = title;
+        this.release_date = release_date;
+        this.genres = genres;
+        this.overview = overview;
+        this.poster = poster;
+        this.backdrop = backdrop;
+        this.cast = new ArrayList<>();
+        this.director = "not specified";
+        this.cast.add("not specified");
+    }
+    
     public String getTitle() {
         return title;
     }
@@ -93,8 +119,20 @@ public class Movie {
         return "https://image.tmdb.org/t/p/" + size + "/" + backdrop;
     }
 
+    public String getPoster() {
+        return poster;
+    }
+
+    public String getBackdrop() {
+        return backdrop;
+    }
+
+    public ArrayList<String> getActors() {
+        return cast;
+    }
+
     @Override
     public String toString() {
-        return "Movie{" + "id=" + id + ", tile=" + title + ", release_date=" + release_date + ", genres=" + genres + ", overview=" + overview + ", poster=" + poster + ", backdrop=" + backdrop + '}';
+        return "Movie{" + "id=" + id + ", title=" + title + ", release_date=" + release_date + ", genres=" + genres + ", overview=" + overview + ", poster=" + poster + ", backdrop=" + backdrop + "\n\tcast=" + cast + ", director=" + director + '}';
     }
 }

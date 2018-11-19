@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,6 +18,19 @@ import org.json.JSONObject;
 public class DatabaseManager {
     private static final String API_KEY = "2a3f76ac51ab2751b4d89e6da5052462";
  
+    //This function returns the information from the movie DB in JSONformat about the followed movies(is for the followed menu)
+    //TODO: Organize hashset by release date in its object
+    public ArrayList<Movie> getFollowedMovies(HashSet<Integer> followedIds){
+        if(followedIds.isEmpty())
+            return null;
+        
+        ArrayList<Movie> followedMovies = new ArrayList<>();
+        for(int movieId: followedIds){
+            followedMovies.add(getMovieByID(movieId));
+        }
+        return followedMovies;
+    }
+
     //This function retrieves from the The MoviesDB the list of upcoming movies.
     public ArrayList<ArrayList<Movie>> getUpcomingMovies(){
         ArrayList<ArrayList<Movie>> movies = new ArrayList<>();
@@ -36,7 +49,6 @@ public class DatabaseManager {
         ArrayList<Movie> moviesInsideArray = new ArrayList<>();
         
         for(int i = 1; i < pages+1;i++){
-            
             query = getData("https://api.themoviedb.org/3/discover/movie?api_key=" + 
                     API_KEY + "&language=pt-PT&region=PT&sort_by=popularity.desc&include_adult=false&include_video=false&page="+ i +"&primary_release_date.gte=" +
                     date + "&release_date.gte=" + date);
@@ -56,15 +68,17 @@ public class DatabaseManager {
     
     //This function receives a list of genres and returns a list of movie lists for each genre.
     public ArrayList<ArrayList<Movie>> getUpcomingMoviesByGenre(HashSet<Integer> genres){
+        if(genres.isEmpty())
+            return null;
+        
         ArrayList<ArrayList<Movie>> movies = new ArrayList<>();
         Object [] array_genres;
         String date = getLocalDateNow();
         
         for(Integer genre: genres){
-             
              String query = getData("https://api.themoviedb.org/3/discover/movie?api_key=" + 
                     API_KEY + "&language=pt-PT&region=PT&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=" +
-                    date + "&release_date.gte=" + date + "&with_genres=" + genre);
+                    date + "&release_date.gte=" + date + "&with_genres=" + genre + "&append_to_response=credits");
         
             JSONObject global = new JSONObject(query);
             int pages = global.getInt("total_pages");
@@ -75,10 +89,9 @@ public class DatabaseManager {
             ArrayList<Movie> moviesByGenre = new ArrayList<>();
 
             for(int i = 1; i < pages+1;i++){
-            
                 query = getData("https://api.themoviedb.org/3/discover/movie?api_key=" + 
                         API_KEY + "&language=pt-PT&region=PT&sort_by=popularity.desc&include_adult=false&include_video=false&page="+ i +"&primary_release_date.gte=" +
-                        date + "&release_date.gte=" + date + "&with_genres=" + genre);
+                        date + "&release_date.gte=" + date + "&with_genres=" + genre + "&append_to_response=credits");
 
                 global = new JSONObject(query);
                 JSONArray list = global.getJSONArray("results");
@@ -110,7 +123,8 @@ public class DatabaseManager {
     }
     
     //This function returns a list of movies from search with both genre and the keyword selected
-    public ArrayList<ArrayList<Movie>> getUpcomingMoviesByKeywordAndGenre(String keyword, Integer genre){
+    public ArrayList<ArrayList<Movie>> getUpcomingMoviesByKeywordAndGenre(String keyword, 
+            Integer genre){
         HashSet<Integer> genres = new HashSet<>();
         genres.add(genre);
         ArrayList<ArrayList<Movie>> movies = getUpcomingMoviesByGenre(genres);
@@ -127,7 +141,8 @@ public class DatabaseManager {
     
     //this function returns the JSON object of a movie queried for a given id
     public Movie getMovieByID(int id){
-        String result = getData("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + API_KEY + "&language=pt-PT");
+        String result = getData("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + API_KEY + "&language=pt-PT&append_to_response=credits");
+        
         return extractDataFromJSONSingleID(new JSONObject(result));
     }
     
@@ -155,7 +170,7 @@ public class DatabaseManager {
         }catch(JSONException e){
             backdrop = "";//TODO: put Default URL
         }
-
+        
         Movie result = new Movie(m.getInt("id"),
                              m.getString("title"),
                              m.getString("release_date"),
@@ -165,6 +180,37 @@ public class DatabaseManager {
                              backdrop);
         
         return result;
+    }
+    
+    private ArrayList<String> getCastFromJSONData(JSONObject credits){
+        ArrayList<String> cast = new ArrayList<>();
+        JSONArray castAr = credits.getJSONArray("cast");
+        int size = 3;
+        
+        if(castAr.length() < 3)
+            size = castAr.length();
+            
+        for(int i = 0; i < size; i++)
+        {
+            JSONObject actor = castAr.getJSONObject(i);
+            cast.add(actor.getString("name"));
+        }
+        
+        return cast;
+    }
+    
+    private String getDirectorFromJSONData(JSONObject credits){
+        JSONArray crew = credits.getJSONArray("crew");
+            
+        for(int i = 0; i < crew.length(); i++)
+        {
+            JSONObject member = crew.getJSONObject(i);
+            if(member.getString("job").compareTo("Director") == 0){
+                return member.getString("name");
+            }
+        }
+        
+        return "not specified";
     }
     
     //Only to be used while getting a single movie from an ID.
@@ -193,19 +239,22 @@ public class DatabaseManager {
             backdrop = "";//TODO: put Default URL
         }
 
+        String director = getDirectorFromJSONData(m.getJSONObject("credits"));
+        ArrayList<String> cast = getCastFromJSONData(m.getJSONObject("credits"));
+        
         Movie result = new Movie(m.getInt("id"),
                              m.getString("title"),
                              m.getString("release_date"),
                              gen,
                              m.getString("overview"),
                              poster,
-                             backdrop);
+                             backdrop,cast,director);
         
         return result;
     }
     
     //Function that establises connection and makes the query to the Database API
-    private String getData(String address) 
+    private String getData(String address)
     {
         StringBuilder resp = new StringBuilder();
         
@@ -228,29 +277,18 @@ public class DatabaseManager {
                     resp.append(line).append("\n");
                 }
             } else {
-                resp.append("Error while trying to access page: ").append(address).append("\tcode: ").append(codigo);
+                resp.append("Error while trying to access page: ")
+                        .append(address).append("\tcode:").append(codigo);
             }
-        } catch (IOException e) {
-            //TODO: solve this e.printStackTrace();
+        } catch( MalformedURLException e){
+            
         }
+        catch (IOException e) {
+        }
+        
         return resp.toString();
     }
-    
-    @Deprecated
-    //Converts genre array to string
-    private String genreListToString(HashSet<Integer> genres){ 
-        StringBuilder builder = new StringBuilder();
         
-        for(int genre : genres){
-            builder.append(genre).append("|");
-        }
-        
-        String result = builder.toString();
-        result = result.substring(0, result.length()-1);
-        
-        return result;
-    }
-    
     //get localdate in YYYY-MM-DD string
     private String getLocalDateNow(){
         String date = LocalDate.now().getYear() + "-" +

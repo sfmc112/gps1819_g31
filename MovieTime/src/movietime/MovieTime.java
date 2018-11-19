@@ -25,12 +25,21 @@ public class MovieTime {
                 System.out.println(movie);
         }
         
-        List<ArrayList<Movie>> list2 = db.getUpcomingMoviesByKeyword("aqua");
+        list = db.getUpcomingMoviesByKeyword("aqua");
         
-        for(ArrayList<Movie> movies :list2){
+        for(ArrayList<Movie> movies :list){
             System.out.println("\n");
             for(Movie movie : movies)
                 System.out.println(movie);
         }
+        
+        HashSet<Integer> movieIds = new HashSet<>();
+        movieIds.add(329996);
+        movieIds.add(299534);
+        
+        ArrayList<Movie> list2 = db.getFollowedMovies(movieIds);
+        System.out.println("\n");
+        for(Movie movieId : list2)
+            System.out.println(movieId);
     }
 }
