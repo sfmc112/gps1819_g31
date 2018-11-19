@@ -19,11 +19,12 @@
 *.tar.gz
 *.rar
 
+
 null*
-MovieTime/build/built-jar\.properties
-MovieTime/build/classes/\.netbeans_automatic_build
-MovieTime/build/classes/\.netbeans_update_resources
-MovieTime/nbproject/private/private\.properties
+MovieTime/build/built-jar.properties
+MovieTime/build/classes/.netbeans_automatic_build
+MovieTime/build/classes/.netbeans_update_resources
+MovieTime/nbproject/private/private.properties
 
 
 !/**/lib/json-20180813.jar
