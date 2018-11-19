@@ -69,7 +69,7 @@ public class Movie {
         return id;
     }
 
-    public String getTile() {
+    public String getTitle() {
         return title;
     }
 

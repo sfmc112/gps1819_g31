@@ -1,5 +1,6 @@
 package movietime;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import movietime.database.DatabaseManager;
@@ -16,9 +17,20 @@ public class MovieTime {
         genres.add(Movie.ADVENTURE);
         genres.add(Movie.ANIMATION);
         
-        List<Movie> list = db.getUpcomingMoviesByGenre(genres);
+        List<ArrayList<Movie>> list = db.getUpcomingMoviesByGenre(genres);
         
-        for(Movie movie : list)
-        System.out.println(movie);
+        for(ArrayList<Movie> movies :list){
+            System.out.println("\n");
+            for(Movie movie : movies)
+                System.out.println(movie);
+        }
+        
+        List<ArrayList<Movie>> list2 = db.getUpcomingMoviesByKeyword("aqua");
+        
+        for(ArrayList<Movie> movies :list2){
+            System.out.println("\n");
+            for(Movie movie : movies)
+                System.out.println(movie);
+        }
     }
 }
