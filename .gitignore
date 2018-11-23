@@ -26,7 +26,7 @@ MovieTime/build/classes/.netbeans_automatic_build
 MovieTime/build/classes/.netbeans_update_resources
 MovieTime/nbproject/private/private.properties
 
-
+!/**/lib/**/*
 !/**/lib/json-20180813.jar
 !/**/lib/json-20180813-javadoc.jar
 !/**/lib/json-20180813-sources.jar
