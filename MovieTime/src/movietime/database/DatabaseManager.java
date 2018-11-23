@@ -23,7 +23,7 @@ public class DatabaseManager {
     public DatabaseManager() {
     }
 
-    //TODO: Organize hashset by release date in the object that calls this method
+    //TODO: Organize hashset by release date in the object that calls this method 
     /**
      * This function returns the information from the movie DB in JSON format
      * about the followed movies(is for the followed menu)
@@ -33,7 +33,7 @@ public class DatabaseManager {
      * parameters
      */
     public static ArrayList<Movie> getFollowedMovies(HashSet<Integer> followedIds) {
-        if (followedIds.isEmpty()) {
+        if (followedIds.isEmpty() || followedIds == null) {
             return null;
         }
 
@@ -102,7 +102,7 @@ public class DatabaseManager {
      * @return List of movies of the provided genres
      */
     public static ArrayList<ArrayList<Movie>> getUpcomingMoviesByGenre(HashSet<Integer> genres) {
-        if (genres.isEmpty()) {
+        if (genres.isEmpty() || genres == null) {
             return null;
         }
         try {
@@ -158,6 +158,8 @@ public class DatabaseManager {
      */
     private static ArrayList<ArrayList<Movie>> searchByKeyword(
             ArrayList<ArrayList<Movie>> movies, String keyword) {
+        if(movies == null || keyword == null)
+            return null;
         for (Iterator<ArrayList<Movie>> it = movies.iterator(); it.hasNext();) {
             ArrayList<Movie> movieList = it.next();
             for (Iterator<Movie> it2 = movieList.iterator(); it2.hasNext();) {
@@ -185,6 +187,9 @@ public class DatabaseManager {
      */
     public static ArrayList<ArrayList<Movie>> getUpcomingMoviesByKeywordAndGenre(
             String keyword, Integer genre) {
+        if(keyword == null || genre == null)
+            return null;
+        
         HashSet<Integer> genres = new HashSet<>();
         genres.add(genre);
         ArrayList<ArrayList<Movie>> movies = getUpcomingMoviesByGenre(genres);
@@ -200,12 +205,14 @@ public class DatabaseManager {
      * @return list of movies from search with the specified keyword
      */
     public static ArrayList<ArrayList<Movie>> getUpcomingMoviesByKeyword(String keyword) {
+        if(keyword == null)
+            return null;
         ArrayList<ArrayList<Movie>> movies = getUpcomingMovies();
 
         return searchByKeyword(movies, keyword);
     }
 
-    ///TODO check this description... it returns a Movie and not a JSON object
+    ///TODO check this description... it returns a Movie and not a JSON object 
     /**
      * This function returns the JSON object of a movie queried for a given id
      *
@@ -213,6 +220,7 @@ public class DatabaseManager {
      * @return Movie object retreived from the id query
      */
     public static Movie getMovieByID(int id) {
+        
         try {
             String result = getData("https://api.themoviedb.org/3/movie/"
                     + id + "?api_key=" + API_KEY
@@ -232,6 +240,8 @@ public class DatabaseManager {
      * @return Movie object created based on the JSON data
      */
     private static Movie extractDataFromJSON(JSONObject m) {
+        if(m == null)
+            return null;
         JSONArray genres = m.getJSONArray("genre_ids");
         HashSet<Integer> gen = new HashSet<>();
 
@@ -245,13 +255,13 @@ public class DatabaseManager {
         try {
             poster = m.getString("poster_path");
         } catch (JSONException e) {
-            poster = "";//TODO: put Default URL
+            poster = "";//TODO: put Default URL 
         }
 
         try {
             backdrop = m.getString("backdrop_path");
         } catch (JSONException e) {
-            backdrop = "";//TODO: put Default URL
+            backdrop = "";//TODO: put Default URL 
         }
 
         Movie result = new Movie(m.getInt("id"),
@@ -273,6 +283,8 @@ public class DatabaseManager {
      * @return List of names of the movie's cast
      */
     private static ArrayList<String> getCastFromJSONData(JSONObject credits) {
+        if(credits == null)
+            return null;
         ArrayList<String> cast = new ArrayList<>();
         JSONArray castAr = credits.getJSONArray("cast");
         int size = 3;
@@ -309,7 +321,6 @@ public class DatabaseManager {
         return "not specified";
     }
 
-
     /**
      * Only to be used while getting a single movie from an ID. This function
      * gets data from the JSON data from movies with a selected ID
@@ -332,13 +343,13 @@ public class DatabaseManager {
         try {
             poster = m.getString("poster_path");
         } catch (JSONException e) {
-            poster = "";//TODO: put Default URL
+            poster = "";//TODO: put Default URL 
         }
 
         try {
             backdrop = m.getString("backdrop_path");
         } catch (JSONException e) {
-            backdrop = "";//TODO: put Default URL
+            backdrop = "";//TODO: put Default URL 
         }
 
         String director = getDirectorFromJSONData(m.getJSONObject("credits"));
@@ -358,7 +369,9 @@ public class DatabaseManager {
     }
 
     /**
-     * Function that establises connection and makes the query to the Database API
+     * Function that establises connection and makes the query to the Database
+     * API
+     *
      * @param address URL address
      * @return the data from the Database API
      */
@@ -400,6 +413,7 @@ public class DatabaseManager {
 
     /**
      * get localdate in YYYY-MM-DD string
+     *
      * @return localdate in YYYY-MM-DD string
      */
     private static String getLocalDateNow() {
