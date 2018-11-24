@@ -212,7 +212,7 @@ public class DatabaseManager {
         return searchByKeyword(movies, keyword);
     }
 
-    ///TODO check this description... it returns a Movie and not a JSON object 
+    //TODO check this description... it returns a Movie and not a JSON object 
     /**
      * This function returns the JSON object of a movie queried for a given id
      *
@@ -381,8 +381,8 @@ public class DatabaseManager {
         try {
             URL url = new URL(address);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(10000 /* milisegundos */);
-            conn.setConnectTimeout(10000 /* milisegundos */);
+            conn.setReadTimeout(10000 /* milliseconds */);
+            conn.setConnectTimeout(10000 /* milliseconds */);
             conn.setRequestMethod("GET");
             conn.setDoInput(true);
             conn.connect();
@@ -412,7 +412,7 @@ public class DatabaseManager {
     }
 
     /**
-     * get localdate in YYYY-MM-DD string
+     * Get localdate in YYYY-MM-DD string
      *
      * @return localdate in YYYY-MM-DD string
      */
