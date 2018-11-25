@@ -3,7 +3,12 @@ package movietime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import movietime.accounts.User;
+import movietime.authentication.AuthenticationManager;
+import movietime.authentication.UserAlreadyExistsException;
+import movietime.authentication.UserDoesNotExistException;
 import movietime.database.DatabaseManager;
+import movietime.storage.OpenningFileException;
+import movietime.storage.ReadWriteObjectException;
 import movietime.storage.StorageManager;
 
 public class MovieTime {
@@ -51,12 +56,22 @@ public class MovieTime {
         User userino2 = new User("userino2", "user2", "none", movieIds);
         
         try{
-            StorageManager.addNewUser(userino1);
+            //StorageManager.addNewUser(userino1);
             ArrayList<User> x = StorageManager.getUsersFromFile();
             
-            x.get(0).removeFavoriteMovie(329996);
-            StorageManager.changeInfoUser(x.get(0));
+//            x.get(0).removeFavoriteMovie(329996);
+//            StorageManager.updateUserInfo(x.get(0));
             System.out.println(x);
+            
+            AuthenticationManager auth = new AuthenticationManager();
+        
+            try{
+                auth.createUser("maria", "maria", "maria");
+            }catch(OpenningFileException | ReadWriteObjectException |
+                    UserAlreadyExistsException e){
+                System.out.println(e);
+            }
+            
         }catch(Exception e){
             System.err.println(e);
         }

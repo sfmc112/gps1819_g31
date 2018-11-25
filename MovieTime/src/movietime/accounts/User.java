@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package movietime.accounts;
 
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -21,8 +17,6 @@ public class User implements Serializable{
     private final String firstName;
     private final String lastName;
     private HashSet<Integer> favoriteMovieIDs;
-    
-    //TODO add methods
 
     /**
      * Constructor without any followed movies (when it's a new user)
@@ -108,6 +102,26 @@ public class User implements Serializable{
         return Collections.unmodifiableSet((Set<Integer>) favoriteMovieIDs);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null)
+            return false;
+        
+        if(!(obj instanceof User))
+            return false;
+        
+        User a = (User) obj;
+        
+        return this.username.equals(a.username);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.username);
+        return hash;
+    }
+    
     @Override
     public String toString() {
         return "User{" + "username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", favoriteMovieIDs=" + favoriteMovieIDs + '}';

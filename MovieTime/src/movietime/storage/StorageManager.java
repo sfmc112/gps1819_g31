@@ -11,27 +11,11 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import movietime.accounts.User;
 
-class OpenFileException extends Exception {
-    static final long serialVersionUID = 1L;
-    public OpenFileException(String msg){
-        super(msg);
-    }
-}
-
-class ReadWriteObjectError extends Exception{
-    static final long serialVersionUID = 1L;
-    public ReadWriteObjectError(String msg){
-        super(msg);
-    }
-}
-
-
-
 public class StorageManager {
-    private final static String ACCOUNTS_FILE = System.getProperty("user.home") + "\\Desktop\\xyz.dat";
+    private final static String ACCOUNTS_FILE = ".\\data\\MovieTimeUsers.bin";
     
-    private static ObjectInputStream openReadRegister()
-            throws OpenFileException, EOFException
+    private synchronized static ObjectInputStream openReadRegister()
+            throws OpenningFileException, EOFException
     {
         File file = new File(ACCOUNTS_FILE);
         try {
@@ -45,20 +29,20 @@ public class StorageManager {
             }catch(EOFException e1) {
                 throw e1;
             }catch(IOException e1) {
-                throw new OpenFileException("Erro ao abrir o ficheiro para leitura "
+                throw new OpenningFileException("Erro ao abrir o ficheiro para leitura "
                     + ACCOUNTS_FILE + e1);
             }
             
         }catch(EOFException e) {
             throw e;
         }catch(IOException e) {
-            throw new OpenFileException("Erro ao abrir o ficheiro para leitura " 
+            throw new OpenningFileException("Erro ao abrir o ficheiro para leitura " 
                     + ACCOUNTS_FILE + " Error: " + e);
         }
     }
     
-    private static ObjectOutputStream openWriteRegister()
-            throws OpenFileException
+    private synchronized static ObjectOutputStream openWriteRegister()
+            throws OpenningFileException
     {
         File file = new File(ACCOUNTS_FILE);
         try {
@@ -71,17 +55,17 @@ public class StorageManager {
                 file.createNewFile();
                 return new ObjectOutputStream(new FileOutputStream(file));
             }catch(IOException e1) {
-                throw new OpenFileException("Error while openning the file to read"
+                throw new OpenningFileException("Error while openning the file to read"
                     + ACCOUNTS_FILE + e1);
             }
         }catch(IOException e) {
-            throw new OpenFileException("Erro ao abrir o ficheiro para leitura " 
+            throw new OpenningFileException("Erro ao abrir o ficheiro para leitura " 
                     + ACCOUNTS_FILE + " Error: " + e);
         }
     }
     
-    public static ArrayList<User> getUsersFromFile()
-            throws OpenFileException,ReadWriteObjectError
+    public synchronized static ArrayList<User> getUsersFromFile()
+            throws OpenningFileException,ReadWriteObjectException
     {
         ObjectInputStream in= null;
         
@@ -93,13 +77,13 @@ public class StorageManager {
         }catch(EOFException e) {
             return new ArrayList<>();
             
-        }catch( OpenFileException e) {
-            throw new OpenFileException(e.getMessage());
+        }catch( OpenningFileException e) {
+            throw new OpenningFileException(e.getMessage());
             
         }catch( ClassNotFoundException e) {
-            throw new ReadWriteObjectError(e.getMessage());
+            throw new ReadWriteObjectException(e.getMessage());
         } catch( IOException e) {
-            throw new ReadWriteObjectError(e.getMessage());
+            throw new ReadWriteObjectException(e.getMessage());
         } finally {
             try{
                 if(in != null)
@@ -111,8 +95,8 @@ public class StorageManager {
         }
     }
     
-    public static void addNewUser(User user)
-            throws OpenFileException, ReadWriteObjectError
+    public synchronized static void addNewUser(User user)
+            throws OpenningFileException, ReadWriteObjectException
     {
         ObjectOutputStream out = null;
         ArrayList<User> users;
@@ -125,12 +109,10 @@ public class StorageManager {
             out = openWriteRegister();
             out.writeObject(users);
             
-        }catch(ReadWriteObjectError e) {
-            throw e;
-        }catch(OpenFileException e) {
+        }catch(ReadWriteObjectException | OpenningFileException e) {
             throw e;
         }catch(IOException e) {
-            throw new ReadWriteObjectError(e.getMessage());
+            throw new ReadWriteObjectException(e.getMessage());
         }finally {
             try{
                 if(out != null)
@@ -141,7 +123,9 @@ public class StorageManager {
         }
     }
     
-    public synchronized static void changeInfoUser(User user) throws Exception{
+    public synchronized static void updateUserInfo(User user) 
+            throws ReadWriteObjectException,OpenningFileException
+    {
         ArrayList<User> users;
         
         try{
@@ -156,9 +140,8 @@ public class StorageManager {
             
             addNewUser(user);
             
-        }catch(ReadWriteObjectError | OpenFileException e) {
+        }catch(ReadWriteObjectException | OpenningFileException e) {
             throw e;
-        }
-            
+        }       
     }
 }
