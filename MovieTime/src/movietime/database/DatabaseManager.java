@@ -23,7 +23,6 @@ public class DatabaseManager {
     public DatabaseManager() {
     }
 
-    //TODO: Organize hashset by release date in the object that calls this method 
     /**
      * This function returns the information from the movie DB in JSON format
      * about the followed movies(is for the followed menu)
@@ -32,7 +31,8 @@ public class DatabaseManager {
      * @return ArrayList of Movies with the correspondent ids given in the
      * parameters
      */
-    public static ArrayList<Movie> getFollowedMovies(HashSet<Integer> followedIds) {
+    public static ArrayList<Movie> getFollowedMovies(
+            HashSet<Integer> followedIds) {
         if (followedIds == null || followedIds.isEmpty()) {
             return null;
         }
@@ -129,8 +129,10 @@ public class DatabaseManager {
                 ArrayList<Movie> moviesByGenre = new ArrayList<>();
                 for (int i = 1; i < pages + 1; i++) {
                     query = getData("https://api.themoviedb.org/3/discover/movie?api_key="
-                            + API_KEY + "&language=pt-PT&region=PT&sort_by=popularity.desc&include_adult=false&include_video=false&page=" + i + "&primary_release_date.gte="
-                            + date + "&release_date.gte=" + date + "&with_genres="
+                            + API_KEY + "&language=pt-PT&region=PT&sort_by=popularity.desc&include_adult=false&include_video=false&page=" 
+                            + i + "&primary_release_date.gte="
+                            + date + "&release_date.gte=" + date 
+                            + "&with_genres="
                             + genre + "&append_to_response=credits");
 
                     global = new JSONObject(query);
@@ -172,7 +174,8 @@ public class DatabaseManager {
             ArrayList<Movie> movieList = it.next();
             for (Iterator<Movie> it2 = movieList.iterator(); it2.hasNext();) {
                 Movie movie = it2.next();
-                if (!movie.getTitle().toLowerCase().contains(keyword.toLowerCase())) {
+                if (!movie.getTitle().toLowerCase()
+                        .contains(keyword.toLowerCase())) {
                     it2.remove();
                 }
             }
@@ -233,9 +236,8 @@ public class DatabaseManager {
         return searchByKeyword(movies, keyword);
     }
 
-    //TODO check this description... it returns a Movie and not a JSON object 
     /**
-     * This function returns the JSON object of a movie queried for a given id
+     * This function returns a movie queried for a given id
      *
      * @param id id of the requested Movie
      * @return Movie object retreived from the id query
@@ -277,13 +279,13 @@ public class DatabaseManager {
         try {
             poster = m.getString("poster_path");
         } catch (JSONException e) {
-            poster = "";//TODO: put Default URL 
+            poster = "";
         }
 
         try {
             backdrop = m.getString("backdrop_path");
         } catch (JSONException e) {
-            backdrop = "";//TODO: put Default URL 
+            backdrop = "";
         }
 
         Movie result = new Movie(m.getInt("id"),
@@ -354,7 +356,7 @@ public class DatabaseManager {
     private static Movie extractDataFromJSONSingleID(JSONObject m) {
         JSONArray genres = m.getJSONArray("genres");
         HashSet<Integer> gen = new HashSet<>();
-
+        
         for (int i = 0; i < genres.length(); i++) {
             JSONObject temp = genres.getJSONObject(i);
             gen.add(temp.getInt("id"));
@@ -366,28 +368,28 @@ public class DatabaseManager {
         try {
             poster = m.getString("poster_path");
         } catch (JSONException e) {
-            poster = "";//TODO: put Default URL 
+            poster = "";
         }
 
         try {
             backdrop = m.getString("backdrop_path");
         } catch (JSONException e) {
-            backdrop = "";//TODO: put Default URL 
+            backdrop = ""; 
         }
 
         String director = getDirectorFromJSONData(m.getJSONObject("credits"));
         ArrayList<String> cast = getCastFromJSONData(m.getJSONObject("credits"));
 
         Movie result = new Movie(m.getInt("id"),
-                m.getString("title"),
-                m.getString("release_date"),
-                gen,
-                m.getString("overview"),
-                poster,
-                backdrop,
-                cast,
-                director);
-
+        m.getString("title"),
+        m.getString("release_date"),
+        gen,
+        m.getString("overview"),
+        poster,
+        backdrop,
+        cast,
+        director);
+        
         return result;
     }
 
