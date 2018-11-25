@@ -2,11 +2,8 @@ package movietime;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
-import java.util.ListIterator;
 import movietime.accounts.User;
 import movietime.database.DatabaseManager;
-import movietime.database.Movie;
 import movietime.storage.StorageManager;
 
 public class MovieTime {
@@ -55,13 +52,11 @@ public class MovieTime {
         
         try{
             StorageManager.addNewUser(userino1);
-
-//            ArrayList<User> users = StorageManager.getUsersFromFile();
-//            
-//            System.out.println("users size: " + users.size());
-//            for(ListIterator<User>lt=users.listIterator();lt.hasNext();lt.next())
-//                System.out.println(" elements: " +lt.next().getUsername());
-        
+            ArrayList<User> x = StorageManager.getUsersFromFile();
+            
+            x.get(0).removeFavoriteMovie(329996);
+            StorageManager.changeInfoUser(x.get(0));
+            System.out.println(x);
         }catch(Exception e){
             System.err.println(e);
         }

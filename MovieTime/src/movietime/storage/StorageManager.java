@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.ListIterator;
 import movietime.accounts.User;
 
 class OpenFileException extends Exception {
@@ -32,11 +31,10 @@ public class StorageManager {
     private final static String ACCOUNTS_FILE = System.getProperty("user.home") + "\\Desktop\\xyz.dat";
     
     private static ObjectInputStream openReadRegister()
-            throws OpenFileException
+            throws OpenFileException, EOFException
     {
         File file = new File(ACCOUNTS_FILE);
         try {
-            System.out.println("exist: " + file.getAbsolutePath());
             return new ObjectInputStream(new FileInputStream(file));
             
         }catch(FileNotFoundException e){
@@ -44,11 +42,15 @@ public class StorageManager {
             try{
                 file.createNewFile();
                 return new ObjectInputStream(new FileInputStream(file));
+            }catch(EOFException e1) {
+                throw e1;
             }catch(IOException e1) {
                 throw new OpenFileException("Erro ao abrir o ficheiro para leitura "
                     + ACCOUNTS_FILE + e1);
             }
             
+        }catch(EOFException e) {
+            throw e;
         }catch(IOException e) {
             throw new OpenFileException("Erro ao abrir o ficheiro para leitura " 
                     + ACCOUNTS_FILE + " Error: " + e);
@@ -85,18 +87,19 @@ public class StorageManager {
         
         try{
             in = openReadRegister();
-            UserData data = (UserData) in.readObject();
-            return data.getUserList();
+            ArrayList<User> data = (ArrayList<User>) in.readObject();
+            return data;
+            
+        }catch(EOFException e) {
+            return new ArrayList<>();
             
         }catch( OpenFileException e) {
             throw new OpenFileException(e.getMessage());
             
         }catch( ClassNotFoundException e) {
-            throw new ReadWriteObjectError("Erro while trying to read from "
-                    + "file, error: " + e);
+            throw new ReadWriteObjectError(e.getMessage());
         } catch( IOException e) {
-            throw new ReadWriteObjectError("Error while trying to read the file "
-                    + ACCOUNTS_FILE + " Error: "+e);
+            throw new ReadWriteObjectError(e.getMessage());
         } finally {
             try{
                 if(in != null)
@@ -115,20 +118,18 @@ public class StorageManager {
         ArrayList<User> users;
         
         try{
+            
             users = getUsersFromFile();
             users.add(user);
             
             out = openWriteRegister();
-            out.writeObject(new UserData(users));
+            out.writeObject(users);
             
         }catch(ReadWriteObjectError e) {
-            System.out.println(e);
             throw e;
         }catch(OpenFileException e) {
-            System.out.println(e);
             throw e;
         }catch(IOException e) {
-            System.out.println(e);
             throw new ReadWriteObjectError(e.getMessage());
         }finally {
             try{
@@ -140,27 +141,22 @@ public class StorageManager {
         }
     }
     
-    public static void changeInfoUser(User user) throws Exception{
+    public synchronized static void changeInfoUser(User user) throws Exception{
         ArrayList<User> users;
         
         try{
             users = getUsersFromFile();
-        }catch(Exception e){
-            throw e;
-        }
-        
-        User userFromList;
-        for(ListIterator<User> lt = users.listIterator();lt.hasNext();lt.next()){
-            userFromList = lt.next();
-            if(user.getUsername().equals(userFromList.getUsername())){
-                lt.remove();
-                break;
+            
+            for(int i = 0; i < users.size(); i++){
+                if(user.getUsername().equals(users.get(i).getUsername())){
+                    users.remove(i);
+                    break;
+                }
             }
-        }
-        
-        try{
+            
             addNewUser(user);
-        }catch(Exception e){
+            
+        }catch(ReadWriteObjectError | OpenFileException e) {
             throw e;
         }
             

@@ -15,7 +15,8 @@ import java.util.Set;
  * @author sarah
  */
 public class User implements Serializable{
-
+    static final long serialVersionUID = 1L;
+    
     private final String username;
     private final String firstName;
     private final String lastName;
@@ -105,5 +106,10 @@ public class User implements Serializable{
      */
     public final Set<Integer> getFavoriteMovieIDs() {
         return Collections.unmodifiableSet((Set<Integer>) favoriteMovieIDs);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", favoriteMovieIDs=" + favoriteMovieIDs + '}';
     }
 }
