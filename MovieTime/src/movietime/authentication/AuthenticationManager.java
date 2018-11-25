@@ -1,6 +1,9 @@
 package movietime.authentication;
 
+import java.util.ArrayList;
 import movietime.accounts.User;
+import movietime.storage.OpenningFileException;
+import movietime.storage.ReadWriteObjectException;
 import movietime.storage.StorageManager;
 
 public class AuthenticationManager {
@@ -13,44 +16,77 @@ public class AuthenticationManager {
      * Authenticate the user in the application (making the active user in session)
      * @param user
      * @return a valid user if it exists
+     * @throws movietime.storage.ReadWriteObjectException
+     * @throws movietime.storage.OpenningFileException
+     * @throws movietime.authentication.UserDoesNotExistException
      */
-    public static User authenticateUser(String user) {
-        //TODO
-        //Verify username
-        //retrieve the user on file
-        //return the user if it exists
-        return null;
+    public static User authenticateUser(String user)
+            throws ReadWriteObjectException, OpenningFileException,
+            UserDoesNotExistException
+    {
+        try{
+            ArrayList<User> users = StorageManager.getUsersFromFile();
+            
+            for(User p : users){
+                if(user.equals(p.getUsername())){
+                    return p;
+                }
+            }
+            
+            throw new UserDoesNotExistException("User does not exist");
+        }catch(ReadWriteObjectException | OpenningFileException e){
+            throw e;
+        }
     }
 
     /**
      * Creates a new User
+     * @throws movietime.authentication.UserAlreadyExistsException
+     * @throws movietime.storage.ReadWriteObjectException
+     * @throws movietime.storage.OpenningFileException
      * @see User
      * @param username
      * @param firstName
      * @param lastName
-     * @return a new User if all the parameters are coherent
      */
-    public static User createUser(String username, String firstName, String lastName) {
-        //TODO
-        //Verify username
-        //check on file
-        //validate
-        validateParameters(username, firstName, lastName);
-
-        //If the code reaches here, the parameters were valid 
-        //return the user
+    
+    public static void createUser(String username, String firstName, String lastName)
+    throws UserAlreadyExistsException, ReadWriteObjectException, OpenningFileException
+    {
         
-        return new User(username, firstName, lastName);
+        validateParameters(username, firstName, lastName);
+        
+        try{
+            ArrayList<User> users = StorageManager.getUsersFromFile();
+            
+            for(User p : users){
+                if(username.equals(p.getUsername())){
+                    throw new UserAlreadyExistsException("User already exists!");
+                }
+            }
+            
+            StorageManager.addNewUser(new User(username,firstName,lastName));
+            
+        }catch(ReadWriteObjectException | OpenningFileException e){
+            throw e;
+        }
     }
     
     /**
      * Logout the user in session
+     * @throws movietime.storage.OpenningFileException
+     * @throws movietime.storage.ReadWriteObjectException
      * @see StorageManager
      * @param user
      */
-    public static void logoutUser(User user){
-        //TODO
-        //Save the user's information on file
+    public static void logoutUser(User user)
+            throws OpenningFileException, ReadWriteObjectException
+    {
+        try{
+            StorageManager.updateUserInfo(user);
+        }catch(OpenningFileException | ReadWriteObjectException e){
+            throw e;
+        }
     }
 
     /**
