@@ -33,7 +33,7 @@ public class DatabaseManager {
      * parameters
      */
     public static ArrayList<Movie> getFollowedMovies(HashSet<Integer> followedIds) {
-        if (followedIds.isEmpty() || followedIds == null) {
+        if (followedIds == null || followedIds.isEmpty()) {
             return null;
         }
 
@@ -73,7 +73,8 @@ public class DatabaseManager {
 
             for (int i = 1; i < pages + 1; i++) {
                 query = getData("https://api.themoviedb.org/3/discover/movie?api_key="
-                        + API_KEY + "&language=pt-PT&region=PT&sort_by=popularity.desc&include_adult=false&include_video=false&page=" + i + "&primary_release_date.gte="
+                        + API_KEY + "&language=pt-PT&region=PT&sort_by=popularity.desc&include_adult=false&include_video=false&page=" 
+                        + i + "&primary_release_date.gte="
                         + date + "&release_date.gte=" + date);
 
                 global = new JSONObject(query);
@@ -86,8 +87,11 @@ public class DatabaseManager {
             }
 
             movies.add(moviesInsideArray);
-
-            return movies;
+            if (movies.size() == 1 && movies.get(0).isEmpty()) {
+                return null;
+            } else {
+                return movies;
+            }
 
         } catch (JSONException e) {
             return null;
@@ -101,8 +105,9 @@ public class DatabaseManager {
      * @param genres List of genres (user's preferred genres)
      * @return List of movies of the provided genres
      */
-    public static ArrayList<ArrayList<Movie>> getUpcomingMoviesByGenre(HashSet<Integer> genres) {
-        if (genres.isEmpty() || genres == null) {
+    public static ArrayList<ArrayList<Movie>> getUpcomingMoviesByGenre(
+            HashSet<Integer> genres) {
+        if (genres == null || genres.isEmpty()) {
             return null;
         }
         try {
@@ -110,14 +115,14 @@ public class DatabaseManager {
             Object[] array_genres;
             String date = getLocalDateNow();
 
-            genres.stream().map((genre) -> {
+            for (Integer genre : genres) {
                 String query = getData("https://api.themoviedb.org/3/discover/movie?api_key="
                         + API_KEY + "&language=pt-PT&region=PT&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte="
                         + date + "&release_date.gte=" + date + "&with_genres="
                         + genre + "&append_to_response=credits");
                 JSONObject global = new JSONObject(query);
                 int pages = global.getInt("total_pages");
-                int quantity = global.getInt("total_results");
+                int quantity = global.getInt("total_results"); 
                 if (pages > 10) {
                     pages = 10;
                 }
@@ -136,12 +141,14 @@ public class DatabaseManager {
                         moviesByGenre.add(extractDataFromJSON(temp));
                     }
                 }
-                return moviesByGenre;
-            }).forEachOrdered((moviesByGenre) -> {
                 movies.add(moviesByGenre);
-            });
-            return movies;
 
+            }
+            if (movies.size() == 1 && movies.get(0).isEmpty()) {
+                return null;
+            } else {
+                return movies;
+            }
         } catch (JSONException e) {
             return null;
         }
@@ -158,8 +165,9 @@ public class DatabaseManager {
      */
     private static ArrayList<ArrayList<Movie>> searchByKeyword(
             ArrayList<ArrayList<Movie>> movies, String keyword) {
-        if(movies == null || keyword == null)
+        if (movies == null || keyword == null) {
             return null;
+        }
         for (Iterator<ArrayList<Movie>> it = movies.iterator(); it.hasNext();) {
             ArrayList<Movie> movieList = it.next();
             for (Iterator<Movie> it2 = movieList.iterator(); it2.hasNext();) {
@@ -173,7 +181,11 @@ public class DatabaseManager {
                 it.remove();
             }
         }
-        return movies;
+        if (movies.size() == 1 && movies.get(0).isEmpty()) {
+            return null;
+        } else {
+            return movies;
+        }
     }
 
     /**
@@ -187,14 +199,21 @@ public class DatabaseManager {
      */
     public static ArrayList<ArrayList<Movie>> getUpcomingMoviesByKeywordAndGenre(
             String keyword, Integer genre) {
-        if(keyword == null || genre == null)
-            return null;
-        
-        HashSet<Integer> genres = new HashSet<>();
-        genres.add(genre);
-        ArrayList<ArrayList<Movie>> movies = getUpcomingMoviesByGenre(genres);
+        if (keyword == null && genre == null) {
+            return getUpcomingMovies();
+        } else if (keyword == null && genre != null) {
+            HashSet<Integer> lonelyHashSet = new HashSet<>();
+            lonelyHashSet.add(genre);
+            return getUpcomingMoviesByGenre(lonelyHashSet);
+        } else if (keyword != null && genre == null) {
+            return getUpcomingMoviesByKeyword(keyword);
+        } else {
+            HashSet<Integer> genres = new HashSet<>();
+            genres.add(genre);
+            ArrayList<ArrayList<Movie>> movies = getUpcomingMoviesByGenre(genres);
 
-        return searchByKeyword(movies, keyword);
+            return searchByKeyword(movies, keyword);
+        }
     }
 
     /**
@@ -204,9 +223,11 @@ public class DatabaseManager {
      * @param keyword keyword provided on the search menu
      * @return list of movies from search with the specified keyword
      */
-    public static ArrayList<ArrayList<Movie>> getUpcomingMoviesByKeyword(String keyword) {
-        if(keyword == null)
+    public static ArrayList<ArrayList<Movie>> getUpcomingMoviesByKeyword(
+            String keyword) {
+        if (keyword == null) {
             return null;
+        }
         ArrayList<ArrayList<Movie>> movies = getUpcomingMovies();
 
         return searchByKeyword(movies, keyword);
@@ -220,7 +241,7 @@ public class DatabaseManager {
      * @return Movie object retreived from the id query
      */
     public static Movie getMovieByID(int id) {
-        
+
         try {
             String result = getData("https://api.themoviedb.org/3/movie/"
                     + id + "?api_key=" + API_KEY
@@ -240,8 +261,9 @@ public class DatabaseManager {
      * @return Movie object created based on the JSON data
      */
     private static Movie extractDataFromJSON(JSONObject m) {
-        if(m == null)
+        if (m == null) {
             return null;
+        }
         JSONArray genres = m.getJSONArray("genre_ids");
         HashSet<Integer> gen = new HashSet<>();
 
@@ -283,8 +305,9 @@ public class DatabaseManager {
      * @return List of names of the movie's cast
      */
     private static ArrayList<String> getCastFromJSONData(JSONObject credits) {
-        if(credits == null)
+        if (credits == null) {
             return null;
+        }
         ArrayList<String> cast = new ArrayList<>();
         JSONArray castAr = credits.getJSONArray("cast");
         int size = 3;
