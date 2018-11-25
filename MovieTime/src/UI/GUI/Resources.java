@@ -11,4 +11,8 @@ public class Resources {
             URL url=Resources.class.getResource(name);
             return url;
     }
+    
+    public static URL getDefaultURL() {
+        return getResourceFile(DEFAULT_PATH);
+    }
 }
