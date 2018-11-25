@@ -6,7 +6,9 @@
 package movietime.accounts;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -17,7 +19,6 @@ public class User implements Serializable{
     private final String username;
     private final String firstName;
     private final String lastName;
-    //private final String sessionKey;
     private HashSet<Integer> favoriteMovieIDs;
     
     //TODO add methods
@@ -28,7 +29,7 @@ public class User implements Serializable{
      * @param firstName user's first name
      * @param lastName user's last name
      */
-    public User(String username, String firstName, String lastName/*, String sessionKey*/) {
+    public User(String username, String firstName, String lastName) {
         this(username, firstName, lastName, new HashSet<Integer>());
         //his.sessionKey = sessionKey;
     }
@@ -73,7 +74,36 @@ public class User implements Serializable{
     public boolean removeFavoriteMovie(int id){
         return favoriteMovieIDs.remove(id);
     }
-    
-    
-    
+
+    /**
+     * Obtains username from logged user
+     * @return username from logged user
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * Obtains first name from logged user
+     * @return first name from logged user
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * Obtains last name from logged user
+     * @return last name from logged user
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * Get list of favorite movies ids from logged user
+     * @return Set of favorite movies IDs
+     */
+    public final Set<Integer> getFavoriteMovieIDs() {
+        return Collections.unmodifiableSet((Set<Integer>) favoriteMovieIDs);
+    }
 }

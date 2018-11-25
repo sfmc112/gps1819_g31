@@ -12,7 +12,7 @@ public class AuthenticationManager {
     /**
      * Authenticate the user in the application (making the active user in session)
      * @param user
-     * @return
+     * @return a valid user if it exists
      */
     public static User authenticateUser(String user) {
         //TODO
@@ -34,7 +34,7 @@ public class AuthenticationManager {
         //TODO
         //Verify username
         //check on file
-        //validate 
+        //validate
         validateParameters(username, firstName, lastName);
 
         //If the code reaches here, the parameters were valid 
@@ -46,7 +46,7 @@ public class AuthenticationManager {
     /**
      * Logout the user in session
      * @see StorageManager
-     * @param user 
+     * @param user
      */
     public static void logoutUser(User user){
         //TODO
