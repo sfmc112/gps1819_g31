@@ -5,10 +5,11 @@
  */
 package movietime.storage;
 
+public class OpeningFileException extends Exception {
 
-public class OpenningFileException extends Exception {
     static final long serialVersionUID = 1L;
-    public OpenningFileException(String msg){
+
+    public OpeningFileException(String msg) {
         super(msg);
     }
 }
