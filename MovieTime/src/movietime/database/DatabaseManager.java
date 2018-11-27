@@ -73,7 +73,7 @@ public class DatabaseManager {
 
             for (int i = 1; i < pages + 1; i++) {
                 query = getData("https://api.themoviedb.org/3/discover/movie?api_key="
-                        + API_KEY + "&language=pt-PT&region=PT&sort_by=popularity.desc&include_adult=false&include_video=false&page=" 
+                        + API_KEY + "&language=pt-PT&region=PT&sort_by=popularity.desc&include_adult=false&include_video=false&page="
                         + i + "&primary_release_date.gte="
                         + date + "&release_date.gte=" + date);
 
@@ -122,16 +122,16 @@ public class DatabaseManager {
                         + genre + "&append_to_response=credits");
                 JSONObject global = new JSONObject(query);
                 int pages = global.getInt("total_pages");
-                int quantity = global.getInt("total_results"); 
+                int quantity = global.getInt("total_results");
                 if (pages > 10) {
                     pages = 10;
                 }
                 ArrayList<Movie> moviesByGenre = new ArrayList<>();
                 for (int i = 1; i < pages + 1; i++) {
                     query = getData("https://api.themoviedb.org/3/discover/movie?api_key="
-                            + API_KEY + "&language=pt-PT&region=PT&sort_by=popularity.desc&include_adult=false&include_video=false&page=" 
+                            + API_KEY + "&language=pt-PT&region=PT&sort_by=popularity.desc&include_adult=false&include_video=false&page="
                             + i + "&primary_release_date.gte="
-                            + date + "&release_date.gte=" + date 
+                            + date + "&release_date.gte=" + date
                             + "&with_genres="
                             + genre + "&append_to_response=credits");
 
@@ -356,7 +356,7 @@ public class DatabaseManager {
     private static Movie extractDataFromJSONSingleID(JSONObject m) {
         JSONArray genres = m.getJSONArray("genres");
         HashSet<Integer> gen = new HashSet<>();
-        
+
         for (int i = 0; i < genres.length(); i++) {
             JSONObject temp = genres.getJSONObject(i);
             gen.add(temp.getInt("id"));
@@ -374,22 +374,22 @@ public class DatabaseManager {
         try {
             backdrop = m.getString("backdrop_path");
         } catch (JSONException e) {
-            backdrop = ""; 
+            backdrop = "";
         }
 
         String director = getDirectorFromJSONData(m.getJSONObject("credits"));
         ArrayList<String> cast = getCastFromJSONData(m.getJSONObject("credits"));
 
         Movie result = new Movie(m.getInt("id"),
-        m.getString("title"),
-        m.getString("release_date"),
-        gen,
-        m.getString("overview"),
-        poster,
-        backdrop,
-        cast,
-        director);
-        
+                m.getString("title"),
+                m.getString("release_date"),
+                gen,
+                m.getString("overview"),
+                poster,
+                backdrop,
+                cast,
+                director);
+
         return result;
     }
 

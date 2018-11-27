@@ -8,7 +8,7 @@ import movietime.authentication.AuthenticationManager;
 import movietime.authentication.UserAlreadyExistsException;
 import movietime.authentication.UserDoesNotExistException;
 import movietime.database.DatabaseManager;
-import movietime.storage.OpenningFileException;
+import movietime.storage.OpeningFileException;
 import movietime.storage.ReadWriteObjectException;
 import movietime.storage.StorageManager;
 

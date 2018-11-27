@@ -12,10 +12,21 @@ import java.util.ArrayList;
 import movietime.accounts.User;
 
 public class StorageManager {
+
     private final static String ACCOUNTS_FILE = ".\\data\\MovieTimeUsers.bin";
     
+    /**
+     * It's purpose is to open the file that contains the accounts information,
+     * in case the file is not created (meaning that nobody has registered yet),
+     * the method also creates the accounts file.
+     * 
+     * @return ObjectInputStream  -> object that is ready to be readen from
+     * the file
+     * @throws OpenningFileException
+     * @throws EOFException 
+     */
     private synchronized static ObjectInputStream openReadRegister()
-            throws OpenningFileException, EOFException
+            throws OpeningFileException, EOFException
     {
         File file = new File(ACCOUNTS_FILE);
         try {
@@ -29,20 +40,31 @@ public class StorageManager {
             }catch(EOFException e1) {
                 throw e1;
             }catch(IOException e1) {
-                throw new OpenningFileException("Erro ao abrir o ficheiro para leitura "
+                throw new OpenningFileException(
+                    "Error while opening the file for reading "
                     + ACCOUNTS_FILE + e1);
             }
             
         }catch(EOFException e) {
             throw e;
         }catch(IOException e) {
-            throw new OpenningFileException("Erro ao abrir o ficheiro para leitura " 
+            throw new OpenningFileException(
+                    "Error while opening the file for reading " 
                     + ACCOUNTS_FILE + " Error: " + e);
         }
     }
     
+    /**
+     * It's purpose is to open the file that contains the accounts information 
+     * to write on it,in case the file is not created, the method also creates 
+     * the accounts file.
+     * 
+     * @return ObjectOutputStream -> object that is ready to be wirtten in 
+     * the file
+     * @throws OpenningFileException 
+     */
     private synchronized static ObjectOutputStream openWriteRegister()
-            throws OpenningFileException
+            throws OpeningFileException
     {
         File file = new File(ACCOUNTS_FILE);
         try {
@@ -55,17 +77,25 @@ public class StorageManager {
                 file.createNewFile();
                 return new ObjectOutputStream(new FileOutputStream(file));
             }catch(IOException e1) {
-                throw new OpenningFileException("Error while openning the file to read"
+                throw new OpeningFileException("Error while openning the file to read"
                     + ACCOUNTS_FILE + e1);
             }
         }catch(IOException e) {
-            throw new OpenningFileException("Erro ao abrir o ficheiro para leitura " 
+            throw new OpeningFileException("Erro ao abrir o ficheiro para leitura " 
                     + ACCOUNTS_FILE + " Error: " + e);
         }
     }
     
+    /**
+     * This method reads the accounts' file and retrieves the users' array that 
+     * it contains
+     * 
+     * @return ArrayList<User>
+     * @throws OpenningFileException
+     * @throws ReadWriteObjectException 
+     */
     public synchronized static ArrayList<User> getUsersFromFile()
-            throws OpenningFileException,ReadWriteObjectException
+            throws OpeningFileException,ReadWriteObjectException
     {
         ObjectInputStream in= null;
         
@@ -77,8 +107,8 @@ public class StorageManager {
         }catch(EOFException e) {
             return new ArrayList<>();
             
-        }catch( OpenningFileException e) {
-            throw new OpenningFileException(e.getMessage());
+        }catch( OpeningFileException e) {
+            throw new OpeningFileException(e.getMessage());
             
         }catch( ClassNotFoundException e) {
             throw new ReadWriteObjectException(e.getMessage());
@@ -95,8 +125,16 @@ public class StorageManager {
         }
     }
     
+    /**
+     * This method retrieves the users' array, add the new user in the array and
+     * saves the updated array in the file
+     * 
+     * @param user
+     * @throws OpenningFileException
+     * @throws ReadWriteObjectException 
+     */
     public synchronized static void addNewUser(User user)
-            throws OpenningFileException, ReadWriteObjectException
+            throws OpeningFileException, ReadWriteObjectException
     {
         ObjectOutputStream out = null;
         ArrayList<User> users;
@@ -109,7 +147,7 @@ public class StorageManager {
             out = openWriteRegister();
             out.writeObject(users);
             
-        }catch(ReadWriteObjectException | OpenningFileException e) {
+        }catch(ReadWriteObjectException | OpeningFileException e) {
             throw e;
         }catch(IOException e) {
             throw new ReadWriteObjectException(e.getMessage());
@@ -123,8 +161,18 @@ public class StorageManager {
         }
     }
     
+    /**
+     * Retrieves the ArrayLists of registered users, checks if the user it 
+     * receives by parameter is in the array and if so deletes it from the array.
+     * It then adds the updated user (received via parameter) in the array and
+     * saves the array in the file
+     * 
+     * @param user
+     * @throws ReadWriteObjectException
+     * @throws OpenningFileException 
+     */
     public synchronized static void updateUserInfo(User user) 
-            throws ReadWriteObjectException,OpenningFileException
+            throws ReadWriteObjectException,OpeningFileException
     {
         ArrayList<User> users;
         
@@ -140,7 +188,7 @@ public class StorageManager {
             
             addNewUser(user);
             
-        }catch(ReadWriteObjectException | OpenningFileException e) {
+        }catch(ReadWriteObjectException | OpeningFileException e) {
             throw e;
         }       
     }
