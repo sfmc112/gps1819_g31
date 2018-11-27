@@ -40,7 +40,7 @@ public class StorageManager {
             }catch(EOFException e1) {
                 throw e1;
             }catch(IOException e1) {
-                throw new OpenningFileException(
+                throw new OpeningFileException(
                     "Error while opening the file for reading "
                     + ACCOUNTS_FILE + e1);
             }
@@ -48,7 +48,7 @@ public class StorageManager {
         }catch(EOFException e) {
             throw e;
         }catch(IOException e) {
-            throw new OpenningFileException(
+            throw new OpeningFileException(
                     "Error while opening the file for reading " 
                     + ACCOUNTS_FILE + " Error: " + e);
         }

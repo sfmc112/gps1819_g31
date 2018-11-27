@@ -59,6 +59,9 @@ public class AppFrame extends JFrame implements Observer{
     }
     
     private void configureTrayIcon(){
+        if (!SystemTray.isSupported())
+            return;
+        
         tray = SystemTray.getSystemTray();
         try{
             tray.add(observable.getNotificationManager().getTrayIcon());

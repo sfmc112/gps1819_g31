@@ -184,7 +184,7 @@ public class MovieTest {
         System.out.println("getActors");
         Movie instance = null;
         ArrayList<String> expResult = null;
-        ArrayList<String> result = instance.getActors();
+        ArrayList<String> result = instance.getCast();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
