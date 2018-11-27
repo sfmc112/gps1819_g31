@@ -40,16 +40,16 @@ public class StorageManager {
             }catch(EOFException e1) {
                 throw e1;
             }catch(IOException e1) {
-                throw new OpeningFileException(
-                    "Error while opening the file for reading "
+                throw new OpeningFileException("Error while opening"
+                        + " the file for reading "
                     + ACCOUNTS_FILE + e1);
             }
             
         }catch(EOFException e) {
             throw e;
         }catch(IOException e) {
-            throw new OpeningFileException(
-                    "Error while opening the file for reading " 
+            throw new OpeningFileException("Error while opening "
+                    + "the file for reading " 
                     + ACCOUNTS_FILE + " Error: " + e);
         }
     }
@@ -69,7 +69,8 @@ public class StorageManager {
         File file = new File(ACCOUNTS_FILE);
         try {
             
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ACCOUNTS_FILE));
+            ObjectOutputStream out = new ObjectOutputStream(
+                                     new FileOutputStream(ACCOUNTS_FILE));
             return out;
             
         }catch(FileNotFoundException e) {
@@ -91,6 +92,7 @@ public class StorageManager {
      * it contains
      * 
      * @return ArrayList<User>
+     * @throws movietime.storage.OpeningFileException
      * @throws OpenningFileException
      * @throws ReadWriteObjectException 
      */
