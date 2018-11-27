@@ -7,7 +7,7 @@ import movietime.authentication.AuthenticationManager;
 import movietime.authentication.UserAlreadyExistsException;
 import movietime.authentication.UserDoesNotExistException;
 import movietime.database.DatabaseManager;
-import movietime.storage.OpenningFileException;
+import movietime.storage.OpeningFileException;
 import movietime.storage.ReadWriteObjectException;
 import movietime.storage.StorageManager;
 
@@ -67,7 +67,7 @@ public class MovieTime {
         
             try{
                 auth.createUser("maria", "maria", "maria");
-            }catch(OpenningFileException | ReadWriteObjectException |
+            }catch(OpeningFileException | ReadWriteObjectException |
                     UserAlreadyExistsException e){
                 System.out.println(e);
             }
