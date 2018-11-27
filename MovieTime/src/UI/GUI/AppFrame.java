@@ -8,6 +8,8 @@ import java.awt.SystemTray;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JFrame;
@@ -48,6 +50,7 @@ public class AppFrame extends JFrame implements Observer{
         
         configureTrayIcon();
         setAppearance();
+        addClosingProcedure(this);
         
         setLocation(x, y);
         setSize(width,height);
@@ -56,6 +59,16 @@ public class AppFrame extends JFrame implements Observer{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         validate();
         update(observable, null);
+    }
+    
+    private void addClosingProcedure(JFrame frame){
+        frame.addWindowListener(
+            new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    tray.remove(tray.getTrayIcons()[0]);
+                }
+            });
     }
     
     private void configureTrayIcon(){
