@@ -127,10 +127,71 @@ public class Movie {
         return backdrop;
     }
 
-    public ArrayList<String> getActors() {
+    public ArrayList<String> getCast() {
         return cast;
     }
-
+    
+    public String getPrimaryGenre(){
+        if(genres.isEmpty())
+            return "Undefined";
+        
+        return getSingleGenreAsString(genres.iterator().next());
+    }
+    
+    public ArrayList<String> getGenresAsString(){
+        ArrayList<String> result = new ArrayList<>();
+        
+        for(Integer genre : this.genres)
+            result.add(getSingleGenreAsString(genre));
+        
+        return result;
+    }
+    
+    private String getSingleGenreAsString(int genre){
+        switch(genre){
+            case 28:
+                return "Action";
+            case 37:
+                return "Western";
+            case 10752:
+                return "War";
+            case 53:
+                return "Thriller";
+            case 10770:
+                return "TV Movie";
+            case 878:
+                return "Science Fiction";
+            case 10749:
+                return "Romance";
+            case 9648:
+                return "Mystery";
+            case 36:
+                return "History";
+            case 10402:
+                return "Musical";
+            case 27:
+                return "Horror";
+            case 14:
+                return "Fantasy";
+            case 10751:
+                return "Family";
+            case 18:
+                return "Drama";
+            case 99:
+                return "Documentary";
+            case 80:
+                return "Crime";
+            case 35:
+                return "Comedy";
+            case 16:
+                return "Animation";
+            case 12:
+                return "Adventure";
+            default:
+                return "Undefined";
+        }
+    }
+    
     @Override
     public String toString() {
         return "Movie{" + "id=" + id + ", title=" + title + ", release_date=" + release_date + ", genres=" + genres + ", cast=" + cast + ", director=" + director + "\n\t,overview=" + overview + ", poster=" + poster + ", backdrop=" + backdrop  + '}';

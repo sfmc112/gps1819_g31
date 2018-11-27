@@ -17,6 +17,9 @@ public class User implements Serializable{
     private final String firstName;
     private final String lastName;
     private HashSet<Integer> favoriteMovieIDs;
+    private NotificationPreferences preferences;
+    
+    //TODO: Add functions to edit preferences
 
     /**
      * Constructor without any followed movies (when it's a new user)
@@ -41,6 +44,7 @@ public class User implements Serializable{
         this.firstName = firstName;
         this.lastName = lastName;
         this.favoriteMovieIDs = favoriteMovieIDs;
+        preferences = new NotificationPreferences();
     }
     
     /**
@@ -100,6 +104,10 @@ public class User implements Serializable{
      */
     public final Set<Integer> getFavoriteMovieIDs() {
         return Collections.unmodifiableSet((Set<Integer>) favoriteMovieIDs);
+    }
+    
+    public NotificationPreferences getPreferences() {
+        return preferences;
     }
 
     @Override
