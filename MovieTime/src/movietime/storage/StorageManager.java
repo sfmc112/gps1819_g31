@@ -144,7 +144,7 @@ public class StorageManager {
             users = getUsersFromFile();
             users.add(user);
             
-            new FileOutputStream(ACCOUNTS_FILE).close(); //To empty the file
+            //new FileOutputStream(ACCOUNTS_FILE).close(); //To empty the file
 
             out = openWriteRegister();
             out.writeObject(users);
@@ -178,6 +178,7 @@ public class StorageManager {
     {
         ObjectOutputStream out = null;
         ArrayList<User> users;
+        boolean updated = false;
 
         try {
             users = getUsersFromFile();
@@ -185,18 +186,20 @@ public class StorageManager {
             for (int i = 0; i < users.size(); i++) {
                 if (user.getUsername().equals(users.get(i).getUsername())) {
                     users.remove(i);
+                    updated = true;
                     break;
                 }
             }
             
-            new FileOutputStream(ACCOUNTS_FILE).close(); //To empty the file
-            users.add(user);
-            //addNewUser(user);
-            out = openWriteRegister();
-            out.writeObject(users);
+            if(updated){
+                users.add(user);
+                out = openWriteRegister();
+                out.writeObject(users);
+            }
+            //new FileOutputStream(ACCOUNTS_FILE).close(); //To empty the file
             
         }catch(IOException e) {
-            System.err.println("Test error :x");
+            System.err.println("Error writing to file");
         }catch(ReadWriteObjectException | OpeningFileException e) {
             throw e;
         }finally {

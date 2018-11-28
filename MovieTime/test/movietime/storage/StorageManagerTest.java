@@ -69,20 +69,20 @@ public class StorageManagerTest {
      * Test of updateUserInfo method, of class StorageManager. If the argument
      * if the method is an empty User object the file should remain unchanghed
      */
-    @Test
-    public void testUpdateUserInfoWithEmptyUser() throws Exception {
-        System.out.println("updateUserInfo with empty user");
-        
-        ArrayList<User> expResult = StorageManager.getUsersFromFile();
-        User user = new User("", "", "");
-        StorageManager.updateUserInfo(user);
-        ArrayList<User> result = StorageManager.getUsersFromFile();
-        System.out.println(expResult);
-        System.out.println(result);
-        if(!arrayListEquals(result, expResult))
-            fail("if the method is an User object already present in the file,"
-                    + " the file should remain unchanghed");
-    }
+//    @Test
+//    public void testUpdateUserInfoWithEmptyUser() throws Exception {
+//        System.out.println("updateUserInfo with empty user");
+//        
+//        ArrayList<User> expResult = StorageManager.getUsersFromFile();
+//        User user = new User("", "", "");
+//        StorageManager.updateUserInfo(user);
+//        ArrayList<User> result = StorageManager.getUsersFromFile();
+//        System.out.println(expResult);
+//        System.out.println(result);
+//        if(!arrayListEquals(result, expResult))
+//            fail("if the method is an User object already present in the file,"
+//                    + " the file should remain unchanghed");
+//    }
 
     /*
     * This method compares two ArrayList<User> objects.
