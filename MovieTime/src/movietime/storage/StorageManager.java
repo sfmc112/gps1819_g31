@@ -132,6 +132,7 @@ public class StorageManager {
      * saves the updated array in the file
      * 
      * @param user
+     * @throws movietime.storage.OpeningFileException
      * @throws OpenningFileException
      * @throws ReadWriteObjectException 
      */
@@ -146,7 +147,7 @@ public class StorageManager {
             users = getUsersFromFile();
             users.add(user);
             
-            new FileOutputStream(ACCOUNTS_FILE).close();
+            new FileOutputStream(ACCOUNTS_FILE).close(); //To empty the file
 
             out = openWriteRegister();
             out.writeObject(users);
@@ -190,7 +191,7 @@ public class StorageManager {
                 }
             }
             
-            new FileOutputStream(ACCOUNTS_FILE).close();
+            new FileOutputStream(ACCOUNTS_FILE).close(); //To empty the file
             users.add(user);
             //addNewUser(user);
             out = openWriteRegister();

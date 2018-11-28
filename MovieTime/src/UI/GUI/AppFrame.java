@@ -20,6 +20,7 @@ import javax.swing.KeyStroke;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import movietime.ObservableApp;
+import movietime.accounts.User;
 import movietime.database.DatabaseManager;
 
 public class AppFrame extends JFrame implements Observer{
@@ -128,10 +129,7 @@ public class AppFrame extends JFrame implements Observer{
         @Override
         public void actionPerformed(ActionEvent e) {
             Point x = getLocationOnScreen();
-            
-            //TODO: remove this line from here once tests are complete
-            observable.displayNotification(DatabaseManager.getMovieByID(100));
-            //new HelpFileFrame("Help", Resources.getResourceFile("Resources/help.html"),x.x,x.y);
+            new HelpFileFrame("Help", Resources.getResourceFile("Resources/help.html"),x.x,x.y);
         }
     }
 

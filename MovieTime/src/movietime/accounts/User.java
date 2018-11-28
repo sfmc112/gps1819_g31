@@ -30,7 +30,6 @@ public class User implements Serializable{
      */
     public User(String username, String firstName, String lastName) {
         this(username, firstName, lastName, new HashSet<Integer>());
-        //his.sessionKey = sessionKey;
     }
 
     /**
@@ -63,7 +62,10 @@ public class User implements Serializable{
      * @return <tt>true</tt> if the movie was added to the list
      */
     public boolean addFavoriteMovie(int id){
-        favoriteMovieIDs.add(id);
+        
+        synchronized(favoriteMovieIDs){
+            favoriteMovieIDs.add(id);
+        }
         
         try{
             StorageManager.updateUserInfo(this);
@@ -118,7 +120,9 @@ public class User implements Serializable{
      * @return Set of favorite movies IDs
      */
     public final Set<Integer> getFavoriteMovieIDs() {
-        return Collections.unmodifiableSet((Set<Integer>) favoriteMovieIDs);
+        synchronized(favoriteMovieIDs){
+            return Collections.unmodifiableSet((Set<Integer>) favoriteMovieIDs);
+        }
     }
     
     public NotificationPreferences getPreferences() {
