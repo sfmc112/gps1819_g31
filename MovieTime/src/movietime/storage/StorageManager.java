@@ -22,7 +22,7 @@ public class StorageManager {
      *
      * @return ObjectInputStream -> object that is ready to be readen from the
      * file
-     * @throws OpenningFileException
+     * @throws OpeningFileException
      * @throws EOFException
      */
     private synchronized static ObjectInputStream openReadRegister()
@@ -60,7 +60,7 @@ public class StorageManager {
      *
      * @return ObjectOutputStream -> object that is ready to be wirtten in the
      * file
-     * @throws OpenningFileException
+     * @throws OpeningFileException
      */
     private synchronized static ObjectOutputStream openWriteRegister()
             throws OpeningFileException {
@@ -131,7 +131,7 @@ public class StorageManager {
      *
      * @param user
      * @throws movietime.storage.OpeningFileException
-     * @throws OpenningFileException
+     * @throws OpeningFileException
      * @throws ReadWriteObjectException
      */
     public synchronized static void addNewUser(User user)
