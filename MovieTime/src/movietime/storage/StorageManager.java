@@ -146,6 +146,8 @@ public class StorageManager {
             users = getUsersFromFile();
             users.add(user);
             
+            new FileOutputStream(ACCOUNTS_FILE).close();
+
             out = openWriteRegister();
             out.writeObject(users);
             
@@ -170,12 +172,12 @@ public class StorageManager {
      * saves the array in the file
      * 
      * @param user
-     * @throws ReadWriteObjectException
-     * @throws OpenningFileException 
+     * @throws ReadWriteObjectException 
      */
     public synchronized static void updateUserInfo(User user) 
             throws ReadWriteObjectException,OpeningFileException
     {
+        ObjectOutputStream out = null;
         ArrayList<User> users;
         
         try{
@@ -188,10 +190,23 @@ public class StorageManager {
                 }
             }
             
-            addNewUser(user);
+            new FileOutputStream(ACCOUNTS_FILE).close();
+            users.add(user);
+            //addNewUser(user);
+            out = openWriteRegister();
+            out.writeObject(users);
             
+        }catch(IOException e) {
+            System.err.println("Test error :x");
         }catch(ReadWriteObjectException | OpeningFileException e) {
             throw e;
+        }finally {
+            try{
+                if(out != null)
+                    out.close();
+            }catch(IOException e){
+                System.out.println("Error Closing file");
+            }
         }       
     }
 }

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import movietime.storage.StorageManager;
 
 /**
  *
@@ -62,7 +63,14 @@ public class User implements Serializable{
      * @return <tt>true</tt> if the movie was added to the list
      */
     public boolean addFavoriteMovie(int id){
-        return favoriteMovieIDs.add(id);
+        favoriteMovieIDs.add(id);
+        
+        try{
+            StorageManager.updateUserInfo(this);
+        }catch(Exception e){
+            return false;
+        }
+        return true;
     }
     
     /**
@@ -71,7 +79,14 @@ public class User implements Serializable{
      * @return <tt>true</tt> if the movie was in the list
      */
     public boolean removeFavoriteMovie(int id){
-        return favoriteMovieIDs.remove(id);
+        favoriteMovieIDs.remove(id);
+        
+        try{
+            StorageManager.updateUserInfo(this);
+        }catch(Exception e){
+            return false;
+        }
+        return true;
     }
 
     /**
