@@ -76,8 +76,22 @@ public class MovieTime {
 //        }catch(Exception e){
 //            System.err.println(e);
 //        }
-
-
-        new AppFrame(new ObservableApp());
+        
+//        HashSet<Integer> movieIds = new HashSet<>();
+//        movieIds.add(329996);
+//        movieIds.add(299534);
+//
+//        try{
+//            System.out.println(StorageManager.getUsersFromFile() + "\n");
+//            ArrayList<User> x = StorageManager.getUsersFromFile();
+//            x.get(0).addFavoriteMovie(660066);
+//            StorageManager.updateUserInfo(x.get(0));
+//            System.out.println(StorageManager.getUsersFromFile());
+//            
+//        }catch(Exception e){
+//            System.err.println(e);
+//        }
+//        
+       new AppFrame(new ObservableApp());
     }
 }
