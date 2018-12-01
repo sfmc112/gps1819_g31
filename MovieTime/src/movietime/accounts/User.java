@@ -148,7 +148,7 @@ public class User implements Serializable{
         
         User a = (User) obj;
         
-        return this.username.equals(a.username);
+        return this.username.equalsIgnoreCase(a.username);
     }
 
     @Override

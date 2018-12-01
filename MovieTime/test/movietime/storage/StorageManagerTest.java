@@ -1,112 +1,105 @@
 package movietime.storage;
 
+import java.io.File;
 import java.util.ArrayList;
 import movietime.accounts.User;
 import movietime.authentication.*;
-import org.junit.After;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 
 public class StorageManagerTest {
 
     public StorageManagerTest() {
     }
-    
-    @After
-    public void tearDown(){
-        
-    }
 
     /**
      * Test of updateUserInfo method, of class StorageManager. If the argument
      * if the method is an User object already present in the file, the file
      * should remain unchanghed
      */
-    @Test
-    public void testUpdateUserInfo() throws Exception {
+    
+    @Before
+    public void cleanFile(){
+        File a = new File(".\\data\\MovieTimeUsers.bin");
+        a.delete();
+    }
+    
+   @Test
+    public void testUpdateUserInfo_updatePreferences() throws Exception {
         System.out.println("updateUserInfo");
 
         try {
-            AuthenticationManager.createUser("joana1234", "joana", "monica");
-        } catch (OpeningFileException | ReadWriteObjectException | UserAlreadyExistsException e) {
+            AuthenticationManager.createUser("userino", "user", "mac");
+        } catch (OpeningFileException | ReadWriteObjectException |
+                UserAlreadyExistsException e) 
+        {
             System.out.println(e);
         }
-        ArrayList<User> expResult = StorageManager.getUsersFromFile();
-        User user = new User("joana1234", "joana", "monica");
-        StorageManager.updateUserInfo(user);
-        ArrayList<User> result = StorageManager.getUsersFromFile();
-        System.out.println(expResult);
-        System.out.println(result);
-        if(!arrayListEquals(result, expResult))
-            fail("if the method is an User object already present in the file,"
-                    + " the file should remain unchanghed");
+        
+        User expResult = StorageManager.getUsersFromFile().get(0);
+        
+        expResult.addFavoriteMovie(1234);
+        expResult.addFavoriteMovie(12345);
+        expResult.addFavoriteMovie(123456);
+        
+        expResult.getPreferences().setDaysToAlert(20);
+        expResult.getPreferedGenres().add(28);
+        
+        StorageManager.updateUserInfo(expResult);
+        User result = StorageManager.getUsersFromFile().get(0);
+        System.out.println(result.getPreferedGenres());
+        System.out.println(result.getPreferences().getDaysToAlert());
+        
+        assertEquals(expResult, result);
     }
     
-    /**
-     * Test of updateUserInfo method, of class StorageManager. If the argument
-     * if the method is an User object already present in the file, the file
-     * should remain unchanghed
-     */
+    
     @Test
-    public void testUpdateUserInfoWithEmptyStrings() throws Exception {
-        System.out.println("updateUserInfo with empty strings");
+    public void testAddNewUser(){
+        System.out.println("addUser");
+        
+        User user = new User("Djanga","d","a");
+        
+        try{
+            ArrayList<User> users = StorageManager.getUsersFromFile();
+            int expSize = users.size()+1;
+            
+            StorageManager.addNewUser(user);
+        
+            ArrayList<User> usersAfter = StorageManager.getUsersFromFile();
+            int size = usersAfter.size();
+            User result = usersAfter.get(size-1);
 
-        try {
-            AuthenticationManager.createUser("marco", "marco", "marco");
-        } catch (OpeningFileException | ReadWriteObjectException | UserAlreadyExistsException e) {
-            System.out.println(e);
+            assertEquals(users.size()+1,usersAfter.size());
+
+        }catch(OpeningFileException | ReadWriteObjectException e){
+            e.printStackTrace();
         }
-        ArrayList<User> expResult = StorageManager.getUsersFromFile();
-        User user = new User("marco", "", "");
-        StorageManager.updateUserInfo(user);
-        ArrayList<User> result = StorageManager.getUsersFromFile();
-        if(!arrayListEquals(result, expResult))
-            fail("if the method is an User object already present in the file,"
-                    + " the file should remain unchanghed");
     }
     
-    /**
-     * Test of updateUserInfo method, of class StorageManager. If the argument
-     * if the method is an empty User object the file should remain unchanghed
-     */
-//    @Test
-//    public void testUpdateUserInfoWithEmptyUser() throws Exception {
-//        System.out.println("updateUserInfo with empty user");
-//        
-//        ArrayList<User> expResult = StorageManager.getUsersFromFile();
-//        User user = new User("", "", "");
-//        StorageManager.updateUserInfo(user);
-//        ArrayList<User> result = StorageManager.getUsersFromFile();
-//        System.out.println(expResult);
-//        System.out.println(result);
-//        if(!arrayListEquals(result, expResult))
-//            fail("if the method is an User object already present in the file,"
-//                    + " the file should remain unchanghed");
-//    }
-
-    /*
-    * This method compares two ArrayList<User> objects.
-    * Returns true if they are equal, false otherwise.
-     */
-    private boolean arrayListEquals(ArrayList<User> aL1, ArrayList<User> aL2) {
-        if (aL1.size() == aL2.size()) {
-            int flag = 0;
-            for (int i = 0; i < aL1.size(); i++) {
-                for (int j = 0; j < aL2.size(); j++) {
-                    if (aL1.get(i).getUsername().equals(aL2.get(j).getUsername()) &&
-                            aL1.get(i).getFirstName().equals(aL2.get(j).getFirstName()) &&
-                            aL1.get(i).getLastName().equals(aL2.get(j).getLastName())) {
-                        flag = 1;
-                    }
-                }
-                if (flag == 0) {
-                    return false;
-                }
-                flag = 0;
-            }
-            return true;
+    
+    @Test
+    public void testGetUsersFromFile(){
+        System.out.println("getUsersFromFile");
+        
+        try{
+            System.out.println(StorageManager.getUsersFromFile());
+            
+            assertEquals(2,StorageManager.getUsersFromFile().size());
+        }catch(Exception e){   
         }
-        return false;
     }
-
+    
+    private boolean isOutputEqual(ArrayList<User> a,ArrayList<User> b){
+        if(a.size() != b.size())
+            return false;
+        
+        for(int i = 0; i < a.size(); i++){
+            if(!a.get(i).equals(b.get(i)))
+                return false;
+        }
+        
+        return true;
+    }
 }

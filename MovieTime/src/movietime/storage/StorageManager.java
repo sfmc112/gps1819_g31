@@ -144,8 +144,6 @@ public class StorageManager {
             users = getUsersFromFile();
             users.add(user);
             
-            //new FileOutputStream(ACCOUNTS_FILE).close(); //To empty the file
-
             out = openWriteRegister();
             out.writeObject(users);
 
@@ -172,6 +170,7 @@ public class StorageManager {
      *
      * @param user
      * @throws ReadWriteObjectException 
+     * @throws movietime.storage.OpeningFileException 
      */
     public synchronized static void updateUserInfo(User user) 
             throws ReadWriteObjectException,OpeningFileException
@@ -184,7 +183,7 @@ public class StorageManager {
             users = getUsersFromFile();
 
             for (int i = 0; i < users.size(); i++) {
-                if (user.getUsername().equals(users.get(i).getUsername())) {
+                if (user.getUsername().equalsIgnoreCase(users.get(i).getUsername())) {
                     users.remove(i);
                     updated = true;
                     break;
@@ -196,7 +195,6 @@ public class StorageManager {
                 out = openWriteRegister();
                 out.writeObject(users);
             }
-            //new FileOutputStream(ACCOUNTS_FILE).close(); //To empty the file
             
         }catch(IOException e) {
             System.err.println("Error writing to file");
@@ -209,6 +207,6 @@ public class StorageManager {
             }catch(IOException e){
                 System.out.println("Error Closing file");
             }
-        }       
+        }
     }
 }

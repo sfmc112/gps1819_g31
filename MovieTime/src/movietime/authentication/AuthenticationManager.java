@@ -61,7 +61,7 @@ public class AuthenticationManager {
             ArrayList<User> users = StorageManager.getUsersFromFile();
 
             for (User p : users) {
-                if (username.equals(p.getUsername())) {
+                if (username.equalsIgnoreCase(p.getUsername())) {
                     throw new UserAlreadyExistsException("User already exists!");
                 }
             }
