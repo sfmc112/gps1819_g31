@@ -5,8 +5,13 @@
  */
 package movietime.database;
 
+import UI.GUI.Resources;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
+import javax.imageio.ImageIO;
 
 public class Movie {
     
@@ -111,12 +116,38 @@ public class Movie {
         return overview;
     }
 
-    public String getPoster(String size) {
-        return "https://image.tmdb.org/t/p/" + size + "/" + poster;
+    public Image getPoster(String size) {
+        if(poster.length() == 0)
+        {
+            try{
+                return ImageIO.read(Resources.getResourceFile(
+                        "https://image.tmdb.org/t/p/" + 
+                        size + "/" + poster));
+            }catch(IOException e){
+                return Resources.getDefaultMoviePoster();
+            }
+        }
+        else
+        {
+            return Resources.getDefaultMoviePoster();
+        }
     }
-
-    public String getBackdrop(String size) {
-        return "https://image.tmdb.org/t/p/" + size + "/" + backdrop;
+    
+    public Image getBackdrop(String size) {
+        if(backdrop.length() == 0)
+        {
+            try{
+                return ImageIO.read(Resources.getResourceFile(
+                        "https://image.tmdb.org/t/p/" + 
+                        size + "/" + backdrop));
+            }catch(IOException e){
+                return Resources.getDefaultMoviePoster();
+            }
+        }
+        else
+        {
+            return Resources.getDefaultMoviePoster();
+        }
     }
 
     public String getPoster() {

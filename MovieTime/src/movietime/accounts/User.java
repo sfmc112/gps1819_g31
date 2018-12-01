@@ -18,6 +18,7 @@ public class User implements Serializable{
     private final String firstName;
     private final String lastName;
     private HashSet<Integer> favoriteMovieIDs;
+    private HashSet<Integer> preferedGenres;
     private NotificationPreferences preferences;
     
     //TODO: Add functions to edit preferences
@@ -29,7 +30,8 @@ public class User implements Serializable{
      * @param lastName user's last name
      */
     public User(String username, String firstName, String lastName) {
-        this(username, firstName, lastName, new HashSet<Integer>());
+        this(username, firstName, lastName,
+                new HashSet<Integer>(), new HashSet<Integer>());
     }
 
     /**
@@ -38,12 +40,15 @@ public class User implements Serializable{
      * @param firstName user's first name
      * @param lastName user's last name
      * @param favoriteMovieIDs list of movie ID's
+     * @param preferedGenres list of prefered genres
      */
-    public User(String username, String firstName, String lastName, HashSet<Integer> favoriteMovieIDs) {
+    public User(String username, String firstName, String lastName,
+            HashSet<Integer> favoriteMovieIDs, HashSet<Integer> preferedGenres){
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.favoriteMovieIDs = favoriteMovieIDs;
+        this.preferedGenres = preferedGenres;
         preferences = new NotificationPreferences();
     }
     
@@ -129,6 +134,10 @@ public class User implements Serializable{
         return preferences;
     }
 
+    public HashSet<Integer> getPreferedGenres() {
+        return preferedGenres;
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if(obj == null)

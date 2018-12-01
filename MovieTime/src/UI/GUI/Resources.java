@@ -11,6 +11,7 @@ public class Resources {
     private static final String MOVIE_TIME_ICON = "Resources/popcorn.png";
     
     private static Image appIcon;
+    private static Image defaultMoviePoster;
     
     public static final URL getResourceFile(String name){
             // opens a file with path relative to location of the Resources class
@@ -23,7 +24,8 @@ public class Resources {
     {
         try{
             appIcon = ImageIO.read(getResourceFile(MOVIE_TIME_ICON));
-        
+            defaultMoviePoster = ImageIO.read(getResourceFile(DEFAULT_PATH));
+            
         }catch(IOException e){
             System.out.println("Could not load icon!");
         }
@@ -31,5 +33,9 @@ public class Resources {
 
     public static Image getAppIcon() {
         return appIcon;
+    }
+    
+    public static Image getDefaultMoviePoster(){
+        return defaultMoviePoster;
     }
 }
