@@ -42,8 +42,8 @@ public class NotificationService extends Thread {
         
         while(CONTINUE){
             try{
-                ids = observable.getUser().getFavoriteMovieIDs();
-                days = observable.getUser().getPreferences().getDaysToAlert();
+                ids = observable.getLoggedUser().getFavoriteMovieIDs();
+                days = observable.getLoggedUser().getPreferences().getDaysToAlert();
                 
                 Iterator<Integer> it = ids.iterator();                
                 while(it.hasNext()){
