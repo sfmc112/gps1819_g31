@@ -3,10 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package movietime.authentication;
+package movietime;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashSet;
 import movietime.accounts.User;
+import movietime.authentication.AuthenticationManager;
+import movietime.authentication.UserAlreadyExistsException;
+import movietime.authentication.UserDoesNotExistException;
+import movietime.authentication.ValidationException;
+import movietime.database.DatabaseManager;
+import movietime.database.Movie;
 import movietime.storage.StorageManager;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -15,22 +23,20 @@ import static org.junit.Assert.*;
  *
  * @author Olympus
  */
-public class AuthenticationManagerTest {
+public class ObservableAppTest {
+    
     private static final int USERNAME_MIN_SIZE = 4;
     private static final int NAME_MIN_SIZE = 3;
     private static final int ANY_NAME_MAX_SIZE = 15;
     
-    public AuthenticationManagerTest() {
+    public ObservableAppTest() {
     }
-    
-//***testAuthenticateUser***//
+
     /**
-     * Test of authenticateUser method, of class AuthenticationManager, 
-     * checks the case in each the username doesn't match.
+     * Test of login method, of class ObservableApp.
      */
     @Test
-    public void testAuthenticateUserNoMatchingUser() throws Exception {
-
+    public void testLoginWithNoMatchingUser() throws Exception {
         File f = new File(".\\data\\MovieTimeUsers.bin");
         f.delete();
         
@@ -52,13 +58,12 @@ public class AuthenticationManagerTest {
         f = new File(".\\data\\MovieTimeUsers.bin");
         f.delete();
     }
-
+    
     /**
-     * Test of authenticateUser method, of class AuthenticationManager, 
-     * with matching username, but diferents Uppercases.
+     * Test of authenticateUser method, of class AuthenticationManager, with matching username, but diferents Uppercases.
      */
     @Test
-    public void testAuthenticateUserWithSameUsernameButDiferentUppercase() throws Exception {
+    public void testLoginWithSameUsernameButDiferentUppercase() throws Exception {
 
         File f = new File(".\\data\\MovieTimeUsers.bin");
         f.delete();
@@ -83,11 +88,10 @@ public class AuthenticationManagerTest {
     }
     
     /**
-     * Test of authenticateUser method, of class AuthenticationManager,
-     * with matching username and the letter's case.
+     * Test of authenticateUser method, of class AuthenticationManager, with matching username, but diferents Uppercases.
      */
     @Test
-    public void testAuthenticateUserWithSameUsernameAndUppercase() throws Exception {
+    public void testLoginWithSameUsernameAndUppercase() throws Exception {
 
         File f = new File(".\\data\\MovieTimeUsers.bin");
         f.delete();
@@ -110,30 +114,14 @@ public class AuthenticationManagerTest {
         f = new File(".\\data\\MovieTimeUsers.bin");
         f.delete();
     }
-    
-    
-    //***testCreateUser***//
- 
+
     /**
-     * Test of createUser method, of class AuthenticationManager, with null entry for username
+     * Test of createUser method, of class ObservableApp.
      */
-//    @Test
-//    public void testCreateUserNullUsername() throws Exception {
-//        try{
-//            AuthenticationManager.createUser(null, "dddd", "dddd");
-//            fail("Username cannot be null.");
-//        }catch(ValidationException e){
-//            //this exception is not created.
-//            assertEquals("The username is not valid. Is null.",e.getMessage(), "The username is not valid. Is null.");
-//        }catch(Exception e){
-//            fail("Exception for null username field not validated.");
-//        }
-//    }
-    
-        /**
-     * Test of createUser method, of class AuthenticationManager,
-     * with empty entry for username
-     */
+    @Test
+    public void testCreateUser() throws Exception {
+    }
+
     @Test
     public void testCreateUserEmptyUsername() throws Exception {
         try{
@@ -152,8 +140,7 @@ public class AuthenticationManagerTest {
     }
 
             /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with short entry for username (less than 4 characters)
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserShortUsername() throws Exception {
@@ -173,8 +160,7 @@ public class AuthenticationManagerTest {
     }
 
             /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with long entry for username (more than 115 characters)
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserLongUsername() throws Exception {
@@ -194,8 +180,7 @@ public class AuthenticationManagerTest {
     }
     
     /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with special character in the first letter of the username
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserUsernameWithInvalidCharacterInFirstLetter() throws Exception {
@@ -214,8 +199,7 @@ public class AuthenticationManagerTest {
     }
     
     /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with special character in a middle letter of the username
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserUsernameWithInvalidCharacterInMiddleLetter() throws Exception {
@@ -233,8 +217,7 @@ public class AuthenticationManagerTest {
     }
     
     /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with algarism in the first letter of the username
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserUsernameWithNumberInFirstLetter() throws Exception {
@@ -252,24 +235,7 @@ public class AuthenticationManagerTest {
     }
     
     /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with null entry for first name
-     */
-//    @Test
-//    public void testCreateUserNullFirstName() throws Exception {
-//        try{
-//            AuthenticationManager.createUser("dddd", null, "dddd");
-//            fail("Name cannot be null.");
-//        }catch(ValidationException e){
-//            //this exception is not created.
-//            assertEquals("The name is not valid. Is null.",e.getMessage(), "The name is not valid. Is null.");
-//        }catch(Exception e){
-//            fail("Exception for null name field not validated.");
-//        }
-//    }
-    /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with empty entry for first name
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserEmptyFirstName() throws Exception {
@@ -289,8 +255,7 @@ public class AuthenticationManagerTest {
     }
     
                 /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with short entry for first name
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserShortFirstName() throws Exception {
@@ -309,9 +274,8 @@ public class AuthenticationManagerTest {
         }
     }
 
-    /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with long entry for the first name
+            /**
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserLongFirstName() throws Exception {
@@ -331,8 +295,7 @@ public class AuthenticationManagerTest {
     }
     
     /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with special character in the first letter of the first name
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserFirstNameWithInvalidCharacterInFirstLetter() 
@@ -352,8 +315,7 @@ public class AuthenticationManagerTest {
     }
     
     /**
-     * Test of createUser method, of class AuthenticationManager,
-     * with special character in the middle of the first name
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserFisrtNameWithInvalidCharacterInMiddleLetter() 
@@ -372,8 +334,7 @@ public class AuthenticationManagerTest {
     }
     
     /**
-     * Test of createUser method, of class AuthenticationManager,
-     * with algarism in the first letter of the first name
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserFirstNameWithNumberInFirstLetter() throws Exception {
@@ -391,24 +352,7 @@ public class AuthenticationManagerTest {
     }
     
     /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with null entry for last name
-     */
-//    @Test
-//    public void testCreateUserNullLasttName() throws Exception {
-//        try{
-//            AuthenticationManager.createUser("dddd", "dddd", null);
-//            fail("Last name cannot be null.");
-//        }catch(ValidationException e){
-//            //this exception is not created.
-//            assertEquals("The last name is not valid. Is null.",e.getMessage(), "The last name is not valid. Is null.");
-//        }catch(Exception e){
-//            fail("Exception for null last name field not validated.");
-//        }
-//    }
-    /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with empty entry for last name
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserEmptyLastName() throws Exception {
@@ -428,8 +372,7 @@ public class AuthenticationManagerTest {
     }
     
                 /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with short entry for last name
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserShortLastName() throws Exception {
@@ -449,8 +392,7 @@ public class AuthenticationManagerTest {
     }
 
             /**
-     * Test of createUser method, of class AuthenticationManager,
-     * with long entry for last name
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserLonglastName() throws Exception {
@@ -470,8 +412,7 @@ public class AuthenticationManagerTest {
     }
     
     /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with special character in the first letter of the last name
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserLastNameWithInvalidCharacterInFirstLetter() 
@@ -491,8 +432,7 @@ public class AuthenticationManagerTest {
     }
     
     /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with special character in the middle of the last name
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserLastNameWithInvalidCharacterInMiddleLetter() 
@@ -511,8 +451,7 @@ public class AuthenticationManagerTest {
     }
     
     /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with algarism in the first letter of the last name
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserLastNameWithNumberInFirstLetter() throws Exception {
@@ -530,8 +469,7 @@ public class AuthenticationManagerTest {
     }     
 
     /**
-     * Test of createUser method, of class AuthenticationManager, 
-     * with an already existing account with the same username
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserExistingUser() throws Exception {
@@ -560,8 +498,7 @@ public class AuthenticationManagerTest {
     }
     
     /**
-     * Test of createUser method, of class AuthenticationManager,
-     * with an account that doesn't have an username alreadhy in use
+     * Test of createUser method, of class AuthenticationManager, with null entry for username
      */
     @Test
     public void testCreateUserCorrectUser() throws Exception {
@@ -582,5 +519,202 @@ public class AuthenticationManagerTest {
         
         f = new File(".\\data\\MovieTimeUsers.bin");
         f.delete();
+    }
+    
+    //>>>>>>User tests yet to be done
+    /**
+     * Test of addPreferedMovie method, of class ObservableApp.
+     */
+    @Test
+    public void testAddPreferedMovie() {
+    }
+
+    /**
+     * Test of removeFavouriteMovie method, of class ObservableApp.
+     */
+    @Test
+    public void testRemoveFavouriteMovie() {
+    }
+
+    /**
+     * Test of isMovieBeingFollowed method, of class ObservableApp.
+     */
+    @Test
+    public void testIsMovieBeingFollowed() {
+    }
+
+    
+    //>>>>>>User tests yet to be done//
+    //>>>>>>Notification preferences tests yet to be done
+    /**
+     * Test of setDaysToAlert method, of class ObservableApp.
+     */
+    @Test
+    public void testSetDaysToAlert() {
+    }
+
+    /**
+     * Test of setIncludeDirector method, of class ObservableApp.
+     */
+    @Test
+    public void testSetIncludeDirector() {
+    }
+
+    /**
+     * Test of setIncludeMainActors method, of class ObservableApp.
+     */
+    @Test
+    public void testSetIncludeMainActors() {
+    }
+
+    /**
+     * Test of setIncludeGenre method, of class ObservableApp.
+     */
+    @Test
+    public void testSetIncludeGenre() {
+    }
+
+    
+    //>>>>>>Notification preferences tests yet to be done//
+    
+    
+    /**
+     * Test of getFollowedMovies method, of class DatabaseManager.
+     * The method should return null when the HashSet passed as argument is null
+     */
+    @Test
+    public void testGetFollowedMoviesWithNullHashSet() {
+        System.out.println("getFollowedMoviesWithNullHashSet");
+        HashSet<Integer> followedIds = null;
+        ArrayList<Movie> expResult = null;
+        ArrayList<Movie> result = DatabaseManager.getFollowedMovies(followedIds);
+        assertEquals("The method should return null when the HashSet passed as argument is null", expResult, result);
+    }
+
+    /**
+     * Test of getUpcomingMoviesByGenre method, of class DatabaseManager.
+     * With a null HashSet as past parameter.
+     */
+    @Test
+    public void testGetUpcomingMoviesByGenre() {
+        System.out.println("getUpcomingMoviesByGenre");
+        HashSet<Integer> genres = null;
+        ArrayList<ArrayList<Movie>> expResult = null;
+        ArrayList<ArrayList<Movie>> result = DatabaseManager.getUpcomingMoviesByGenre(genres);
+        assertEquals("A null HashSet does not return the expected result", expResult, result);
+    }
+    
+    /**
+     * Test of getUpcomingMoviesByGenre method, of class DatabaseManager.
+     * With an empty HashSet as past parameter.
+     */
+    @Test
+    public void testGetUpcomingMoviesByGenreWithEmptyHashSet() {
+        System.out.println("getUpcomingMoviesByGenre");
+        HashSet<Integer> genres = new HashSet<>();
+        ArrayList<ArrayList<Movie>> expResult = null;
+        ArrayList<ArrayList<Movie>> result = DatabaseManager.getUpcomingMoviesByGenre(genres);
+        assertEquals("An empty HashSet does not return the expected result", expResult, result);
+    }
+    /**
+     * Test of getUpcomingMoviesByKeywordAndGenre method, of class DatabaseManager.
+     * Calling the method with an HashSet containing Integers that do not represent
+     * any genre should return null do distinct it from the case in which there are
+     * no actual movies for a specified genre
+     */
+    
+    @Test
+    public void testGetUpcomingMoviesByGenreWithIncorrectGenres(){
+        System.out.println("getUpcomingMoviesByGenreWithIncorrectGenres");
+        HashSet<Integer> genres = new HashSet<>();
+        genres.add(2);
+        ArrayList<ArrayList<Movie>> result = DatabaseManager.getUpcomingMoviesByGenre(genres);
+        assertNull("When the argument is an HashSet containing Integers that do not "
+                + "represent any genre the method should return null", result);
+    }
+    
+    /**
+     * Test of getUpcomingMoviesByKeywordAndGenre method, of class DatabaseManager.
+     * Searching upcoming movies with an "" keyword and a null genre the result should be
+     * the same as the getUpComingMovies result
+     */
+    @Test
+    public void testGetUpcomingMoviesByEmptyKeywordAndNotSelectedGenre() {
+        System.out.println("getUpcomingMoviesByKeywordAndNotSelectedGenre");
+        String keyword = "";
+        Integer genre = null;
+        ArrayList<ArrayList<Movie>> expResult = DatabaseManager.getUpcomingMovies();
+        ArrayList<ArrayList<Movie>> result = DatabaseManager.getUpcomingMoviesByKeywordAndGenre(keyword, genre);
+        if(!arrayListOfArrayListEquals(expResult, result))
+            fail("When the arguments are an empty keyword and a null genre (when it is not selected) the method"
+                    + "should return the same as the getUpcomingMovies method");
+    }
+    
+    /**
+     * Test of getUpcomingMoviesByKeywordAndGenre method, of class DatabaseManager.
+     * Searching upcoming movies with an empty keyword the method should return all the movies
+     * of that genre
+     */
+    @Test
+    public void testGetUpcomingMoviesByEmptyKeywordAndGenre() {
+        System.out.println("getUpcomingMoviesByKeywordAndGenre");
+        String keyword = "";
+        Integer genre = 18;
+        HashSet<Integer> genres = new HashSet<>();
+        genres.add(genre);
+        
+        ArrayList<ArrayList<Movie>> expResult = DatabaseManager.getUpcomingMoviesByGenre(genres);
+        ArrayList<ArrayList<Movie>> result = DatabaseManager.getUpcomingMoviesByKeywordAndGenre(keyword, genre);
+        if(!arrayListOfArrayListEquals(expResult, result))
+            fail("When the arguments are an empty keyword and a selected genre the method should"
+                    + "return all the upcoming movies of that genre");
+    }
+
+    /**
+     * Test of getUpcomingMoviesByKeyword method, of class DatabaseManager.
+     * Searching upcoming movies with an empty keyword the result should be
+     * the same as the getUpcomingMovies method.
+     */
+    @Test
+    public void testGetUpcomingMoviesByEmptyKeyword() {
+        System.out.println("getUpcomingMoviesByKeyword");
+        String keyword = "";
+        ArrayList<ArrayList<Movie>> expResult = DatabaseManager.getUpcomingMovies();
+        ArrayList<ArrayList<Movie>> result = DatabaseManager.getUpcomingMoviesByKeyword(keyword);
+        if(!arrayListOfArrayListEquals(expResult, result))
+            fail("When the arguments are an empty keyword and a selected genre the method should"
+                    + "return the same as the getUpcomingMovies method");
+    }
+
+    /**
+     * Test of getMovieByID method, of class DatabaseManager.
+     */
+    @Test
+    public void testGetMovieByID() {
+        System.out.println("getMovieByID");
+        int id = 0;
+        Movie expResult = null;
+        Movie result = DatabaseManager.getMovieByID(id);
+        assertNull("When the argument of the method is an unexistent id, the returned movie"
+                + " should be null", result);
+    }
+    
+    
+    /*
+    * This method compares the ArrayList<ArrayList<Movie>> objects.
+    * Returns true if they are equal, false if they are not equal.
+    */
+    private boolean arrayListOfArrayListEquals(ArrayList<ArrayList<Movie>> aListAl1, ArrayList<ArrayList<Movie>> aListAl2){
+        if(aListAl1.size() != aListAl2.size())
+            return false;
+        ArrayList<Movie> aL1 = aListAl1.get(0);
+        ArrayList<Movie> aL2 = aListAl2.get(0);
+        if(aL1.size() != aL2.size())
+            return false;
+        for(int i = 0; i < aL1.size(); i++){
+            if(!(aL1.get(i).getId() == aL2.get(i).getId()))
+                return false;
+        }
+        return true;
     }
 }

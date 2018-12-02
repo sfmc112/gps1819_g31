@@ -29,7 +29,7 @@ public class AuthenticationManager {
             ArrayList<User> users = StorageManager.getUsersFromFile();
 
             for (User p : users) {
-                if (user.equals(p.getUsername())) {
+                if (user.equalsIgnoreCase(p.getUsername())) {
                     return p;
                 }
             }
@@ -103,19 +103,19 @@ public class AuthenticationManager {
             throw new ValidationException("The username does not contain between "
                     + USERNAME_MIN_SIZE + " and " + ANY_NAME_MAX_SIZE + " characters. Please, try again!");
         } else if (!spellingIsValid(username)) {
-            throw new ValidationException("The username is not valid. Starts with a number or a special character. Please, try again!");
+            throw new ValidationException("The username is not valid. Starts with a number or contains a special character. Please, try again!");
         }
         if (!sizeIsValid(firstName, NAME_MIN_SIZE, ANY_NAME_MAX_SIZE)) {
             throw new ValidationException("The first name does not contain between "
                     + NAME_MIN_SIZE + " and " + ANY_NAME_MAX_SIZE + " characters. Please, try again!");
         } else if (!spellingIsValid(firstName)) {
-            throw new ValidationException("The first name is not valid. Starts with a number or a special character. Please, try again!");
+            throw new ValidationException("The first name is not valid. Starts with a number or contains a special character. Please, try again!");
         }
         if (!sizeIsValid(lastName, NAME_MIN_SIZE, ANY_NAME_MAX_SIZE)) {
             throw new ValidationException("The last name does not contain between "
                     + NAME_MIN_SIZE + " and " + ANY_NAME_MAX_SIZE + " characters. Please, try again!");
         } else if (!spellingIsValid(lastName)) {
-            throw new ValidationException("The last name is not valid. Starts with a number or a special character. Please, try again!");
+            throw new ValidationException("The last name is not valid. Starts with a number or contains a special character. Please, try again!");
         }
     }
 
@@ -138,6 +138,9 @@ public class AuthenticationManager {
      * @return <tt>true</tt> if the first character is a letter, false otherwise
      */
     private static boolean spellingIsValid(String s) {
-        return Character.isLetter(s.codePointAt(0));
+        if(Character.isLetter(s.codePointAt(0))){
+            return s.matches("[a-zA-Z0-9]+");
+        }
+        return false;
     }
 }
