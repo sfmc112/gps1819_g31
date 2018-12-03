@@ -27,7 +27,7 @@ public class PreferredMoviesRegisterPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        prefGenresSelectionLabel = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
@@ -55,14 +55,14 @@ public class PreferredMoviesRegisterPanel extends javax.swing.JPanel {
         jCheckBox26 = new javax.swing.JCheckBox();
         jCheckBox27 = new javax.swing.JCheckBox();
         jCheckBox28 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        confirmPrefGenresButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Select your favourite movie genres");
-        jLabel1.setToolTipText("");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        prefGenresSelectionLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        prefGenresSelectionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        prefGenresSelectionLabel.setText("Select your favourite movie genres");
+        prefGenresSelectionLabel.setToolTipText("");
+        prefGenresSelectionLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        prefGenresSelectionLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jCheckBox1.setText("jCheckBox1");
@@ -145,8 +145,8 @@ public class PreferredMoviesRegisterPanel extends javax.swing.JPanel {
         jCheckBox28.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jCheckBox28.setText("jCheckBox1");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jButton1.setText("Confirm");
+        confirmPrefGenresButton.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        confirmPrefGenresButton.setText("Confirm");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -154,13 +154,13 @@ public class PreferredMoviesRegisterPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(274, 274, 274)
-                .addComponent(jLabel1)
+                .addComponent(prefGenresSelectionLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(confirmPrefGenresButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +201,7 @@ public class PreferredMoviesRegisterPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(prefGenresSelectionLabel)
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -259,14 +259,14 @@ public class PreferredMoviesRegisterPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jCheckBox26)))
                 .addGap(45, 45, 45)
-                .addComponent(jButton1)
+                .addComponent(confirmPrefGenresButton)
                 .addContainerGap(81, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton confirmPrefGenresButton;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox11;
@@ -294,6 +294,6 @@ public class PreferredMoviesRegisterPanel extends javax.swing.JPanel {
     private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JCheckBox jCheckBox8;
     private javax.swing.JCheckBox jCheckBox9;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel prefGenresSelectionLabel;
     // End of variables declaration//GEN-END:variables
 }

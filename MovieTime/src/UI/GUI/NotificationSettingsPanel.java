@@ -27,35 +27,35 @@ public class NotificationSettingsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
+        alarmFreqLabel = new javax.swing.JLabel();
+        alarmFreq = new javax.swing.JTextField();
+        shownInfoLabel = new javax.swing.JLabel();
+        genre = new javax.swing.JCheckBox();
+        director = new javax.swing.JCheckBox();
+        mainActors = new javax.swing.JCheckBox();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Alarm frequency (days):");
+        alarmFreqLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        alarmFreqLabel.setText("Alarm frequency (days):");
 
-        jTextField1.setColumns(2);
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        alarmFreq.setColumns(2);
+        alarmFreq.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setText("Info to be displayed:");
+        shownInfoLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        shownInfoLabel.setText("Info to be displayed:");
 
-        jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jCheckBox1.setText("Genre");
+        genre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        genre.setText("Genre");
 
-        jCheckBox2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jCheckBox2.setText("Director");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        director.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        director.setText("Director");
+        director.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                directorActionPerformed(evt);
             }
         });
 
-        jCheckBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jCheckBox3.setText("Main actors");
+        mainActors.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mainActors.setText("Main actors");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -64,14 +64,14 @@ public class NotificationSettingsPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(alarmFreqLabel)
+                    .addComponent(shownInfoLabel))
                 .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mainActors)
+                    .addComponent(director)
+                    .addComponent(genre)
+                    .addComponent(alarmFreq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(362, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -79,31 +79,31 @@ public class NotificationSettingsPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(alarmFreqLabel)
+                    .addComponent(alarmFreq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jCheckBox1))
+                    .addComponent(shownInfoLabel)
+                    .addComponent(genre))
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox2)
+                .addComponent(director)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox3)
+                .addComponent(mainActors)
                 .addContainerGap(169, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void directorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_directorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_directorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField alarmFreq;
+    private javax.swing.JLabel alarmFreqLabel;
+    private javax.swing.JCheckBox director;
+    private javax.swing.JCheckBox genre;
+    private javax.swing.JCheckBox mainActors;
+    private javax.swing.JLabel shownInfoLabel;
     // End of variables declaration//GEN-END:variables
 }
