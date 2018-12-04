@@ -54,4 +54,6 @@ public class RegisterLoginPanel extends JPanel{
         add(main);
     }
     
+    
+    
 }

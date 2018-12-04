@@ -37,11 +37,6 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
 
         jbLogin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jbLogin.setText("Login");
-        jbLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbLoginActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -70,10 +65,6 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
                 .addGap(160, 160, 160))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jbLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbLoginActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

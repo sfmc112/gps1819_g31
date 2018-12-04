@@ -42,33 +42,18 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
 
         jtfUsername.setColumns(10);
         jtfUsername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jtfUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfUsernameActionPerformed(evt);
-            }
-        });
 
         firstNameLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstNameLabel.setText("First name");
 
         jtfFirstName.setColumns(10);
         jtfFirstName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jtfFirstName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfFirstNameActionPerformed(evt);
-            }
-        });
 
         lastNameLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lastNameLabel.setText("Last name");
 
         jtfLastName.setColumns(10);
         jtfLastName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jtfLastName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfLastNameActionPerformed(evt);
-            }
-        });
 
         registerButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         registerButton.setText("Register");
@@ -118,18 +103,6 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
                 .addGap(90, 90, 90))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jtfUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfUsernameActionPerformed
-
-    private void jtfFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfFirstNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfFirstNameActionPerformed
-
-    private void jtfLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfLastNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfLastNameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
