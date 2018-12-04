@@ -26,37 +26,6 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
         observable = obs;
         observable.addObserver(this);
         initComponents();
-        
-//        registerButton.addActionListener(new ActionListener(){
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                String username = jtfUsername.getText();
-//                String firstName = jtfFirstName.getText();
-//                String lastName = jtfLastName.getText();
-//                String error = "";
-//                
-//                try {
-//                    observable.createUser(username, firstName, lastName);
-//                    observable.login(username);
-//                } catch (UserAlreadyExistsException ex) {
-//                    error += ex.getMessage();
-//                    JOptionPane.showMessageDialog(RegisterPanel.this, error, "Input error", JOptionPane.ERROR_MESSAGE);
-//                } catch (ValidationException ex) {
-//                    error += ex.getMessage();
-//                    JOptionPane.showMessageDialog(RegisterPanel.this, error, "Input error", JOptionPane.ERROR_MESSAGE);
-//                } catch (ReadWriteObjectException ex) {
-//                    error += ex.getMessage();
-//                    JOptionPane.showMessageDialog(RegisterPanel.this, error, "Input error", JOptionPane.ERROR_MESSAGE);
-//                } catch (OpeningFileException ex) {
-//                    error += ex.getMessage();
-//                    JOptionPane.showMessageDialog(RegisterPanel.this, error, "Input error", JOptionPane.ERROR_MESSAGE);
-//                } catch (UserDoesNotExistException ex) {
-//                    JOptionPane.showMessageDialog(RegisterPanel.this, error, "Input error", JOptionPane.ERROR_MESSAGE);
-//                } finally{
-//                    
-//                }
-//            }
-//        });
     }
 
     /**

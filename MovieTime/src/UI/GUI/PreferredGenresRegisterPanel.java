@@ -17,9 +17,10 @@ import movietime.database.Movie;
  *
  * @author sarah
  */
-public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements Observer{
+public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements Observer {
 
     private ObservableApp observable;
+
     /**
      * Creates new form PreferredMoviesRegisterPanel
      */
@@ -27,72 +28,6 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
         observable = obs;
         observable.addObserver(this);
         initComponents();
-        
-        confirmPrefGenresButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                HashSet<Integer> genreSet = new HashSet<>();
-                
-                if(jcbAction.isSelected()){
-                    genreSet.add(Movie.ACTION);
-                }
-                if(jcbAdventure.isSelected()){
-                    genreSet.add(Movie.ADVENTURE);
-                }
-                if(jcbAnimation.isSelected()){
-                    genreSet.add(Movie.ANIMATION);
-                }
-                if(jcbComedy.isSelected()){
-                    genreSet.add(Movie.COMEDY);
-                }
-                if(jcbCrime.isSelected()){
-                    genreSet.add(Movie.CRIME);
-                }
-                if(jcbDocumentary.isSelected()){
-                    genreSet.add(Movie.DOCUMENTARY);
-                }
-                if(jcbDrama.isSelected()){
-                    genreSet.add(Movie.DRAMA);
-                }
-                if(jcbFamily.isSelected()){
-                    genreSet.add(Movie.FAMILY);
-                }
-                if(jcbFantasy.isSelected()){
-                    genreSet.add(Movie.FANTASY);
-                }
-                if(jcbHistory.isSelected()){
-                    genreSet.add(Movie.HISTORY);
-                }
-                if(jcbHorror.isSelected()){
-                    genreSet.add(Movie.HORROR);
-                }
-                if(jcbMusic.isSelected()){
-                    genreSet.add(Movie.MUSIC);
-                }
-                if(jcbMystery.isSelected()){
-                    genreSet.add(Movie.MYSTERY);
-                }
-                if(jcbRomance.isSelected()){
-                    genreSet.add(Movie.ROMANCE);
-                }
-                if(jcbScienceFiction.isSelected()){
-                    genreSet.add(Movie.SCIENCE_FICTION);
-                }
-                if(jcbTVMovie.isSelected()){
-                    genreSet.add(Movie.TV_MOVIE);
-                }
-                if(jcbThriller.isSelected()){
-                    genreSet.add(Movie.THRILLER);
-                }
-                if(jcbWar.isSelected()){
-                    genreSet.add(Movie.WAR);
-                }
-                if(jcbWestern.isSelected()){
-                    genreSet.add(Movie.WESTERN);
-                }
-                observable.addSetPreferredGenres(genreSet);
-            }
-        });
     }
 
     /**
@@ -481,7 +416,7 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
 
     @Override
     public void update(Observable o, Object arg) {
-        //TODO
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.ACTION));
+        //TODO FINISH THIS
     }
 }
