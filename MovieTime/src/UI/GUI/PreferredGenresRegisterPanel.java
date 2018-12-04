@@ -36,26 +36,62 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
                 if(jcbAction.isSelected()){
                     genreSet.add(Movie.ACTION);
                 }
-//jcbAdventure;
-//    private javax.swing.JCheckBox jcbAnimation;
-//    private javax.swing.JCheckBox jcbComedy;
-//    private javax.swing.JCheckBox jcbCrime;
-//    private javax.swing.JCheckBox jcbDocumentary;
-//    private javax.swing.JCheckBox jcbDrama;
-//    private javax.swing.JCheckBox jcbFamily;
-//    private javax.swing.JCheckBox jcbFantasy;
-//    private javax.swing.JCheckBox jcbHistory;
-//    private javax.swing.JCheckBox jcbHorror;
-//    private javax.swing.JCheckBox jcbMusic;
-//    private javax.swing.JCheckBox jcbMystery;
-//    private javax.swing.JCheckBox jcbRomance;
-//    private javax.swing.JCheckBox jcbScienceFiction;
-//    private javax.swing.JCheckBox jcbTVMovie;
-//    private javax.swing.JCheckBox jcbThriller;
-//    private javax.swing.JCheckBox jcbWar;
-//    private javax.swing.JCheckBox jcbWestern;
+                if(jcbAdventure.isSelected()){
+                    genreSet.add(Movie.ADVENTURE);
+                }
+                if(jcbAnimation.isSelected()){
+                    genreSet.add(Movie.ANIMATION);
+                }
+                if(jcbComedy.isSelected()){
+                    genreSet.add(Movie.COMEDY);
+                }
+                if(jcbCrime.isSelected()){
+                    genreSet.add(Movie.CRIME);
+                }
+                if(jcbDocumentary.isSelected()){
+                    genreSet.add(Movie.DOCUMENTARY);
+                }
+                if(jcbDrama.isSelected()){
+                    genreSet.add(Movie.DRAMA);
+                }
+                if(jcbFamily.isSelected()){
+                    genreSet.add(Movie.FAMILY);
+                }
+                if(jcbFantasy.isSelected()){
+                    genreSet.add(Movie.FANTASY);
+                }
+                if(jcbHistory.isSelected()){
+                    genreSet.add(Movie.HISTORY);
+                }
+                if(jcbHorror.isSelected()){
+                    genreSet.add(Movie.HORROR);
+                }
+                if(jcbMusic.isSelected()){
+                    genreSet.add(Movie.MUSIC);
+                }
+                if(jcbMystery.isSelected()){
+                    genreSet.add(Movie.MYSTERY);
+                }
+                if(jcbRomance.isSelected()){
+                    genreSet.add(Movie.ROMANCE);
+                }
+                if(jcbScienceFiction.isSelected()){
+                    genreSet.add(Movie.SCIENCE_FICTION);
+                }
+                if(jcbTVMovie.isSelected()){
+                    genreSet.add(Movie.TV_MOVIE);
+                }
+                if(jcbThriller.isSelected()){
+                    genreSet.add(Movie.THRILLER);
+                }
+                if(jcbWar.isSelected()){
+                    genreSet.add(Movie.WAR);
+                }
+                if(jcbWestern.isSelected()){
+                    genreSet.add(Movie.WESTERN);
+                }
+                observable.addSetPreferredGenres(genreSet);
             }
-            
         });
     }
 
