@@ -416,7 +416,6 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
 
     @Override
     public void update(Observable o, Object arg) {
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.ACTION));
-        //TODO FINISH THIS
+        //
     }
 }
