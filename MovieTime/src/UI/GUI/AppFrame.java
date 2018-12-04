@@ -39,7 +39,6 @@ public class AppFrame extends JFrame implements Observer {
     protected RegisterLoginPanel pRegisterLogin;
     protected PreferredGenresRegisterPanel pPreferredGenresRegister;
     protected AppPanel appPanel;
-    
 
     public AppFrame(ObservableApp j) {
         this(j, 200, 100, FrameConstants.DIM_FRAME_X, FrameConstants.DIM_FRAME_Y);
@@ -48,11 +47,23 @@ public class AppFrame extends JFrame implements Observer {
     public AppFrame(ObservableApp j, int x, int y) {
         this(j, x, y, 1050, 600);
     }
-    
-    public void changeToPreferredGenresRegisterPanel(){
+
+    public void changeToPreferredGenresRegisterPanel() {
         appPanel.setVisible(false);
         pPreferredGenresRegister.setVisible(true);
         pRegisterLogin.setVisible(false);
+    }
+
+    public void changeToAppPanel() {
+        appPanel.setVisible(true);
+        pPreferredGenresRegister.setVisible(false);
+        pRegisterLogin.setVisible(false);
+    }
+
+    public void changeToRegisterLoginPanel() {
+        appPanel.setVisible(false);
+        pPreferredGenresRegister.setVisible(false);
+        pRegisterLogin.setVisible(true);
     }
 
     public AppFrame(ObservableApp obs, int x, int y, int width, int height) {
@@ -78,39 +89,11 @@ public class AppFrame extends JFrame implements Observer {
         appPanel.setVisible(false);
         pPreferredGenresRegister.setVisible(false);
         pRegisterLogin.setVisible(true);
-        
-        JButton registerButton = pRegisterLogin.pRegister.registerButton;
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                 String username = pRegisterLogin.pRegister.jtfUsername.getText();
-                String firstName = pRegisterLogin.pRegister.jtfFirstName.getText();
-                String lastName = pRegisterLogin.pRegister.jtfLastName.getText();
-                String error = "";
-                
-                try {
-                    observable.createUser(username, firstName, lastName);
-                    observable.login(username);
-                    changeToPreferredGenresRegisterPanel();
-                } catch (UserAlreadyExistsException ex) {
-                    error += ex.getMessage();
-                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
-                } catch (ValidationException ex) {
-                    error += ex.getMessage();
-                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
-                } catch (ReadWriteObjectException ex) {
-                    error += ex.getMessage();
-                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
-                } catch (OpeningFileException ex) {
-                    error += ex.getMessage();
-                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
-                } catch (UserDoesNotExistException ex) {
-                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
-                } finally{
-                    
-                }
-            }
-        });
+
+        setActionForRegisterButtonFromRegisterPanel();
+        setActionForLoginButtonFromLoginPanel();
+        setActionForConfirmButtonFromPreferredGenresRegisterPanel();
+        setActionForLogoutButtonFromAppPanel();
 
         configureTrayIcon();
         setAppearance();
@@ -176,6 +159,56 @@ public class AppFrame extends JFrame implements Observer {
         //Assigning listeners to help menu
         helpItem.addActionListener(new InstructionsListener());
         aboutItem.addActionListener(new AboutListener());
+    }
+
+    private void setActionForRegisterButtonFromRegisterPanel() {
+        JButton registerButton = pRegisterLogin.pRegister.registerButton;
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = pRegisterLogin.pRegister.jtfUsername.getText();
+                String firstName = pRegisterLogin.pRegister.jtfFirstName.getText();
+                String lastName = pRegisterLogin.pRegister.jtfLastName.getText();
+                String error = "";
+
+                try {
+                    observable.createUser(username, firstName, lastName);
+                    observable.login(username);
+                    changeToPreferredGenresRegisterPanel();
+                } catch (UserAlreadyExistsException ex) {
+                    error += ex.getMessage();
+                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
+                } catch (ValidationException ex) {
+                    error += ex.getMessage();
+                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
+                } catch (ReadWriteObjectException ex) {
+                    error += ex.getMessage();
+                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
+                } catch (OpeningFileException ex) {
+                    error += ex.getMessage();
+                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
+                } catch (UserDoesNotExistException ex) {
+                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
+                } finally {
+
+                }
+            }
+        });
+    }
+
+    private void setActionForConfirmButtonFromPreferredGenresRegisterPanel() {
+        //TODO ALEX PASTE HERE
+        changeToAppPanel();
+    }
+
+    private void setActionForLogoutButtonFromAppPanel() {
+        //TODO
+        changeToRegisterLoginPanel();
+    }
+
+    private void setActionForLoginButtonFromLoginPanel() {
+        //TODO
+        changeToRegisterLoginPanel();
     }
 
     class ExitListener implements ActionListener {
