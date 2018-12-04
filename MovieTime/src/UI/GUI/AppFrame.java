@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.HashSet;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JButton;
@@ -28,6 +29,7 @@ import movietime.authentication.UserAlreadyExistsException;
 import movietime.authentication.UserDoesNotExistException;
 import movietime.authentication.ValidationException;
 import movietime.database.DatabaseManager;
+import movietime.database.Movie;
 import movietime.storage.OpeningFileException;
 import movietime.storage.ReadWriteObjectException;
 
@@ -197,8 +199,72 @@ public class AppFrame extends JFrame implements Observer {
     }
 
     private void setActionForConfirmButtonFromPreferredGenresRegisterPanel() {
-        //TODO ALEX PASTE HERE
-        changeToAppPanel();
+        pPreferredGenresRegister.confirmPrefGenresButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                HashSet<Integer> genreSet = new HashSet<>();
+                
+                if(pPreferredGenresRegister.jcbAction.isSelected()){
+                    genreSet.add(Movie.ACTION);
+                }
+                if(pPreferredGenresRegister.jcbAdventure.isSelected()){
+                    genreSet.add(Movie.ADVENTURE);
+                }
+                if(pPreferredGenresRegister.jcbAnimation.isSelected()){
+                    genreSet.add(Movie.ANIMATION);
+                }
+                if(pPreferredGenresRegister.jcbComedy.isSelected()){
+                    genreSet.add(Movie.COMEDY);
+                }
+                if(pPreferredGenresRegister.jcbCrime.isSelected()){
+                    genreSet.add(Movie.CRIME);
+                }
+                if(pPreferredGenresRegister.jcbDocumentary.isSelected()){
+                    genreSet.add(Movie.DOCUMENTARY);
+                }
+                if(pPreferredGenresRegister.jcbDrama.isSelected()){
+                    genreSet.add(Movie.DRAMA);
+                }
+                if(pPreferredGenresRegister.jcbFamily.isSelected()){
+                    genreSet.add(Movie.FAMILY);
+                }
+                if(pPreferredGenresRegister.jcbFantasy.isSelected()){
+                    genreSet.add(Movie.FANTASY);
+                }
+                if(pPreferredGenresRegister.jcbHistory.isSelected()){
+                    genreSet.add(Movie.HISTORY);
+                }
+                if(pPreferredGenresRegister.jcbHorror.isSelected()){
+                    genreSet.add(Movie.HORROR);
+                }
+                if(pPreferredGenresRegister.jcbMusic.isSelected()){
+                    genreSet.add(Movie.MUSIC);
+                }
+                if(pPreferredGenresRegister.jcbMystery.isSelected()){
+                    genreSet.add(Movie.MYSTERY);
+                }
+                if(pPreferredGenresRegister.jcbRomance.isSelected()){
+                    genreSet.add(Movie.ROMANCE);
+                }
+                if(pPreferredGenresRegister.jcbScienceFiction.isSelected()){
+                    genreSet.add(Movie.SCIENCE_FICTION);
+                }
+                if(pPreferredGenresRegister.jcbTVMovie.isSelected()){
+                    genreSet.add(Movie.TV_MOVIE);
+                }
+                if(pPreferredGenresRegister.jcbThriller.isSelected()){
+                    genreSet.add(Movie.THRILLER);
+                }
+                if(pPreferredGenresRegister.jcbWar.isSelected()){
+                    genreSet.add(Movie.WAR);
+                }
+                if(pPreferredGenresRegister.jcbWestern.isSelected()){
+                    genreSet.add(Movie.WESTERN);
+                }
+                observable.addSetPreferredGenres(genreSet);
+                changeToAppPanel();
+            }
+        });
     }
 
     private void setActionForLogoutButtonFromAppPanel() {
