@@ -1,20 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI.GUI;
 
-/**
- *
- * @author salex
- */
-public class NotificationSettingsPanel extends javax.swing.JPanel {
+import java.util.Observable;
+import java.util.Observer;
+import javax.swing.JOptionPane;
+import movietime.ObservableApp;
+
+
+public class NotificationSettingsPanel extends javax.swing.JPanel implements Observer {
+    
+    private ObservableApp observable;
 
     /**
      * Creates new form NotificationSettingsPanel
      */
-    public NotificationSettingsPanel() {
+    public NotificationSettingsPanel(ObservableApp obs) {
+        observable = obs;
+        observable.addObserver(this);
         initComponents();
     }
 
@@ -28,82 +29,120 @@ public class NotificationSettingsPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         alarmFreqLabel = new javax.swing.JLabel();
-        alarmFreq = new javax.swing.JTextField();
         shownInfoLabel = new javax.swing.JLabel();
-        genre = new javax.swing.JCheckBox();
-        director = new javax.swing.JCheckBox();
-        mainActors = new javax.swing.JCheckBox();
+        jcbGenre = new javax.swing.JCheckBox();
+        jcbDirector = new javax.swing.JCheckBox();
+        jcbMainActors = new javax.swing.JCheckBox();
+        jsDays = new javax.swing.JSpinner();
+        bCancel = new javax.swing.JButton();
+        bConfirm = new javax.swing.JButton();
 
         alarmFreqLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         alarmFreqLabel.setText("Alarm frequency (days):");
 
-        alarmFreq.setColumns(2);
-        alarmFreq.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-
         shownInfoLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         shownInfoLabel.setText("Info to be displayed:");
 
-        genre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        genre.setText("Genre");
+        jcbGenre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jcbGenre.setText("Genre");
 
-        director.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        director.setText("Director");
-        director.addActionListener(new java.awt.event.ActionListener() {
+        jcbDirector.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jcbDirector.setText("Director");
+
+        jcbMainActors.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jcbMainActors.setText("Main actors");
+
+        jsDays.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        bCancel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bCancel.setText("Cancel");
+        bCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                directorActionPerformed(evt);
+                bCancelActionPerformed(evt);
             }
         });
 
-        mainActors.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        mainActors.setText("Main actors");
+        bConfirm.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bConfirm.setText("Confirm");
+        bConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConfirmActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(205, 205, 205)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(alarmFreqLabel)
                     .addComponent(shownInfoLabel))
                 .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mainActors)
-                    .addComponent(director)
-                    .addComponent(genre)
-                    .addComponent(alarmFreq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(362, Short.MAX_VALUE))
+                    .addComponent(jcbMainActors)
+                    .addComponent(jcbDirector)
+                    .addComponent(jcbGenre)
+                    .addComponent(jsDays, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(217, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bCancel)
+                .addGap(18, 18, 18)
+                .addComponent(bConfirm)
+                .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(alarmFreqLabel)
-                    .addComponent(alarmFreq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(66, 66, 66)
+                .addGap(107, 107, 107)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(alarmFreqLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jsDays, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(shownInfoLabel)
-                    .addComponent(genre))
+                    .addComponent(jcbGenre))
                 .addGap(18, 18, 18)
-                .addComponent(director)
+                .addComponent(jcbDirector)
                 .addGap(18, 18, 18)
-                .addComponent(mainActors)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addComponent(jcbMainActors)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bCancel)
+                    .addComponent(bConfirm))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void directorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_directorActionPerformed
+    private void bCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelActionPerformed
+        JOptionPane.showConfirmDialog(NotificationSettingsPanel.this,
+                "Your changes will not be saved. Continue?",
+                "Warning",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_bCancelActionPerformed
+
+    private void bConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConfirmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_directorActionPerformed
+    }//GEN-LAST:event_bConfirmActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField alarmFreq;
     private javax.swing.JLabel alarmFreqLabel;
-    private javax.swing.JCheckBox director;
-    private javax.swing.JCheckBox genre;
-    private javax.swing.JCheckBox mainActors;
+    private javax.swing.JButton bCancel;
+    private javax.swing.JButton bConfirm;
+    private javax.swing.JCheckBox jcbDirector;
+    private javax.swing.JCheckBox jcbGenre;
+    private javax.swing.JCheckBox jcbMainActors;
+    private javax.swing.JSpinner jsDays;
     private javax.swing.JLabel shownInfoLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        //TODO
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

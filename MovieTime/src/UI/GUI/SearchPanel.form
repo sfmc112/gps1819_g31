@@ -18,11 +18,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="searchedGenre" min="-2" max="-2" attributes="0"/>
+              <Component id="jcbSelectGenre" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="398" max="32767" attributes="0"/>
-              <Component id="keyword" min="-2" max="-2" attributes="0"/>
+              <Component id="jtfKeyword" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="searchButton" min="-2" max="-2" attributes="0"/>
+              <Component id="jbSearch" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -32,9 +32,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="searchedGenre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="keyword" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="searchButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jcbSelectGenre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtfKeyword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbSearch" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -42,7 +42,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JComboBox" name="searchedGenre">
+    <Component class="javax.swing.JComboBox" name="jcbSelectGenre">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>
@@ -61,7 +61,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="keyword">
+    <Component class="javax.swing.JTextField" name="jtfKeyword">
       <Properties>
         <Property name="columns" type="int" value="10"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -70,7 +70,7 @@
         <Property name="text" type="java.lang.String" value="Insert keyword"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="searchButton">
+    <Component class="javax.swing.JButton" name="jbSearch">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>

@@ -10,6 +10,7 @@ package UI.GUI;
  * @author salex
  */
 public class SearchPanel extends javax.swing.JPanel {
+    //TODO observer
 
     /**
      * Creates new form SearchPanel
@@ -27,19 +28,19 @@ public class SearchPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        searchedGenre = new javax.swing.JComboBox<>();
-        keyword = new javax.swing.JTextField();
-        searchButton = new javax.swing.JButton();
+        jcbSelectGenre = new javax.swing.JComboBox<>();
+        jtfKeyword = new javax.swing.JTextField();
+        jbSearch = new javax.swing.JButton();
 
-        searchedGenre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        searchedGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select genre", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbSelectGenre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select genre", "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        keyword.setColumns(10);
-        keyword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        keyword.setText("Insert keyword");
+        jtfKeyword.setColumns(10);
+        jtfKeyword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jtfKeyword.setText("Insert keyword");
 
-        searchButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        searchButton.setText("Search");
+        jbSearch.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jbSearch.setText("Search");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -47,11 +48,11 @@ public class SearchPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(searchedGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jcbSelectGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 398, Short.MAX_VALUE)
-                .addComponent(keyword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtfKeyword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(searchButton)
+                .addComponent(jbSearch)
                 .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
@@ -59,17 +60,17 @@ public class SearchPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchedGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(keyword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton))
+                    .addComponent(jcbSelectGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfKeyword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbSearch))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField keyword;
-    private javax.swing.JButton searchButton;
-    private javax.swing.JComboBox<String> searchedGenre;
+    private javax.swing.JButton jbSearch;
+    private javax.swing.JComboBox<String> jcbSelectGenre;
+    private javax.swing.JTextField jtfKeyword;
     // End of variables declaration//GEN-END:variables
 }

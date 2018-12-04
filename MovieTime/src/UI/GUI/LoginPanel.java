@@ -1,20 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI.GUI;
 
-/**
- *
- * @author salex
- */
-public class LoginPanel extends javax.swing.JPanel {
+import java.util.Observable;
+import java.util.Observer;
+import movietime.ObservableApp;
 
+public class LoginPanel extends javax.swing.JPanel implements Observer{
+
+    private ObservableApp observable;
     /**
      * Creates new form LoginPanel
      */
-    public LoginPanel() {
+    public LoginPanel(ObservableApp obs) {
+        observable = obs;
+        observable.addObserver(this);
         initComponents();
     }
 
@@ -28,22 +26,22 @@ public class LoginPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         usernameLoginLabel = new javax.swing.JLabel();
-        usernameLogin = new javax.swing.JTextField();
-        loginButton = new javax.swing.JButton();
+        jtfusername = new javax.swing.JTextField();
+        jbLogin = new javax.swing.JButton();
 
         usernameLoginLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         usernameLoginLabel.setText("Username");
 
-        usernameLogin.setColumns(10);
-        usernameLogin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        usernameLogin.addActionListener(new java.awt.event.ActionListener() {
+        jtfusername.setColumns(10);
+        jtfusername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+
+        jbLogin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jbLogin.setText("Login");
+        jbLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameLoginActionPerformed(evt);
+                jbLoginActionPerformed(evt);
             }
         });
-
-        loginButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        loginButton.setText("Login");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -53,11 +51,11 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addGap(60, 60, 60)
                 .addComponent(usernameLoginLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(usernameLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtfusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
-                .addGap(230, 230, 230)
-                .addComponent(loginButton)
+                .addGap(214, 214, 214)
+                .addComponent(jbLogin)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -66,21 +64,27 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addGap(127, 127, 127)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLoginLabel)
-                    .addComponent(usernameLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 311, Short.MAX_VALUE)
-                .addComponent(loginButton)
-                .addGap(90, 90, 90))
+                    .addComponent(jtfusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
+                .addComponent(jbLogin)
+                .addGap(160, 160, 160))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameLoginActionPerformed
+    private void jbLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameLoginActionPerformed
+    }//GEN-LAST:event_jbLoginActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton loginButton;
-    private javax.swing.JTextField usernameLogin;
+    private javax.swing.JButton jbLogin;
+    private javax.swing.JTextField jtfusername;
     private javax.swing.JLabel usernameLoginLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        //TODO
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

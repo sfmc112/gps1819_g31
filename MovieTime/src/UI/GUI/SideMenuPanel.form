@@ -19,13 +19,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="preferredMoviesButton" max="32767" attributes="0"/>
-                  <Component id="upcomingMoviesButton" alignment="0" max="32767" attributes="0"/>
-                  <Component id="followedMoviesButton" max="32767" attributes="0"/>
-                  <Component id="settingsButton" alignment="0" max="32767" attributes="0"/>
+                  <Component id="bPreferredMovies" max="32767" attributes="0"/>
+                  <Component id="bUpcomingMovies" alignment="0" max="32767" attributes="0"/>
+                  <Component id="bFollowedMovies" max="32767" attributes="0"/>
+                  <Component id="bSettings" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                      <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="bLogout" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="31" max="32767" attributes="0"/>
@@ -36,22 +36,22 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-              <Component id="preferredMoviesButton" min="-2" max="-2" attributes="0"/>
+              <Component id="bPreferredMovies" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="followedMoviesButton" min="-2" max="-2" attributes="0"/>
+              <Component id="bFollowedMovies" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="upcomingMoviesButton" min="-2" max="-2" attributes="0"/>
+              <Component id="bUpcomingMovies" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="settingsButton" min="-2" max="-2" attributes="0"/>
+              <Component id="bSettings" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-              <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
+              <Component id="bLogout" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="175" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="preferredMoviesButton">
+    <Component class="javax.swing.JButton" name="bPreferredMovies">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="20" style="0"/>
@@ -61,8 +61,11 @@
           <Insets value="[10, 14, 10, 14]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bPreferredMoviesActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="upcomingMoviesButton">
+    <Component class="javax.swing.JButton" name="bUpcomingMovies">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="20" style="0"/>
@@ -73,10 +76,10 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="upcomingMoviesButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bUpcomingMoviesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="followedMoviesButton">
+    <Component class="javax.swing.JButton" name="bFollowedMovies">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="20" style="0"/>
@@ -88,10 +91,10 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="followedMoviesButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bFollowedMoviesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="settingsButton">
+    <Component class="javax.swing.JButton" name="bSettings">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="20" style="0"/>
@@ -101,8 +104,11 @@
           <Insets value="[10, 14, 10, 14]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bSettingsActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="logoutButton">
+    <Component class="javax.swing.JButton" name="bLogout">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>
@@ -110,7 +116,7 @@
         <Property name="text" type="java.lang.String" value="Logout"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bLogoutActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

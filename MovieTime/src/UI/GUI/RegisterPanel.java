@@ -1,20 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI.GUI;
 
-/**
- *
- * @author salex
- */
-public class RegisterPanel extends javax.swing.JPanel {
+import java.util.Observable;
+import java.util.Observer;
+import movietime.ObservableApp;
 
+
+public class RegisterPanel extends javax.swing.JPanel implements Observer {
+
+    private ObservableApp observable;
+    
     /**
      * Creates new form RegisterPanel
      */
-    public RegisterPanel() {
+    public RegisterPanel(ObservableApp obs) {
+        observable = obs;
+        observable.addObserver(this);
         initComponents();
     }
 
@@ -28,11 +28,11 @@ public class RegisterPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         usernameRegisterLabel = new javax.swing.JLabel();
-        registerUsername = new javax.swing.JTextField();
+        jtfUsername = new javax.swing.JTextField();
         firstNameLabel = new javax.swing.JLabel();
-        firstName = new javax.swing.JTextField();
+        jtfFirstName = new javax.swing.JTextField();
         lastNameLabel = new javax.swing.JLabel();
-        lastName = new javax.swing.JTextField();
+        jtfLastName = new javax.swing.JTextField();
         registerButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(550, 680));
@@ -40,33 +40,33 @@ public class RegisterPanel extends javax.swing.JPanel {
         usernameRegisterLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         usernameRegisterLabel.setText("Username");
 
-        registerUsername.setColumns(10);
-        registerUsername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        registerUsername.addActionListener(new java.awt.event.ActionListener() {
+        jtfUsername.setColumns(10);
+        jtfUsername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jtfUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerUsernameActionPerformed(evt);
+                jtfUsernameActionPerformed(evt);
             }
         });
 
         firstNameLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstNameLabel.setText("First name");
 
-        firstName.setColumns(10);
-        firstName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        firstName.addActionListener(new java.awt.event.ActionListener() {
+        jtfFirstName.setColumns(10);
+        jtfFirstName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jtfFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                firstNameActionPerformed(evt);
+                jtfFirstNameActionPerformed(evt);
             }
         });
 
         lastNameLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lastNameLabel.setText("Last name");
 
-        lastName.setColumns(10);
-        lastName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lastName.addActionListener(new java.awt.event.ActionListener() {
+        jtfLastName.setColumns(10);
+        jtfLastName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jtfLastName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lastNameActionPerformed(evt);
+                jtfLastNameActionPerformed(evt);
             }
         });
 
@@ -83,15 +83,15 @@ public class RegisterPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lastNameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(usernameRegisterLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(registerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(firstNameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                        .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jtfFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
                 .addGap(215, 215, 215)
@@ -104,41 +104,47 @@ public class RegisterPanel extends javax.swing.JPanel {
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameRegisterLabel)
-                    .addComponent(registerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(95, 95, 95)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(firstNameLabel)
-                    .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lastNameLabel)
-                    .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(registerButton)
                 .addGap(90, 90, 90))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void registerUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerUsernameActionPerformed
+    private void jtfUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_registerUsernameActionPerformed
+    }//GEN-LAST:event_jtfUsernameActionPerformed
 
-    private void firstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameActionPerformed
+    private void jtfFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfFirstNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_firstNameActionPerformed
+    }//GEN-LAST:event_jtfFirstNameActionPerformed
 
-    private void lastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameActionPerformed
+    private void jtfLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfLastNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lastNameActionPerformed
+    }//GEN-LAST:event_jtfLastNameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField firstName;
     private javax.swing.JLabel firstNameLabel;
-    private javax.swing.JTextField lastName;
+    private javax.swing.JTextField jtfFirstName;
+    private javax.swing.JTextField jtfLastName;
+    private javax.swing.JTextField jtfUsername;
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JButton registerButton;
-    private javax.swing.JTextField registerUsername;
     private javax.swing.JLabel usernameRegisterLabel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        //TODO
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
