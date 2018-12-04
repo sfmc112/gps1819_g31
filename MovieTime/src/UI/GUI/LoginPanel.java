@@ -105,6 +105,6 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         //TODO
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

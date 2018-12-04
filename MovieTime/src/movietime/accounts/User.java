@@ -7,10 +7,6 @@ import java.util.Objects;
 import java.util.Set;
 import movietime.storage.StorageManager;
 
-/**
- *
- * @author sarah
- */
 public class User implements Serializable{
     static final long serialVersionUID = 1L;
     
@@ -18,7 +14,7 @@ public class User implements Serializable{
     private final String firstName;
     private final String lastName;
     private HashSet<Integer> favoriteMovieIDs;
-    private HashSet<Integer> preferedGenres;
+    private HashSet<Integer> preferredGenres;
     private NotificationPreferences preferences;
     
     //TODO: Add functions to edit preferences
@@ -48,7 +44,7 @@ public class User implements Serializable{
         this.firstName = firstName;
         this.lastName = lastName;
         this.favoriteMovieIDs = favoriteMovieIDs;
-        this.preferedGenres = preferedGenres;
+        this.preferredGenres = preferedGenres;
         preferences = new NotificationPreferences();
     }
     
@@ -134,8 +130,30 @@ public class User implements Serializable{
         return preferences;
     }
 
-    public HashSet<Integer> getPreferedGenres() {
-        return preferedGenres;
+    public HashSet<Integer> getPreferredGenres() {
+        return preferredGenres;
+    }
+    
+    public void addPreferredGenre(Integer genreID){
+        preferredGenres.add(genreID);
+    }
+    
+    public void removePreferredGenre(Integer genreID){
+        preferredGenres.remove(genreID);
+    }
+    
+    public boolean checkPreferredGenre(Integer genreID){
+        return preferredGenres.contains(genreID);
+    }
+    
+    public void addSetPreferredGenres(HashSet<Integer> genreSet){
+        for(Integer i : genreSet)
+            addPreferredGenre(i);
+    }
+    
+    public void removeSetPreferredGenres(HashSet<Integer> genreSet){
+        for(Integer i : genreSet)
+            removePreferredGenre(i);
     }
     
     @Override

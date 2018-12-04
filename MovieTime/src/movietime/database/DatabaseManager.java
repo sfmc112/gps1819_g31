@@ -1,4 +1,4 @@
-                                                  package movietime.database;
+package movietime.database;
 
 import java.io.BufferedReader;
 import java.io.IOException;

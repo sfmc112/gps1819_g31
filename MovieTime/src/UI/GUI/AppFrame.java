@@ -13,6 +13,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -23,7 +24,12 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import movietime.ObservableApp;
 import movietime.accounts.User;
+import movietime.authentication.UserAlreadyExistsException;
+import movietime.authentication.UserDoesNotExistException;
+import movietime.authentication.ValidationException;
 import movietime.database.DatabaseManager;
+import movietime.storage.OpeningFileException;
+import movietime.storage.ReadWriteObjectException;
 
 public class AppFrame extends JFrame implements Observer {
 
@@ -33,6 +39,7 @@ public class AppFrame extends JFrame implements Observer {
     protected RegisterLoginPanel pRegisterLogin;
     protected PreferredGenresRegisterPanel pPreferredGenresRegister;
     protected AppPanel appPanel;
+    
 
     public AppFrame(ObservableApp j) {
         this(j, 200, 100, FrameConstants.DIM_FRAME_X, FrameConstants.DIM_FRAME_Y);
@@ -40,6 +47,12 @@ public class AppFrame extends JFrame implements Observer {
 
     public AppFrame(ObservableApp j, int x, int y) {
         this(j, x, y, 1050, 600);
+    }
+    
+    public void changeToPreferredGenresRegisterPanel(){
+        appPanel.setVisible(false);
+        pPreferredGenresRegister.setVisible(true);
+        pRegisterLogin.setVisible(false);
     }
 
     public AppFrame(ObservableApp obs, int x, int y, int width, int height) {
@@ -65,6 +78,39 @@ public class AppFrame extends JFrame implements Observer {
         appPanel.setVisible(false);
         pPreferredGenresRegister.setVisible(false);
         pRegisterLogin.setVisible(true);
+        
+        JButton registerButton = pRegisterLogin.pRegister.registerButton;
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                 String username = pRegisterLogin.pRegister.jtfUsername.getText();
+                String firstName = pRegisterLogin.pRegister.jtfFirstName.getText();
+                String lastName = pRegisterLogin.pRegister.jtfLastName.getText();
+                String error = "";
+                
+                try {
+                    observable.createUser(username, firstName, lastName);
+                    observable.login(username);
+                    changeToPreferredGenresRegisterPanel();
+                } catch (UserAlreadyExistsException ex) {
+                    error += ex.getMessage();
+                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
+                } catch (ValidationException ex) {
+                    error += ex.getMessage();
+                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
+                } catch (ReadWriteObjectException ex) {
+                    error += ex.getMessage();
+                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
+                } catch (OpeningFileException ex) {
+                    error += ex.getMessage();
+                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
+                } catch (UserDoesNotExistException ex) {
+                    JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Input error", JOptionPane.ERROR_MESSAGE);
+                } finally{
+                    
+                }
+            }
+        });
 
         configureTrayIcon();
         setAppearance();

@@ -7,9 +7,11 @@ package UI.GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
 import java.util.Observable;
 import java.util.Observer;
 import movietime.ObservableApp;
+import movietime.database.Movie;
 
 /**
  *
@@ -29,7 +31,29 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
         confirmPrefGenresButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                String username = observable.getFirstName();
+                HashSet<Integer> genreSet = new HashSet<>();
+                
+                if(jcbAction.isSelected()){
+                    genreSet.add(Movie.ACTION);
+                }
+//jcbAdventure;
+//    private javax.swing.JCheckBox jcbAnimation;
+//    private javax.swing.JCheckBox jcbComedy;
+//    private javax.swing.JCheckBox jcbCrime;
+//    private javax.swing.JCheckBox jcbDocumentary;
+//    private javax.swing.JCheckBox jcbDrama;
+//    private javax.swing.JCheckBox jcbFamily;
+//    private javax.swing.JCheckBox jcbFantasy;
+//    private javax.swing.JCheckBox jcbHistory;
+//    private javax.swing.JCheckBox jcbHorror;
+//    private javax.swing.JCheckBox jcbMusic;
+//    private javax.swing.JCheckBox jcbMystery;
+//    private javax.swing.JCheckBox jcbRomance;
+//    private javax.swing.JCheckBox jcbScienceFiction;
+//    private javax.swing.JCheckBox jcbTVMovie;
+//    private javax.swing.JCheckBox jcbThriller;
+//    private javax.swing.JCheckBox jcbWar;
+//    private javax.swing.JCheckBox jcbWestern;
             }
             
         });
@@ -78,11 +102,6 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
 
         jcbAction.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbAction.setText("Action");
-        jcbAction.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbActionActionPerformed(evt);
-            }
-        });
 
         jcbAdventure.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbAdventure.setText("Adventure");
@@ -326,10 +345,7 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jcbActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbActionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbActionActionPerformed
-
+    //TODO DELETE THESE IN DESIGN
     private void jcbAdventureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAdventureActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbAdventureActionPerformed
@@ -430,6 +446,6 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
     @Override
     public void update(Observable o, Object arg) {
         //TODO
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

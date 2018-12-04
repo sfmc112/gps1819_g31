@@ -102,6 +102,24 @@ public class ObservableApp extends Observable {
         notifyObservers();
     }
 
+    public boolean checkPreferredGenre(Integer genreID) {
+        return user.checkPreferredGenre(genreID);
+    }
+
+    public void addSetPreferredGenres(HashSet<Integer> genreSet) {
+        user.addSetPreferredGenres(genreSet);
+        
+        setChanged();
+        notifyObservers();
+    }
+
+    public void removeSetPreferredGenres(HashSet<Integer> genreSet) {
+        user.removeSetPreferredGenres(genreSet);
+        
+        setChanged();
+        notifyObservers();
+    }
+
     public boolean isMovieBeingFollowed(int id) {
         return user.checkMovieId(id);
     }
@@ -180,6 +198,6 @@ public class ObservableApp extends Observable {
     }
 
     public ArrayList<ArrayList<Movie>> getPreferredMovies() {
-        return DatabaseManager.getUpcomingMoviesByGenre(user.getPreferedGenres());
+        return DatabaseManager.getUpcomingMoviesByGenre(user.getPreferredGenres());
     }
 }

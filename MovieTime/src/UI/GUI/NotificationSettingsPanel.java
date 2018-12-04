@@ -143,6 +143,6 @@ public class NotificationSettingsPanel extends javax.swing.JPanel implements Obs
     @Override
     public void update(Observable o, Object arg) {
         //TODO
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

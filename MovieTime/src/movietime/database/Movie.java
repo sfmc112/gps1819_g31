@@ -180,7 +180,7 @@ public class Movie {
     
     private String getSingleGenreAsString(int genre){
         switch(genre){
-            case 28:
+            case ACTION:
                 return "Action";
             case 37:
                 return "Western";

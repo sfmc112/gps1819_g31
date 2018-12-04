@@ -27,31 +27,36 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
         observable.addObserver(this);
         initComponents();
         
-        registerButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String username = jtfUsername.getText();
-                String firstName = jtfFirstName.getText();
-                String lastName = jtfLastName.getText();
-                String error = "";
-                
-                try {
-                    observable.createUser(username, firstName, lastName);
-                    observable.login(username);
-                } catch (UserAlreadyExistsException ex) {
-                    error += ex.getMessage();
-                } catch (ValidationException ex) {
-                    error += ex.getMessage();
-                } catch (ReadWriteObjectException ex) {
-                    error += ex.getMessage();
-                } catch (OpeningFileException ex) {
-                    error += ex.getMessage();
-                } catch (UserDoesNotExistException ex) {
-                } finally{
-                    JOptionPane.showMessageDialog(jtfUsername, error, "Input error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
+//        registerButton.addActionListener(new ActionListener(){
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                String username = jtfUsername.getText();
+//                String firstName = jtfFirstName.getText();
+//                String lastName = jtfLastName.getText();
+//                String error = "";
+//                
+//                try {
+//                    observable.createUser(username, firstName, lastName);
+//                    observable.login(username);
+//                } catch (UserAlreadyExistsException ex) {
+//                    error += ex.getMessage();
+//                    JOptionPane.showMessageDialog(RegisterPanel.this, error, "Input error", JOptionPane.ERROR_MESSAGE);
+//                } catch (ValidationException ex) {
+//                    error += ex.getMessage();
+//                    JOptionPane.showMessageDialog(RegisterPanel.this, error, "Input error", JOptionPane.ERROR_MESSAGE);
+//                } catch (ReadWriteObjectException ex) {
+//                    error += ex.getMessage();
+//                    JOptionPane.showMessageDialog(RegisterPanel.this, error, "Input error", JOptionPane.ERROR_MESSAGE);
+//                } catch (OpeningFileException ex) {
+//                    error += ex.getMessage();
+//                    JOptionPane.showMessageDialog(RegisterPanel.this, error, "Input error", JOptionPane.ERROR_MESSAGE);
+//                } catch (UserDoesNotExistException ex) {
+//                    JOptionPane.showMessageDialog(RegisterPanel.this, error, "Input error", JOptionPane.ERROR_MESSAGE);
+//                } finally{
+//                    
+//                }
+//            }
+//        });
     }
 
     /**
@@ -153,17 +158,17 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel firstNameLabel;
-    private javax.swing.JTextField jtfFirstName;
-    private javax.swing.JTextField jtfLastName;
-    private javax.swing.JTextField jtfUsername;
+    protected javax.swing.JTextField jtfFirstName;
+    protected javax.swing.JTextField jtfLastName;
+    protected javax.swing.JTextField jtfUsername;
     private javax.swing.JLabel lastNameLabel;
-    private javax.swing.JButton registerButton;
+    protected javax.swing.JButton registerButton;
     private javax.swing.JLabel usernameRegisterLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void update(Observable o, Object arg) {
         //TODO
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
