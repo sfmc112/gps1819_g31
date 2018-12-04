@@ -1,8 +1,16 @@
 package UI.GUI;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import movietime.ObservableApp;
+import movietime.authentication.UserDoesNotExistException;
+import movietime.storage.OpeningFileException;
+import movietime.storage.ReadWriteObjectException;
 
 public class LoginPanel extends javax.swing.JPanel implements Observer{
 
@@ -14,6 +22,27 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
         observable = obs;
         observable.addObserver(this);
         initComponents();
+        
+        jbLogin.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = jtfUsername.getText();
+                String error = "";
+                try {
+                    observable.login(username);
+                } catch (UserDoesNotExistException ex) {
+                    error += ex.getMessage();
+                } catch (OpeningFileException ex) {
+                    error += ex.getMessage();
+                } catch (ReadWriteObjectException ex) {
+                    error += ex.getMessage();
+                } finally{
+                    JOptionPane.showMessageDialog(jtfUsername, error, "Input error", JOptionPane.ERROR_MESSAGE);
+                }
+                
+            }
+            
+        });
     }
 
     /**
@@ -26,14 +55,14 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
     private void initComponents() {
 
         usernameLoginLabel = new javax.swing.JLabel();
-        jtfusername = new javax.swing.JTextField();
+        jtfUsername = new javax.swing.JTextField();
         jbLogin = new javax.swing.JButton();
 
         usernameLoginLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         usernameLoginLabel.setText("Username");
 
-        jtfusername.setColumns(10);
-        jtfusername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jtfUsername.setColumns(10);
+        jtfUsername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
         jbLogin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jbLogin.setText("Login");
@@ -46,7 +75,7 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
                 .addGap(60, 60, 60)
                 .addComponent(usernameLoginLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(jtfusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
                 .addGap(214, 214, 214)
@@ -59,7 +88,7 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
                 .addGap(127, 127, 127)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLoginLabel)
-                    .addComponent(jtfusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
                 .addComponent(jbLogin)
                 .addGap(160, 160, 160))
@@ -69,7 +98,7 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbLogin;
-    private javax.swing.JTextField jtfusername;
+    private javax.swing.JTextField jtfUsername;
     private javax.swing.JLabel usernameLoginLabel;
     // End of variables declaration//GEN-END:variables
 

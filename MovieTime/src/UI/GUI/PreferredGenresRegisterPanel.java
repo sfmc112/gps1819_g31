@@ -5,6 +5,8 @@
  */
 package UI.GUI;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 import movietime.ObservableApp;
@@ -23,6 +25,14 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
         observable = obs;
         observable.addObserver(this);
         initComponents();
+        
+        confirmPrefGenresButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = observable.getFirstName();
+            }
+            
+        });
     }
 
     /**

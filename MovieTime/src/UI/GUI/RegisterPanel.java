@@ -1,8 +1,18 @@
 package UI.GUI;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import movietime.ObservableApp;
+import movietime.authentication.UserAlreadyExistsException;
+import movietime.authentication.UserDoesNotExistException;
+import movietime.authentication.ValidationException;
+import movietime.storage.OpeningFileException;
+import movietime.storage.ReadWriteObjectException;
 
 
 public class RegisterPanel extends javax.swing.JPanel implements Observer {
@@ -16,6 +26,32 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
         observable = obs;
         observable.addObserver(this);
         initComponents();
+        
+        registerButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = jtfUsername.getText();
+                String firstName = jtfFirstName.getText();
+                String lastName = jtfLastName.getText();
+                String error = "";
+                
+                try {
+                    observable.createUser(username, firstName, lastName);
+                    observable.login(username);
+                } catch (UserAlreadyExistsException ex) {
+                    error += ex.getMessage();
+                } catch (ValidationException ex) {
+                    error += ex.getMessage();
+                } catch (ReadWriteObjectException ex) {
+                    error += ex.getMessage();
+                } catch (OpeningFileException ex) {
+                    error += ex.getMessage();
+                } catch (UserDoesNotExistException ex) {
+                } finally{
+                    JOptionPane.showMessageDialog(jtfUsername, error, "Input error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
     }
 
     /**
@@ -57,6 +93,11 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
 
         registerButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         registerButton.setText("Register");
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,7 +122,7 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
             .addGroup(layout.createSequentialGroup()
                 .addGap(215, 215, 215)
                 .addComponent(registerButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,12 +139,17 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lastNameLabel)
                     .addComponent(jtfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
                 .addComponent(registerButton)
                 .addGap(90, 90, 90))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registerButtonActionPerformed
+
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel firstNameLabel;

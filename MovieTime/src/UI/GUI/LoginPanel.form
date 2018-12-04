@@ -20,7 +20,7 @@
               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
               <Component id="usernameLoginLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="105" max="32767" attributes="0"/>
-              <Component id="jtfusername" min="-2" max="-2" attributes="0"/>
+              <Component id="jtfUsername" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -36,7 +36,7 @@
               <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="usernameLoginLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfusername" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtfUsername" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="241" max="32767" attributes="0"/>
               <Component id="jbLogin" min="-2" max="-2" attributes="0"/>
@@ -54,7 +54,7 @@
         <Property name="text" type="java.lang.String" value="Username"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jtfusername">
+    <Component class="javax.swing.JTextField" name="jtfUsername">
       <Properties>
         <Property name="columns" type="int" value="10"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
