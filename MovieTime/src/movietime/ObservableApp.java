@@ -138,6 +138,10 @@ public class ObservableApp extends Observable {
     public String getUsername() {
         return user.getUsername();
     }
+    
+    public int getDaysToAlert() {
+        return user.getPreferences().getDaysToAlert();
+    }
 
     public void setDaysToAlert(int days) {
         user.getPreferences().setDaysToAlert(days);

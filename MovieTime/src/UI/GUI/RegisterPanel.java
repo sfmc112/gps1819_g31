@@ -67,11 +67,6 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
 
         registerButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         registerButton.setText("Register");
-        registerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -119,11 +114,6 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerButtonActionPerformed
-
-        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel firstNameLabel;

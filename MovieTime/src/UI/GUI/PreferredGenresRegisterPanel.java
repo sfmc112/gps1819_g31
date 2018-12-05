@@ -76,147 +76,57 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
 
         jcbAdventure.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbAdventure.setText("Adventure");
-        jcbAdventure.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbAdventureActionPerformed(evt);
-            }
-        });
 
         jcbAnimation.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbAnimation.setText("Animation");
-        jcbAnimation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbAnimationActionPerformed(evt);
-            }
-        });
 
         jcbComedy.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbComedy.setText("Comedy");
-        jcbComedy.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbComedyActionPerformed(evt);
-            }
-        });
 
         jcbCrime.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbCrime.setText("Crime");
-        jcbCrime.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbCrimeActionPerformed(evt);
-            }
-        });
 
         jcbDocumentary.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbDocumentary.setText("Documentary");
-        jcbDocumentary.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbDocumentaryActionPerformed(evt);
-            }
-        });
 
         jcbDrama.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbDrama.setText("Drama");
-        jcbDrama.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbDramaActionPerformed(evt);
-            }
-        });
 
         jcbFamily.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbFamily.setText("Family");
-        jcbFamily.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbFamilyActionPerformed(evt);
-            }
-        });
 
         jcbFantasy.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbFantasy.setText("Fantasy");
-        jcbFantasy.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbFantasyActionPerformed(evt);
-            }
-        });
 
         jcbWar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbWar.setText("War");
-        jcbWar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbWarActionPerformed(evt);
-            }
-        });
 
         jcbHistory.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbHistory.setText("History");
-        jcbHistory.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbHistoryActionPerformed(evt);
-            }
-        });
 
         jcbHorror.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbHorror.setText("Horror");
-        jcbHorror.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbHorrorActionPerformed(evt);
-            }
-        });
 
         jcbMusic.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbMusic.setText("Music");
-        jcbMusic.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbMusicActionPerformed(evt);
-            }
-        });
 
         jcbMystery.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbMystery.setText("Mystery");
-        jcbMystery.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbMysteryActionPerformed(evt);
-            }
-        });
 
         jcbRomance.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbRomance.setText("Romance");
-        jcbRomance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbRomanceActionPerformed(evt);
-            }
-        });
 
         jcbScienceFiction.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbScienceFiction.setText("Science Fiction");
-        jcbScienceFiction.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbScienceFictionActionPerformed(evt);
-            }
-        });
 
         jcbTVMovie.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbTVMovie.setText("TV Movie");
-        jcbTVMovie.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbTVMovieActionPerformed(evt);
-            }
-        });
 
         jcbThriller.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbThriller.setText("Thriller");
-        jcbThriller.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbThrillerActionPerformed(evt);
-            }
-        });
 
         jcbWestern.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbWestern.setText("Western");
-        jcbWestern.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbWesternActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -316,79 +226,6 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    //TODO DELETE THESE IN DESIGN
-    private void jcbAdventureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAdventureActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbAdventureActionPerformed
-
-    private void jcbAnimationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAnimationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbAnimationActionPerformed
-
-    private void jcbComedyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbComedyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbComedyActionPerformed
-
-    private void jcbCrimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCrimeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbCrimeActionPerformed
-
-    private void jcbDocumentaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbDocumentaryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbDocumentaryActionPerformed
-
-    private void jcbDramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbDramaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbDramaActionPerformed
-
-    private void jcbFamilyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbFamilyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbFamilyActionPerformed
-
-    private void jcbFantasyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbFantasyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbFantasyActionPerformed
-
-    private void jcbWarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbWarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbWarActionPerformed
-
-    private void jcbHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbHistoryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbHistoryActionPerformed
-
-    private void jcbHorrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbHorrorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbHorrorActionPerformed
-
-    private void jcbMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMusicActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbMusicActionPerformed
-
-    private void jcbMysteryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMysteryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbMysteryActionPerformed
-
-    private void jcbRomanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbRomanceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbRomanceActionPerformed
-
-    private void jcbScienceFictionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbScienceFictionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbScienceFictionActionPerformed
-
-    private void jcbTVMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTVMovieActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbTVMovieActionPerformed
-
-    private void jcbThrillerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbThrillerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbThrillerActionPerformed
-
-    private void jcbWesternActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbWesternActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbWesternActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JButton confirmPrefGenresButton;
@@ -416,7 +253,6 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
 
     @Override
     public void update(Observable o, Object arg) {
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.ACTION));
-        //TODO FINISH THIS
+        //
     }
 }

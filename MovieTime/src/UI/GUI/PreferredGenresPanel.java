@@ -4,6 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JOptionPane;
 import movietime.ObservableApp;
+import movietime.database.Movie;
 
 public class PreferredGenresPanel extends javax.swing.JPanel implements Observer{
 
@@ -256,7 +257,24 @@ public class PreferredGenresPanel extends javax.swing.JPanel implements Observer
 
     @Override
     public void update(Observable o, Object arg) {
-        //TODO
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.ACTION));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.ADVENTURE));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.ANIMATION));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.COMEDY));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.CRIME));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.DOCUMENTARY));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.DRAMA));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.FAMILY));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.FANTASY));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.HISTORY));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.HORROR));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.MUSIC));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.MYSTERY));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.ROMANCE));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.SCIENCE_FICTION));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.THRILLER));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.TV_MOVIE));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.WAR));
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.WESTERN));
     }
 }
