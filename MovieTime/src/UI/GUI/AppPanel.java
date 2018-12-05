@@ -21,6 +21,7 @@ public class AppPanel extends JPanel {
 
     public AppPanel(ObservableApp obs) {
         observable = obs;
+        
         pUser = new UserInfoPanel(obs);
         pSideMenu = new SideMenuPanel();
         pSearch = new SearchPanel(obs);
@@ -59,6 +60,8 @@ public class AppPanel extends JPanel {
         
         setActionForSettingsButtonFromSideMenuPanel();
         setActionForUpcomingMoviesButtonFromSideMenuPanel();
+        setActionForFollowedMoviesButtonFromSideMenuPanel();
+        setActionForPreferredMoviesButtonFromSideMenuPanel();
         setActionForNotificationSettingsConfirmationFromNotificationPanel();
         setActionForPreferredGenresSettingsConfirmationFromPreferredGenresPanel();
         
@@ -84,11 +87,32 @@ public class AppPanel extends JPanel {
         pSideMenu.bUpcomingMovies.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                observable.setDisplay(DisplayList.UPCOMINGMOVIES);
+                observable.update();
                 changeToDisplayMovies();
             }
         });
     }
-    
+    private void setActionForFollowedMoviesButtonFromSideMenuPanel() {
+        pSideMenu.bFollowedMovies.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                observable.setDisplay(DisplayList.FOLLOWEDMOVIES);
+                observable.update();
+                changeToDisplayMovies();
+            }
+        });
+    }    
+    private void setActionForPreferredMoviesButtonFromSideMenuPanel() {
+        pSideMenu.bPreferredMovies.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                observable.setDisplay(DisplayList.PREFERREDMOVIES);
+                observable.update();
+                changeToDisplayMovies();
+            }
+        });
+    }       
     private void setActionForNotificationSettingsConfirmationFromNotificationPanel() {
         pSettingsMain.pNotificationSettings.bConfirm.addActionListener(new ActionListener() {
             @Override
@@ -196,4 +220,6 @@ public class AppPanel extends JPanel {
         pSettingsMain.setVisible(false);
         pDisplayMovies.setVisible(true);
     }
+
+    
 }
