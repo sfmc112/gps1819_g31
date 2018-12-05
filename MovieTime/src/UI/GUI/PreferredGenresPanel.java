@@ -261,7 +261,6 @@ public class PreferredGenresPanel extends javax.swing.JPanel implements Observer
     
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println(observable.getLoggedUser().getPreferredGenres());
         jcbAction.setSelected(observable.checkPreferredGenre(Movie.ACTION));
         jcbAdventure.setSelected(observable.checkPreferredGenre(Movie.ADVENTURE));
         jcbAnimation.setSelected(observable.checkPreferredGenre(Movie.ANIMATION));
