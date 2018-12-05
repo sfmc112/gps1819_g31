@@ -18,7 +18,6 @@ public class PreferredGenresPanel extends javax.swing.JPanel implements Observer
         observable.addObserver(this);
         initComponents();
         update(obs, null);
-        createListeners();
     }
 
     /**
@@ -259,10 +258,6 @@ public class PreferredGenresPanel extends javax.swing.JPanel implements Observer
     protected javax.swing.JCheckBox jcbWar;
     protected javax.swing.JCheckBox jcbWestern;
     // End of variables declaration//GEN-END:variables
-
-    public void createListeners(){
-        
-    }
     
     @Override
     public void update(Observable o, Object arg) {

@@ -1,11 +1,8 @@
 package UI.GUI;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
-import java.util.Observable;
-import java.util.Observer;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
@@ -24,7 +21,6 @@ public class AppPanel extends JPanel {
 
     public AppPanel(ObservableApp obs) {
         observable = obs;
-        observable.addObserver(this);
         pUser = new UserInfoPanel(obs);
         pSideMenu = new SideMenuPanel();
         pSearch = new SearchPanel(obs);
@@ -104,13 +100,8 @@ public class AppPanel extends JPanel {
                     observable.setIncludeDirector(pSettingsMain.pNotificationSettings.jcbDirector.isSelected());
                     observable.setIncludeGenre(pSettingsMain.pNotificationSettings.jcbGenre.isSelected());
                     observable.setIncludeMainActors(pSettingsMain.pNotificationSettings.jcbMainActors.isSelected());
+                    observable.saveUserDataToFile();
                 }
-                /*else{
-                    observable.setDaysToAlert(observable.getDaysToAlert());
-                    observable.setIncludeDirector(observable.isDirectorIncluded());
-                    observable.setIncludeGenre(observable.isGenreIncluded());
-                    observable.setIncludeMainActors(observable.isCastIncluded());
-                }*/
             }
         });
     }
@@ -184,9 +175,10 @@ public class AppPanel extends JPanel {
                     if(pSettingsMain.pPreferredGenres.jcbWestern.isSelected())
                         genreSet.add(Movie.WESTERN);
                     
-                    System.out.println(genreSet);
+                    
                     observable.updatePreferredGenres(genreSet);
-                    //observable.removeSetPreferredGenres(removeGenreSet);
+                    observable.saveUserDataToFile();
+                    setToMainWindow();
                 }
             }
         
@@ -203,10 +195,5 @@ public class AppPanel extends JPanel {
         pSearch.setVisible(true);
         pSettingsMain.setVisible(false);
         pDisplayMovies.setVisible(true);
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-        //To change body of generated methods, choose Tools | Templates.
     }
 }
