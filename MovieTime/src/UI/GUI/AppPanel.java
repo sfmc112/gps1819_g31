@@ -232,8 +232,11 @@ public class AppPanel extends JPanel implements Observer{
                     else{
                         removeGenreSet.add(Movie.WESTERN);
                     }
+                    System.out.println(genreSet);
+                    //System.out.println(removeGenreSet);
+                    observable.addSetPreferredGenres(new HashSet<>());
                     observable.addSetPreferredGenres(genreSet);
-                    observable.removeSetPreferredGenres(removeGenreSet);
+                    //observable.removeSetPreferredGenres(removeGenreSet);
                 }
             }
         
