@@ -68,6 +68,9 @@ public class ObservableApp extends Observable {
         } catch (OpeningFileException | ReadWriteObjectException e) {
             throw e;
         }
+        
+        //setChanged();
+        //notifyObservers();
     }
 
     public void createUser(String username, String firstName, String lastName)

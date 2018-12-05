@@ -22,27 +22,6 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
         observable = obs;
         observable.addObserver(this);
         initComponents();
-        
-        jbLogin.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String username = jtfUsername.getText();
-                String error = "";
-                try {
-                    observable.login(username);
-                } catch (UserDoesNotExistException ex) {
-                    error += ex.getMessage();
-                } catch (OpeningFileException ex) {
-                    error += ex.getMessage();
-                } catch (ReadWriteObjectException ex) {
-                    error += ex.getMessage();
-                } finally{
-                    JOptionPane.showMessageDialog(jtfUsername, error, "Input error", JOptionPane.ERROR_MESSAGE);
-                }
-                
-            }
-            
-        });
     }
 
     /**
@@ -97,8 +76,8 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jbLogin;
-    private javax.swing.JTextField jtfUsername;
+    protected javax.swing.JButton jbLogin;
+    protected javax.swing.JTextField jtfUsername;
     private javax.swing.JLabel usernameLoginLabel;
     // End of variables declaration//GEN-END:variables
 

@@ -1,12 +1,19 @@
 package UI.GUI;
 
-public class UserInfoPanel extends javax.swing.JPanel {
-    //TODO Observer
+import java.util.Observable;
+import java.util.Observer;
+import movietime.ObservableApp;
+
+public class UserInfoPanel extends javax.swing.JPanel implements Observer{
+    private ObservableApp observable;
 
     /**
      * Creates new form UserInfoPanel
      */
-    public UserInfoPanel() {
+    public UserInfoPanel(ObservableApp obs) {
+        observable = obs;
+        observable.addObserver(this);
+        
         initComponents();
     }
 
@@ -63,4 +70,10 @@ public class UserInfoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jlLastName;
     private javax.swing.JLabel jlSideMenu;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        jlFirstName.setText(observable.getFirstName());
+        jlLastName.setText(observable.getLastName());
+    }
 }

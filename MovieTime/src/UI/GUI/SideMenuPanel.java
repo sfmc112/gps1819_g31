@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI.GUI;
 
-/**
- *
- * @author salex
- */
 public class SideMenuPanel extends javax.swing.JPanel {
 
     /**
@@ -134,7 +125,7 @@ public class SideMenuPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bFollowedMovies;
-    private javax.swing.JButton bLogout;
+    protected javax.swing.JButton bLogout;
     private javax.swing.JButton bPreferredMovies;
     private javax.swing.JButton bSettings;
     private javax.swing.JButton bUpcomingMovies;
