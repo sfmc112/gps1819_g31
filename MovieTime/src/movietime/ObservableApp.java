@@ -15,6 +15,7 @@ import movietime.notification.NotificationManager;
 import movietime.notification.NotificationService;
 import movietime.storage.OpeningFileException;
 import movietime.storage.ReadWriteObjectException;
+import movietime.storage.StorageManager;
 
 public class ObservableApp extends Observable {
 
@@ -225,5 +226,12 @@ public class ObservableApp extends Observable {
 
     public ArrayList<ArrayList<Movie>> getPreferredMovies() {
         return DatabaseManager.getUpcomingMoviesByGenre(user.getPreferredGenres());
+    }
+    
+    public void saveUserDataToFile(){
+        try{
+            StorageManager.updateUserInfo(user);
+        }catch(Exception e){
+        }
     }
 }
