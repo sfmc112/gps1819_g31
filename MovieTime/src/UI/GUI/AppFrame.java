@@ -292,6 +292,7 @@ public class AppFrame extends JFrame implements Observer {
                 String error = "";
                 try {
                     observable.login(username);
+                    changeToAppPanel();
                 } catch (UserDoesNotExistException ex) {
                     error += ex.getMessage();
                     JOptionPane.showMessageDialog(pRegisterLogin, error, "Login error", JOptionPane.ERROR_MESSAGE);
@@ -304,7 +305,6 @@ public class AppFrame extends JFrame implements Observer {
                 } finally {
 
                 }
-                changeToAppPanel();
             }
         });
     }

@@ -43,12 +43,12 @@ public class AppPanel extends JPanel {
         left.add(pSideMenu);
         left.add(Box.createVerticalGlue());
         
-        Box center = Box.createVerticalBox();
-        center.add(Box.createVerticalGlue());
+        Box center = Box.createHorizontalBox();
+        center.add(Box.createHorizontalGlue());
         center.add(pSearch);
-        center.add(Box.createVerticalGlue());
+        center.add(Box.createHorizontalGlue());
         center.add(pSettingsOrDisplayMovies);
-        center.add(Box.createVerticalGlue());
+        center.add(Box.createHorizontalGlue());
         
         Box total = Box.createHorizontalBox();
         total.add(Box.createHorizontalGlue());
@@ -58,10 +58,10 @@ public class AppPanel extends JPanel {
         total.add(Box.createHorizontalGlue());
         
         // Main Layout
-        setLayout(new BorderLayout());
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
-        add(pSideMenu, BorderLayout.NORTH);
-        add(total, BorderLayout.CENTER);
+        add(pUser);
+        add(total);
         
         //TODO finish..
     }

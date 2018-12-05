@@ -29,6 +29,7 @@ public class UserInfoPanel extends javax.swing.JPanel implements Observer{
         jlSideMenu = new javax.swing.JLabel();
         jlFirstName = new javax.swing.JLabel();
         jlLastName = new javax.swing.JLabel();
+        jlFirstName1 = new javax.swing.JLabel();
 
         jlSideMenu.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jlSideMenu.setText("Menu");
@@ -39,6 +40,9 @@ public class UserInfoPanel extends javax.swing.JPanel implements Observer{
         jlLastName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jlLastName.setText("Last name");
 
+        jlFirstName1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jlFirstName1.setText("Hello,");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -46,11 +50,13 @@ public class UserInfoPanel extends javax.swing.JPanel implements Observer{
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(jlSideMenu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 715, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 584, Short.MAX_VALUE)
+                .addComponent(jlFirstName1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlFirstName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlLastName)
-                .addContainerGap())
+                .addGap(72, 72, 72))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -59,7 +65,8 @@ public class UserInfoPanel extends javax.swing.JPanel implements Observer{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlSideMenu)
                     .addComponent(jlFirstName)
-                    .addComponent(jlLastName))
+                    .addComponent(jlLastName)
+                    .addComponent(jlFirstName1))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -67,6 +74,7 @@ public class UserInfoPanel extends javax.swing.JPanel implements Observer{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jlFirstName;
+    private javax.swing.JLabel jlFirstName1;
     private javax.swing.JLabel jlLastName;
     private javax.swing.JLabel jlSideMenu;
     // End of variables declaration//GEN-END:variables
