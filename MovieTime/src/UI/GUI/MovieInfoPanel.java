@@ -1,6 +1,9 @@
 package UI.GUI;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 import movietime.ObservableApp;
@@ -28,8 +31,26 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
         jlDirector.setText(m.getDirector());
         jlMainActors.setText(m.getCast().get(0));
         jpMovieImage.repaint();
+        
+        createListeners();
+        
+        update(observable,null);
     }
-
+    
+    
+    public void createListeners(){
+        jbFollow.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(observable.isMovieBeingFollowed(movie.getId())){
+                    observable.removeFavouriteMovie(movie.getId());
+                } else {
+                    observable.addPreferredMovie(movie.getId());
+                }
+            }
+        });
+    }
+    
 //    @Override
 //    protected void paintComponent(Graphics g) {
 //        //TODO
@@ -192,8 +213,12 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        //TODO
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(observable.isMovieBeingFollowed(movie.getId())){
+            jbFollow.setText("Unfollow");
+        } else {
+            jbFollow.setText("Follow");
+        }
+        
         jpMovieImage.repaint();
     }
 }

@@ -142,7 +142,7 @@ public class User implements Serializable{
         preferredGenres.remove(genreID);
     }
     
-    public boolean checkPreferredGenre(Integer genreID){
+    public boolean checkPreferredGenre(int genreID){
         return preferredGenres.contains(genreID);
     }
     

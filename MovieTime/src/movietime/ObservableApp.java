@@ -66,12 +66,13 @@ public class ObservableApp extends Observable {
 
             user = null;
             service.exit();
+            user = new User("","","");
         } catch (OpeningFileException | ReadWriteObjectException e) {
             throw e;
         }
         
-        //setChanged();
-        //notifyObservers();
+        setChanged();
+        notifyObservers();
     }
 
     public void createUser(String username, String firstName, String lastName)
@@ -106,7 +107,7 @@ public class ObservableApp extends Observable {
         notifyObservers();
     }
 
-    public boolean checkPreferredGenre(Integer genreID) {
+    public boolean checkPreferredGenre(int genreID) {
         return user.checkPreferredGenre(genreID);
     }
 

@@ -17,6 +17,8 @@ public class PreferredGenresPanel extends javax.swing.JPanel implements Observer
         observable = obs;
         observable.addObserver(this);
         initComponents();
+        update(obs, null);
+        createListeners();
     }
 
     /**
@@ -258,26 +260,30 @@ public class PreferredGenresPanel extends javax.swing.JPanel implements Observer
     private javax.swing.JCheckBox jcbWestern;
     // End of variables declaration//GEN-END:variables
 
+    public void createListeners(){
+        
+    }
+    
     @Override
     public void update(Observable o, Object arg) {
         jcbAction.setSelected(observable.checkPreferredGenre(Movie.ACTION));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.ADVENTURE));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.ANIMATION));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.COMEDY));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.CRIME));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.DOCUMENTARY));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.DRAMA));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.FAMILY));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.FANTASY));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.HISTORY));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.HORROR));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.MUSIC));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.MYSTERY));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.ROMANCE));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.SCIENCE_FICTION));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.THRILLER));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.TV_MOVIE));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.WAR));
-        jcbAction.setSelected(observable.checkPreferredGenre(Movie.WESTERN));
+        jcbAdventure.setSelected(observable.checkPreferredGenre(Movie.ADVENTURE));
+        jcbAnimation.setSelected(observable.checkPreferredGenre(Movie.ANIMATION));
+        jcbComedy.setSelected(observable.checkPreferredGenre(Movie.COMEDY));
+        jcbCrime.setSelected(observable.checkPreferredGenre(Movie.CRIME));
+        jcbDocumentary.setSelected(observable.checkPreferredGenre(Movie.DOCUMENTARY));
+        jcbDrama.setSelected(observable.checkPreferredGenre(Movie.DRAMA));
+        jcbFamily.setSelected(observable.checkPreferredGenre(Movie.FAMILY));
+        jcbFantasy.setSelected(observable.checkPreferredGenre(Movie.FANTASY));
+        jcbHistory.setSelected(observable.checkPreferredGenre(Movie.HISTORY));
+        jcbHorror.setSelected(observable.checkPreferredGenre(Movie.HORROR));
+        jcbMusic.setSelected(observable.checkPreferredGenre(Movie.MUSIC));
+        jcbMystery.setSelected(observable.checkPreferredGenre(Movie.MYSTERY));
+        jcbRomance.setSelected(observable.checkPreferredGenre(Movie.ROMANCE));
+        jcbScienceFiction.setSelected(observable.checkPreferredGenre(Movie.SCIENCE_FICTION));
+        jcbThriller.setSelected(observable.checkPreferredGenre(Movie.THRILLER));
+        jcbTVMovie.setSelected(observable.checkPreferredGenre(Movie.TV_MOVIE));
+        jcbWar.setSelected(observable.checkPreferredGenre(Movie.WAR));
+        jcbWestern.setSelected(observable.checkPreferredGenre(Movie.WESTERN));
     }
 }

@@ -67,7 +67,13 @@ public class AppPanel extends JPanel {
         
         //TODO finish..
     }
-
+    
+    public void setToMainWindow(){
+        pSearch.setVisible(false);
+        pSettingsMain.setVisible(false);
+        pDisplayMovies.setVisible(true);
+    }
+    
     private void setActionForSettingsButtonFromSideMenuPanel() {
         pSideMenu.bSettings.addActionListener(new ActionListener() {
             @Override

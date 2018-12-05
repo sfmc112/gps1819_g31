@@ -56,6 +56,7 @@ public class AppFrame extends JFrame implements Observer {
 
     public void changeToAppPanel() {
         appPanel.setVisible(true);
+        appPanel.setToMainWindow();
         pPreferredGenresRegister.setVisible(false);
         pRegisterLogin.setVisible(false);
     }
@@ -138,11 +139,11 @@ public class AppFrame extends JFrame implements Observer {
 
     private void setAppearance() {
         setIconImage(Resources.getAppIcon());
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (UnsupportedLookAndFeelException | ClassNotFoundException
-                | IllegalAccessException | InstantiationException e) {
-        }
+//        try {
+//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//        } catch (UnsupportedLookAndFeelException | ClassNotFoundException
+//                | IllegalAccessException | InstantiationException e) {
+//        }
     }
 
     private void createBarMenus() {
@@ -178,7 +179,7 @@ public class AppFrame extends JFrame implements Observer {
                 observable.createUser(username, firstName, lastName);
                 observable.login(username);
                 changeToPreferredGenresRegisterPanel();
-            } catch (UserAlreadyExistsException ex) {
+            } catch (UserAlreadyExistsException ex){
                 error += ex.getMessage();
                 JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Register error", JOptionPane.ERROR_MESSAGE);
             } catch (ValidationException ex) {
