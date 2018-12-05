@@ -174,6 +174,30 @@ public class ObservableApp extends Observable {
     public Set<Integer> getFavouriteMoviesId() {
         return user.getFavoriteMovieIDs();
     }
+    
+    public ArrayList<String> getStringGenres(){
+        ArrayList<String> stringGenres = new ArrayList<>();
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.ACTION));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.ADVENTURE));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.ANIMATION));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.COMEDY));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.CRIME));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.DOCUMENTARY));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.DRAMA));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.FAMILY));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.FANTASY));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.HISTORY));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.HORROR));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.MUSIC));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.MYSTERY));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.ROMANCE));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.SCIENCE_FICTION));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.THRILLER));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.TV_MOVIE));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.WAR));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.WESTERN));
+        return stringGenres;
+    }
 
     //Database Queries
     public ArrayList<ArrayList<Movie>> getUpcomingMovies() {

@@ -125,9 +125,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Cancel"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bCancelActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bConfirm">
       <Properties>
@@ -136,9 +133,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Confirm"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bConfirmActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

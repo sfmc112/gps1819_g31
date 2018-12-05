@@ -178,7 +178,7 @@ public class Movie {
         return result;
     }
     
-    private String getSingleGenreAsString(int genre){
+    public static String getSingleGenreAsString(int genre){
         switch(genre){
             case ACTION:
                 return "Action";

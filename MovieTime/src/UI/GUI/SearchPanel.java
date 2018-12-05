@@ -1,14 +1,24 @@
 package UI.GUI;
 
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
+import movietime.ObservableApp;
 
-public class SearchPanel extends javax.swing.JPanel {
-    //TODO observer
+
+public class SearchPanel extends javax.swing.JPanel implements Observer {
+    private ObservableApp observable;
 
     /**
      * Creates new form SearchPanel
      */
-    public SearchPanel() {
+    public SearchPanel(ObservableApp obs) {
+        observable = obs;
+        observable.addObserver(this);
         initComponents();
+        ArrayList<String> genresList = observable.getStringGenres();
+        for(String genre : genresList)
+            jcbSelectGenre.addItem(genre);
     }
 
     /**
@@ -25,7 +35,7 @@ public class SearchPanel extends javax.swing.JPanel {
         jbSearch = new javax.swing.JButton();
 
         jcbSelectGenre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jcbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select genre", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select genre" }));
 
         jtfKeyword.setColumns(10);
         jtfKeyword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -65,4 +75,8 @@ public class SearchPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jcbSelectGenre;
     private javax.swing.JTextField jtfKeyword;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+    }
 }

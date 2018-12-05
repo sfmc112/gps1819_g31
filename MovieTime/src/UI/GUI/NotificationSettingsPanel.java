@@ -56,19 +56,9 @@ public class NotificationSettingsPanel extends javax.swing.JPanel implements Obs
 
         bCancel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bCancel.setText("Cancel");
-        bCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCancelActionPerformed(evt);
-            }
-        });
 
         bConfirm.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bConfirm.setText("Confirm");
-        bConfirm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bConfirmActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -115,18 +105,6 @@ public class NotificationSettingsPanel extends javax.swing.JPanel implements Obs
                 .addContainerGap(60, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelActionPerformed
-        JOptionPane.showConfirmDialog(NotificationSettingsPanel.this,
-                "Your changes will not be saved. Continue?",
-                "Warning",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.WARNING_MESSAGE);
-    }//GEN-LAST:event_bCancelActionPerformed
-
-    private void bConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConfirmActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bConfirmActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

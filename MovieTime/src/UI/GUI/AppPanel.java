@@ -26,7 +26,7 @@ public class AppPanel extends JPanel {
     public AppPanel(ObservableApp obs) {
         pUser = new UserInfoPanel(obs);
         pSideMenu = new SideMenuPanel();
-        pSearch = new SearchPanel();
+        pSearch = new SearchPanel(obs);
         pSettingsMain = new SettingsMainPanel(obs);
         pDisplayMovies = new DisplayMoviesPanel(obs);
         
