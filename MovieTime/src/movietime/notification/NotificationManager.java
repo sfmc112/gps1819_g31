@@ -24,7 +24,7 @@ public class NotificationManager {
     
     public void displayPopup(Movie movie, NotificationPreferences preferences){
         StringBuilder builder = new StringBuilder();
-        builder.append("Release Date: ").append(movie.getRelease_date());
+        builder.append("Release Date: ").append(movie.getReleaseDate());
                 
         if(preferences.isIncludeGenre())
             builder.append("\nGenre: ").append(movie.getPrimaryGenre());

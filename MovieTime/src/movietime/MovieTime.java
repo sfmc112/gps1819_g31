@@ -1,19 +1,6 @@
 package movietime;
 
 import UI.GUI.AppFrame;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import movietime.accounts.User;
-import movietime.authentication.AuthenticationManager;
-import movietime.authentication.UserAlreadyExistsException;
-import movietime.authentication.UserDoesNotExistException;
-import movietime.authentication.ValidationException;
-import movietime.database.DatabaseManager;
-import movietime.storage.OpeningFileException;
-import movietime.storage.ReadWriteObjectException;
-import movietime.storage.StorageManager;
 
 public class MovieTime {
 

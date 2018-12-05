@@ -5,12 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import movietime.storage.StorageManager;
 
-/**
- *
- * @author sarah
- */
 public class User implements Serializable{
     static final long serialVersionUID = 1L;
     
@@ -18,7 +13,7 @@ public class User implements Serializable{
     private final String firstName;
     private final String lastName;
     private HashSet<Integer> favoriteMovieIDs;
-    private HashSet<Integer> preferedGenres;
+    private HashSet<Integer> preferredGenres;
     private NotificationPreferences preferences;
     
     //TODO: Add functions to edit preferences
@@ -48,7 +43,7 @@ public class User implements Serializable{
         this.firstName = firstName;
         this.lastName = lastName;
         this.favoriteMovieIDs = favoriteMovieIDs;
-        this.preferedGenres = preferedGenres;
+        this.preferredGenres = preferedGenres;
         preferences = new NotificationPreferences();
     }
     
@@ -66,18 +61,11 @@ public class User implements Serializable{
      * @param id
      * @return <tt>true</tt> if the movie was added to the list
      */
-    public boolean addFavoriteMovie(int id){
+    public void addFavoriteMovie(int id){
         
         synchronized(favoriteMovieIDs){
             favoriteMovieIDs.add(id);
         }
-        
-        try{
-            StorageManager.updateUserInfo(this);
-        }catch(Exception e){
-            return false;
-        }
-        return true;
     }
     
     /**
@@ -85,15 +73,8 @@ public class User implements Serializable{
      * @param id
      * @return <tt>true</tt> if the movie was in the list
      */
-    public boolean removeFavoriteMovie(int id){
+    public void removeFavoriteMovie(int id){
         favoriteMovieIDs.remove(id);
-        
-        try{
-            StorageManager.updateUserInfo(this);
-        }catch(Exception e){
-            return false;
-        }
-        return true;
     }
 
     /**
@@ -124,9 +105,9 @@ public class User implements Serializable{
      * Get list of favorite movies ids from logged user
      * @return Set of favorite movies IDs
      */
-    public final Set<Integer> getFavoriteMovieIDs() {
+    public Set<Integer> getFavoriteMovieIDs() {
         synchronized(favoriteMovieIDs){
-            return Collections.unmodifiableSet((Set<Integer>) favoriteMovieIDs);
+            return favoriteMovieIDs;
         }
     }
     
@@ -134,8 +115,24 @@ public class User implements Serializable{
         return preferences;
     }
 
-    public HashSet<Integer> getPreferedGenres() {
-        return preferedGenres;
+    public HashSet<Integer> getPreferredGenres() {
+        return preferredGenres;
+    }
+    
+    public void addPreferredGenre(Integer genreID){
+        preferredGenres.add(genreID);
+    }
+    
+    public void removePreferredGenre(Integer genreID){
+        preferredGenres.remove(genreID);
+    }
+    
+    public boolean checkPreferredGenre(int genreID){
+        return preferredGenres.contains(genreID);
+    }
+    
+    public void updatePreferredGenres(HashSet<Integer> genreSet){
+        preferredGenres = genreSet != null? genreSet : new HashSet<>();
     }
     
     @Override

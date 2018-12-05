@@ -44,11 +44,11 @@ public class StorageManagerTest {
         expResult.addFavoriteMovie(123456);
         
         expResult.getPreferences().setDaysToAlert(20);
-        expResult.getPreferedGenres().add(28);
+        expResult.getPreferredGenres().add(28);
         
         StorageManager.updateUserInfo(expResult);
         User result = StorageManager.getUsersFromFile().get(0);
-        System.out.println(result.getPreferedGenres());
+        System.out.println(result.getPreferredGenres());
         System.out.println(result.getPreferences().getDaysToAlert());
         
         assertEquals(expResult, result);

@@ -1,5 +1,6 @@
 package movietime;
 
+import UI.GUI.DisplayList;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Observable;
@@ -15,179 +16,237 @@ import movietime.notification.NotificationManager;
 import movietime.notification.NotificationService;
 import movietime.storage.OpeningFileException;
 import movietime.storage.ReadWriteObjectException;
+import movietime.storage.StorageManager;
 
 public class ObservableApp extends Observable {
+
     private User user;
     private final NotificationManager notificationManager;
     private NotificationService service;
+    private DisplayList display = DisplayList.PREFERREDMOVIES;
 
+    public synchronized DisplayList getDisplay() {
+        return display;
+    }
+
+    public void setDisplay(DisplayList display) {
+        this.display = display;
+    }
+    
     public ObservableApp() {
         user = new User("username", "first", "last");
         notificationManager = new NotificationManager();
         service = new NotificationService(this);
     }
-    
+
     //Display notification
-    public void displayNotification(Movie movie){
+    public void displayNotification(Movie movie) {
         notificationManager.displayPopup(movie, user.getPreferences());
     }
-    
-    public User getLoggedUser(){
+
+    public User getLoggedUser() {
         return user;
     }
-    
-    public NotificationManager getNotificationManager(){
+
+    public NotificationManager getNotificationManager() {
         return notificationManager;
     }
-    
+
     //Authentication
-    public void login(String user) 
-            throws UserDoesNotExistException,OpeningFileException,
-            ReadWriteObjectException
-    {
-        try{
+    public void login(String user)
+            throws UserDoesNotExistException, OpeningFileException,
+            ReadWriteObjectException {
+        try {
             this.user = AuthenticationManager.authenticateUser(user);
+            service = new NotificationService(this);
             service.start();
-            
-        }catch(UserDoesNotExistException | ReadWriteObjectException |
-                OpeningFileException e)
-        {
+
+        } catch (UserDoesNotExistException | ReadWriteObjectException
+                | OpeningFileException e) {
             throw e;
         }
-        
+
         setChanged();
         notifyObservers();
     }
-    
+
     public void logout()
-            throws OpeningFileException, ReadWriteObjectException
-    {
-        try{
+            throws OpeningFileException, ReadWriteObjectException {
+        try {
             AuthenticationManager.logoutUser(user);
-            
+
             user = null;
             service.exit();
-        }catch(OpeningFileException | ReadWriteObjectException e){
+            user = new User("","","");
+        } catch (OpeningFileException | ReadWriteObjectException e) {
             throw e;
         }
+        
+        setChanged();
+        notifyObservers();
     }
-    
-    public void createUser(String username, String firstName, String lastName) 
+
+    public void createUser(String username, String firstName, String lastName)
             throws UserAlreadyExistsException, ValidationException,
-            ReadWriteObjectException, OpeningFileException
-            
-    {
-        try{
+            ReadWriteObjectException, OpeningFileException {
+        try {
             AuthenticationManager.createUser(username, firstName, lastName);
-            
-        }catch(UserAlreadyExistsException e){
+
+        } catch (UserAlreadyExistsException e) {
             throw e;
-        }catch(ValidationException e){
+        } catch (ValidationException e) {
             throw e;
-        }catch(ReadWriteObjectException e){
+        } catch (ReadWriteObjectException e) {
             throw e;
-        }catch(OpeningFileException e){
+        } catch (OpeningFileException e) {
             throw e;
         }
     }
-    
-    
+
     //User preferences
-    public void addPreferedMovie(int movie){
+    public void addPreferredMovie(int movie) {
         user.addFavoriteMovie(movie);
-        
+
         setChanged();
         notifyObservers();
     }
-    
-    public void removeFavouriteMovie(int id){
+
+    public void removeFavouriteMovie(int id) {
         user.removeFavoriteMovie(id);
+
+        setChanged();
+        notifyObservers();
+    }
+
+    public boolean checkPreferredGenre(int genreID) {
+        return user.checkPreferredGenre(genreID);
+    }
+
+    public void updatePreferredGenres(HashSet<Integer> genreSet) {
+        user.updatePreferredGenres(genreSet);
         
         setChanged();
         notifyObservers();
     }
-    
-    public boolean isMovieBeingFollowed(int id){
+
+    public boolean isMovieBeingFollowed(int id) {
         return user.checkMovieId(id);
     }
-    
-    public String getFirstName(){
+
+    public String getFirstName() {
         return user.getFirstName();
     }
-    
-    public String getLastName(){
+
+    public String getLastName() {
         return user.getLastName();
     }
-    
-    public String getUsername(){
+
+    public String getUsername() {
         return user.getUsername();
     }
     
-    public void setDaysToAlert(int days){
+    public int getDaysToAlert() {
+        return user.getPreferences().getDaysToAlert();
+    }
+
+    public void setDaysToAlert(int days) {
         user.getPreferences().setDaysToAlert(days);
     }
-    
-    public void setIncludeDirector(boolean choice){
+
+    public void setIncludeDirector(boolean choice) {
         user.getPreferences().setIncludeDirector(choice);
     }
-    
-    public void setIncludeMainActors(boolean choice){
+
+    public void setIncludeMainActors(boolean choice) {
         user.getPreferences().setIncludeMainActors(choice);
     }
-    
-    public void setIncludeGenre(boolean choice){
+
+    public void setIncludeGenre(boolean choice) {
         user.getPreferences().setIncludeGenre(choice);
     }
-    
-    public boolean isDirectorIncluded(){
+
+    public boolean isDirectorIncluded() {
         return user.getPreferences().isIncludeDirector();
     }
-    
-    public boolean isCastIncluded(){
+
+    public boolean isCastIncluded() {
         return user.getPreferences().isIncludeMainActors();
     }
-    
-    public boolean isGenreIncluded(){
+
+    public boolean isGenreIncluded() {
         return user.getPreferences().isIncludeGenre();
     }
-    
-    public Set<Integer> getFavouriteMoviesId(){
+
+    public Set<Integer> getFavouriteMoviesId() {
         return user.getFavoriteMovieIDs();
     }
     
+    public ArrayList<String> getStringGenres(){
+        ArrayList<String> stringGenres = new ArrayList<>();
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.ACTION));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.ADVENTURE));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.ANIMATION));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.COMEDY));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.CRIME));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.DOCUMENTARY));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.DRAMA));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.FAMILY));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.FANTASY));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.HISTORY));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.HORROR));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.MUSIC));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.MYSTERY));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.ROMANCE));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.SCIENCE_FICTION));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.THRILLER));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.TV_MOVIE));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.WAR));
+        stringGenres.add(Movie.getSingleGenreAsString(Movie.WESTERN));
+        return stringGenres;
+    }
+
     //Database Queries
-    public ArrayList<ArrayList<Movie>> getUpcomingMovies(){
+    public ArrayList<ArrayList<Movie>> getUpcomingMovies() {
         return DatabaseManager.getUpcomingMovies();
     }
-    
+
     public ArrayList<ArrayList<Movie>> getUpcomingMoviesByGenre(
-                                                    HashSet<Integer> genres)
-    {
+            HashSet<Integer> genres) {
         return DatabaseManager.getUpcomingMoviesByGenre(genres);
     }
-    
+
     public ArrayList<ArrayList<Movie>> getUpcomingMoviesByKeyword(
-                                                               String keyword)
-    {
+            String keyword) {
         return DatabaseManager.getUpcomingMoviesByKeyword(keyword);
     }
-    
+
     public ArrayList<ArrayList<Movie>> getUpcomingMoviesByKeywordAndGenre(
-            String keyword, int genre)
-    {
-        return DatabaseManager.getUpcomingMoviesByKeywordAndGenre(keyword,genre);
+            String keyword, int genre) {
+        return DatabaseManager.getUpcomingMoviesByKeywordAndGenre(keyword, genre);
     }
-    
-    public Movie getMovieById(int id){
+
+    public Movie getMovieById(int id) {
         return DatabaseManager.getMovieByID(id);
     }
-    
-    public ArrayList<Movie> getFollowedMovies(){
+
+    public ArrayList<Movie> getFollowedMovies() {
         return DatabaseManager.getFollowedMovies(
-                (HashSet)user.getFavoriteMovieIDs());
+                (HashSet<Integer>) user.getFavoriteMovieIDs());
+    }
+
+    public ArrayList<ArrayList<Movie>> getPreferredMovies() {
+        return DatabaseManager.getUpcomingMoviesByGenre(user.getPreferredGenres());
     }
     
-    public ArrayList<ArrayList<Movie>> getPreferedMovies(){
-        return DatabaseManager.getUpcomingMoviesByGenre(user.getPreferedGenres());
+    public void update(){
+        setChanged();
+        notifyObservers();
+    }
+    
+    public void saveUserDataToFile(){
+        try{
+            StorageManager.updateUserInfo(user);
+        }catch(Exception e){
+        }
     }
 }
