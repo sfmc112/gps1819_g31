@@ -106,14 +106,14 @@ public class ObservableApp extends Observable {
     //User preferences
     public void addPreferredMovie(int movie) {
         user.addFavoriteMovie(movie);
-
+        saveUserDataToFile();
         setChanged();
         notifyObservers();
     }
 
     public void removeFavouriteMovie(int id) {
         user.removeFavoriteMovie(id);
-
+        saveUserDataToFile();
         setChanged();
         notifyObservers();
     }

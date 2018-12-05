@@ -50,13 +50,13 @@ public class UserInfoPanel extends javax.swing.JPanel implements Observer{
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(jlSideMenu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 584, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 624, Short.MAX_VALUE)
                 .addComponent(jlFirstName1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlFirstName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlLastName)
-                .addGap(72, 72, 72))
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

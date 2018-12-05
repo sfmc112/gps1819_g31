@@ -19,13 +19,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Component id="jlSideMenu" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="584" max="32767" attributes="0"/>
+              <EmptySpace pref="624" max="32767" attributes="0"/>
               <Component id="jlFirstName1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jlFirstName" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jlLastName" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

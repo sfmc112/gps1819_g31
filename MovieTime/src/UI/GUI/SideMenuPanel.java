@@ -60,7 +60,7 @@ public class SideMenuPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(bLogout)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

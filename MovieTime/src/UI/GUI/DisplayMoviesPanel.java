@@ -1,5 +1,6 @@
 package UI.GUI;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,13 +30,15 @@ public class DisplayMoviesPanel extends JPanel implements Observer {
 
         movieBox = Box.createVerticalBox();
         main = new JPanel();
+        //main.setLayout(new BorderLayout());
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
-        main.setPreferredSize(new Dimension(780, 5000));
+        //main.setPreferredSize(new Dimension(780, 400));
+        main.setVisible(true);
 
         scroller = new JScrollPane(main);
-        scroller.setPreferredSize(new Dimension(800, 400));
-        //scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-        add(scroller);
+        scroller.setPreferredSize(new Dimension(800, 500));
+        scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        add(scroller,BorderLayout.CENTER);
     }
 
     @Override
@@ -80,6 +83,7 @@ public class DisplayMoviesPanel extends JPanel implements Observer {
 
         main.add(movieBox);
         main.revalidate();
+        main.repaint();
     }
 
 }

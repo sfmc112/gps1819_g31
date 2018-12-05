@@ -82,8 +82,8 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
         jpMovieImage = new UI.GUI.MovieImagePanel();
 
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        setMinimumSize(new java.awt.Dimension(750, 254));
-        setPreferredSize(new java.awt.Dimension(750, 254));
+        setMinimumSize(new java.awt.Dimension(750, 225));
+        setPreferredSize(new java.awt.Dimension(750, 225));
         setRequestFocusEnabled(false);
 
         releaseDateLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -113,8 +113,13 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
         jlMovieTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jlMovieTitle.setText("Movie title");
 
-        jbFollow.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jbFollow.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbFollow.setText("Follow");
+        jbFollow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbFollowActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpMovieImageLayout = new javax.swing.GroupLayout(jpMovieImage);
         jpMovieImage.setLayout(jpMovieImageLayout);
@@ -124,7 +129,7 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
         );
         jpMovieImageLayout.setVerticalGroup(
             jpMovieImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 192, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -133,66 +138,70 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jlMovieTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
                 .addComponent(jpMovieImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(releaseDateLabel)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(genreLabel)
-                            .addGap(23, 23, 23))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(mainActorsLabel)
-                            .addGap(7, 7, 7))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(directorLabel)
-                            .addGap(5, 5, 5))))
-                .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(genreLabel)
+                            .addComponent(releaseDateLabel)
+                            .addComponent(directorLabel)
+                            .addComponent(mainActorsLabel))
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlDirector)
                             .addComponent(jlReleaseDate)
-                            .addComponent(jlGenre)
                             .addComponent(jlMainActors)
-                            .addComponent(jlDirector))
-                        .addGap(118, 118, 118))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jbFollow)
-                        .addContainerGap())))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jlGenre)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                                .addComponent(jbFollow, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jlMovieTitle)))
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlMovieTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jlReleaseDate)
-                        .addGap(35, 35, 35)
-                        .addComponent(jlGenre)
-                        .addGap(3, 3, 3)
-                        .addComponent(jbFollow)
-                        .addGap(4, 4, 4)
-                        .addComponent(jlDirector)
-                        .addGap(35, 35, 35)
-                        .addComponent(jlMainActors))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(releaseDateLabel)
-                        .addGap(35, 35, 35)
-                        .addComponent(genreLabel)
-                        .addGap(30, 30, 30)
-                        .addComponent(directorLabel)
-                        .addGap(35, 35, 35)
-                        .addComponent(mainActorsLabel))
-                    .addComponent(jpMovieImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addComponent(jlMovieTitle)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(releaseDateLabel)
+                                    .addGap(26, 26, 26)
+                                    .addComponent(genreLabel))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(87, 87, 87)
+                                    .addComponent(directorLabel)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(mainActorsLabel)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jlReleaseDate)
+                                        .addGap(19, 19, 19)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jlGenre)
+                                            .addComponent(jbFollow, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(87, 87, 87)
+                                        .addComponent(jlDirector)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jlMainActors)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jpMovieImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbFollowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFollowActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbFollowActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

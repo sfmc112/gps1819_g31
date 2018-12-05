@@ -22,52 +22,56 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lastNameLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jtfLastName" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="usernameRegisterLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jtfUsername" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="firstNameLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="100" max="32767" attributes="0"/>
-                      <Component id="jtfFirstName" min="-2" max="-2" attributes="0"/>
+                  <Component id="firstNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lastNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="usernameRegisterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="registerButton" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jtfLastName" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfUsername" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="119" max="32767" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
-              <Component id="registerButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="216" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="usernameRegisterLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfUsername" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="usernameRegisterLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfUsername" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="firstNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lastNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="firstNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lastNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtfLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="153" max="32767" attributes="0"/>
+              <EmptySpace pref="99" max="32767" attributes="0"/>
               <Component id="registerButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
           </Group>
@@ -143,5 +147,25 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
       </AuxValues>
     </Component>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="78" green="78" red="78" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="377" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
   </SubComponents>
 </Form>
