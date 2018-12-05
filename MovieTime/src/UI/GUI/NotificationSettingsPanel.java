@@ -58,6 +58,11 @@ public class NotificationSettingsPanel extends javax.swing.JPanel implements Obs
 
         bCancel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bCancel.setText("Cancel");
+        bCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCancelActionPerformed(evt);
+            }
+        });
 
         bConfirm.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bConfirm.setText("Confirm");
@@ -110,15 +115,23 @@ public class NotificationSettingsPanel extends javax.swing.JPanel implements Obs
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelActionPerformed
+        JOptionPane.showConfirmDialog(NotificationSettingsPanel.this,
+                "Your changes will not be saved. Continue?",
+                "Warning",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_bCancelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alarmFreqLabel;
-    private javax.swing.JButton bCancel;
-    private javax.swing.JButton bConfirm;
-    private javax.swing.JCheckBox jcbDirector;
-    private javax.swing.JCheckBox jcbGenre;
-    private javax.swing.JCheckBox jcbMainActors;
-    private javax.swing.JSpinner jsDays;
+    protected javax.swing.JButton bCancel;
+    protected javax.swing.JButton bConfirm;
+    protected javax.swing.JCheckBox jcbDirector;
+    protected javax.swing.JCheckBox jcbGenre;
+    protected javax.swing.JCheckBox jcbMainActors;
+    protected javax.swing.JSpinner jsDays;
     private javax.swing.JLabel shownInfoLabel;
     // End of variables declaration//GEN-END:variables
 

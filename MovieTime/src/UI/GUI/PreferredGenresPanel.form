@@ -150,6 +150,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Action"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbAdventure">
       <Properties>
@@ -158,6 +161,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Adventure"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbAnimation">
       <Properties>
@@ -166,6 +172,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Animation"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbComedy">
       <Properties>
@@ -174,6 +183,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Comedy"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbCrime">
       <Properties>
@@ -182,6 +194,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Crime"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbDocumentary">
       <Properties>
@@ -190,6 +205,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Documentary"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbDrama">
       <Properties>
@@ -198,6 +216,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Drama"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbFamily">
       <Properties>
@@ -206,6 +227,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Family"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbFantasy">
       <Properties>
@@ -214,6 +238,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Fantasy"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbWar">
       <Properties>
@@ -222,6 +249,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="War"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbHistory">
       <Properties>
@@ -230,6 +260,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="History"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbHorror">
       <Properties>
@@ -238,6 +271,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Horror"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbMusic">
       <Properties>
@@ -246,6 +282,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Music"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbMystery">
       <Properties>
@@ -254,6 +293,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Mystery"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbRomance">
       <Properties>
@@ -262,6 +304,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Romance"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbScienceFiction">
       <Properties>
@@ -270,6 +315,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Science Fiction"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbTVMovie">
       <Properties>
@@ -278,6 +326,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="TV Movie"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbThriller">
       <Properties>
@@ -286,6 +337,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Thriller"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jcbWestern">
       <Properties>
@@ -294,6 +348,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Western"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="bCancel">
       <Properties>
@@ -305,6 +362,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bCancelActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="bConfirm">
       <Properties>
@@ -316,6 +376,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bConfirmActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

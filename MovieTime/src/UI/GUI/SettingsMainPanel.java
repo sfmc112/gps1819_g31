@@ -14,8 +14,8 @@ public class SettingsMainPanel extends JPanel {
     private JButton jbNotifications;
     private JButton jbPreferredGenres;
 
-    private NotificationSettingsPanel pNotificationSettings;
-    private PreferredGenresPanel pPreferredGenres;
+    protected NotificationSettingsPanel pNotificationSettings;
+    protected PreferredGenresPanel pPreferredGenres;
 
     public SettingsMainPanel(ObservableApp obs) {
         jbNotifications = new JButton("Notifications");

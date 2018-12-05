@@ -237,27 +237,27 @@ public class PreferredGenresPanel extends javax.swing.JPanel implements Observer
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bCancel;
-    private javax.swing.JButton bConfirm;
-    private javax.swing.JCheckBox jcbAction;
-    private javax.swing.JCheckBox jcbAdventure;
-    private javax.swing.JCheckBox jcbAnimation;
-    private javax.swing.JCheckBox jcbComedy;
-    private javax.swing.JCheckBox jcbCrime;
-    private javax.swing.JCheckBox jcbDocumentary;
-    private javax.swing.JCheckBox jcbDrama;
-    private javax.swing.JCheckBox jcbFamily;
-    private javax.swing.JCheckBox jcbFantasy;
-    private javax.swing.JCheckBox jcbHistory;
-    private javax.swing.JCheckBox jcbHorror;
-    private javax.swing.JCheckBox jcbMusic;
-    private javax.swing.JCheckBox jcbMystery;
-    private javax.swing.JCheckBox jcbRomance;
-    private javax.swing.JCheckBox jcbScienceFiction;
-    private javax.swing.JCheckBox jcbTVMovie;
-    private javax.swing.JCheckBox jcbThriller;
-    private javax.swing.JCheckBox jcbWar;
-    private javax.swing.JCheckBox jcbWestern;
+    protected javax.swing.JButton bCancel;
+    protected javax.swing.JButton bConfirm;
+    protected javax.swing.JCheckBox jcbAction;
+    protected javax.swing.JCheckBox jcbAdventure;
+    protected javax.swing.JCheckBox jcbAnimation;
+    protected javax.swing.JCheckBox jcbComedy;
+    protected javax.swing.JCheckBox jcbCrime;
+    protected javax.swing.JCheckBox jcbDocumentary;
+    protected javax.swing.JCheckBox jcbDrama;
+    protected javax.swing.JCheckBox jcbFamily;
+    protected javax.swing.JCheckBox jcbFantasy;
+    protected javax.swing.JCheckBox jcbHistory;
+    protected javax.swing.JCheckBox jcbHorror;
+    protected javax.swing.JCheckBox jcbMusic;
+    protected javax.swing.JCheckBox jcbMystery;
+    protected javax.swing.JCheckBox jcbRomance;
+    protected javax.swing.JCheckBox jcbScienceFiction;
+    protected javax.swing.JCheckBox jcbTVMovie;
+    protected javax.swing.JCheckBox jcbThriller;
+    protected javax.swing.JCheckBox jcbWar;
+    protected javax.swing.JCheckBox jcbWestern;
     // End of variables declaration//GEN-END:variables
 
     public void createListeners(){
