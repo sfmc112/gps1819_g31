@@ -20,22 +20,15 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
         movie = m;
         initComponents();
         
+        jpMovieImage.addImage(m.getPoster(Movie.SIZE_RECOMMENDED));
+        
         jlMovieTitle.setText(m.getTitle());
         jlReleaseDate.setText(m.getReleaseDate());
         jlGenre.setText(m.getPrimaryGenre());
         jlDirector.setText(m.getDirector());
         jlMainActors.setText(m.getCast().get(0));
-        paintComponent(jpMovieImage.getGraphics());
-        
+        //jpMovieImage.repaint();
     }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
-        // Draw Movie
-        g.drawImage(movie.getPoster(Movie.SIZE_RECOMMENDED), 0, 0, jpMovieImage.getWidth(), jpMovieImage.getHeight(), jpMovieImage);
-    }
-    
     
 
     /**
@@ -57,9 +50,12 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
         jlMainActors = new javax.swing.JLabel();
         jlMovieTitle = new javax.swing.JLabel();
         jbFollow = new javax.swing.JButton();
-        jpMovieImage = new javax.swing.JPanel();
+        jpMovieImage = new UI.GUI.MovieImagePanel();
 
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        setMinimumSize(new java.awt.Dimension(750, 254));
+        setPreferredSize(new java.awt.Dimension(750, 254));
+        setRequestFocusEnabled(false);
 
         releaseDateLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         releaseDateLabel.setText("Release date:");
@@ -91,19 +87,15 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
         jbFollow.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbFollow.setText("Follow");
 
-        jpMovieImage.setMaximumSize(new java.awt.Dimension(120, 165));
-        jpMovieImage.setMinimumSize(new java.awt.Dimension(120, 165));
-        jpMovieImage.setPreferredSize(new java.awt.Dimension(120, 165));
-
         javax.swing.GroupLayout jpMovieImageLayout = new javax.swing.GroupLayout(jpMovieImage);
         jpMovieImage.setLayout(jpMovieImageLayout);
         jpMovieImageLayout.setHorizontalGroup(
             jpMovieImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+            .addGap(0, 145, Short.MAX_VALUE)
         );
         jpMovieImageLayout.setVerticalGroup(
             jpMovieImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 165, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -112,36 +104,35 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
+                .addComponent(jlMovieTitle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(jpMovieImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(releaseDateLabel)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(genreLabel)
+                            .addGap(23, 23, 23))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(mainActorsLabel)
+                            .addGap(7, 7, 7))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(directorLabel)
+                            .addGap(5, 5, 5))))
+                .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jpMovieImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(releaseDateLabel)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(genreLabel)
-                                    .addGap(23, 23, 23))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(mainActorsLabel)
-                                    .addGap(7, 7, 7))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(directorLabel)
-                                    .addGap(5, 5, 5))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jlReleaseDate)
-                                    .addComponent(jlGenre)
-                                    .addComponent(jlMainActors)
-                                    .addComponent(jlDirector))
-                                .addGap(118, 118, 118))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jbFollow)
-                                .addContainerGap())))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jlMovieTitle)
+                            .addComponent(jlReleaseDate)
+                            .addComponent(jlGenre)
+                            .addComponent(jlMainActors)
+                            .addComponent(jlDirector))
+                        .addGap(118, 118, 118))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jbFollow)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -150,7 +141,7 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
                 .addContainerGap()
                 .addComponent(jlMovieTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlReleaseDate)
                         .addGap(35, 35, 35)
@@ -161,15 +152,15 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
                         .addComponent(jlDirector)
                         .addGap(35, 35, 35)
                         .addComponent(jlMainActors))
-                    .addComponent(jpMovieImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(releaseDateLabel)
                         .addGap(35, 35, 35)
                         .addComponent(genreLabel)
                         .addGap(30, 30, 30)
                         .addComponent(directorLabel)
                         .addGap(35, 35, 35)
-                        .addComponent(mainActorsLabel)))
+                        .addComponent(mainActorsLabel))
+                    .addComponent(jpMovieImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -184,7 +175,7 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
     private javax.swing.JLabel jlMainActors;
     private javax.swing.JLabel jlMovieTitle;
     private javax.swing.JLabel jlReleaseDate;
-    private javax.swing.JPanel jpMovieImage;
+    private UI.GUI.MovieImagePanel jpMovieImage;
     private javax.swing.JLabel mainActorsLabel;
     private javax.swing.JLabel releaseDateLabel;
     // End of variables declaration//GEN-END:variables
@@ -193,6 +184,6 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
     public void update(Observable o, Object arg) {
         //TODO
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        paintComponent(jpMovieImage.getGraphics());
+        //repaint();
     }
 }
