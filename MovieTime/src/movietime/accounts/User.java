@@ -120,9 +120,9 @@ public class User implements Serializable{
      * Get list of favorite movies ids from logged user
      * @return Set of favorite movies IDs
      */
-    public final Set<Integer> getFavoriteMovieIDs() {
+    public Set<Integer> getFavoriteMovieIDs() {
         synchronized(favoriteMovieIDs){
-            return Collections.unmodifiableSet((Set<Integer>) favoriteMovieIDs);
+            return favoriteMovieIDs;
         }
     }
     

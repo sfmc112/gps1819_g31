@@ -1,11 +1,8 @@
 package UI.GUI;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
-import java.util.Observable;
-import java.util.Observer;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
@@ -24,7 +21,7 @@ public class AppPanel extends JPanel {
 
     public AppPanel(ObservableApp obs) {
         observable = obs;
-        observable.addObserver(this);
+        
         pUser = new UserInfoPanel(obs);
         pSideMenu = new SideMenuPanel();
         pSearch = new SearchPanel(obs);
@@ -63,6 +60,8 @@ public class AppPanel extends JPanel {
         
         setActionForSettingsButtonFromSideMenuPanel();
         setActionForUpcomingMoviesButtonFromSideMenuPanel();
+        setActionForFollowedMoviesButtonFromSideMenuPanel();
+        setActionForPreferredMoviesButtonFromSideMenuPanel();
         setActionForNotificationSettingsConfirmationFromNotificationPanel();
         setActionForPreferredGenresSettingsConfirmationFromPreferredGenresPanel();
         
@@ -88,11 +87,32 @@ public class AppPanel extends JPanel {
         pSideMenu.bUpcomingMovies.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                observable.setDisplay(DisplayList.UPCOMINGMOVIES);
+                observable.update();
                 changeToDisplayMovies();
             }
         });
     }
-    
+    private void setActionForFollowedMoviesButtonFromSideMenuPanel() {
+        pSideMenu.bFollowedMovies.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                observable.setDisplay(DisplayList.FOLLOWEDMOVIES);
+                observable.update();
+                changeToDisplayMovies();
+            }
+        });
+    }    
+    private void setActionForPreferredMoviesButtonFromSideMenuPanel() {
+        pSideMenu.bPreferredMovies.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                observable.setDisplay(DisplayList.PREFERREDMOVIES);
+                observable.update();
+                changeToDisplayMovies();
+            }
+        });
+    }       
     private void setActionForNotificationSettingsConfirmationFromNotificationPanel() {
         pSettingsMain.pNotificationSettings.bConfirm.addActionListener(new ActionListener() {
             @Override
@@ -184,7 +204,6 @@ public class AppPanel extends JPanel {
                     if(pSettingsMain.pPreferredGenres.jcbWestern.isSelected())
                         genreSet.add(Movie.WESTERN);
                     
-                    System.out.println(genreSet);
                     observable.updatePreferredGenres(genreSet);
                     //observable.removeSetPreferredGenres(removeGenreSet);
                 }
@@ -205,8 +224,5 @@ public class AppPanel extends JPanel {
         pDisplayMovies.setVisible(true);
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

@@ -13,8 +13,8 @@ import javax.swing.ScrollPaneConstants;
 import movietime.ObservableApp;
 import movietime.database.Movie;
 
-public class DisplayMoviesPanel extends JPanel implements Observer{
-    
+public class DisplayMoviesPanel extends JPanel implements Observer {
+
     private List<MovieInfoPanel> pMovies;
     private ObservableApp observable;
     private JPanel main;
@@ -24,41 +24,62 @@ public class DisplayMoviesPanel extends JPanel implements Observer{
     public DisplayMoviesPanel(ObservableApp obs) {
         observable = obs;
         observable.addObserver(this);
-        
+
         pMovies = new ArrayList<>();
-        
+
         movieBox = Box.createVerticalBox();
         main = new JPanel();
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
         main.setPreferredSize(new Dimension(780, 5000));
-        
+
         scroller = new JScrollPane(main);
         scroller.setPreferredSize(new Dimension(800, 400));
-        scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        //scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         add(scroller);
     }
 
     @Override
     public void update(Observable o, Object arg) {
         pMovies.clear();
-       
+        movieBox.removeAll();
         
-        //if()
-        ArrayList<ArrayList<Movie>> movies = observable.getUpcomingMovies();
-        for (int i = 0; i < movies.size(); i++) {
-            for (int j = 0; j < movies.get(i).size(); j++) {
-                Movie m = movies.get(i).get(j);
-                pMovies.add(new MovieInfoPanel(observable, m));
-            }
+        ArrayList<ArrayList<Movie>> movies = null;
+
+         switch (observable.getDisplay()) {
+            case FOLLOWEDMOVIES:
+                ArrayList<Movie> followedMovies = observable.getFollowedMovies();
+                if(followedMovies != null)
+                    for (Movie m: followedMovies) {
+                        pMovies.add(new MovieInfoPanel(observable, m));
+                    }
+                break;
+            case PREFERREDMOVIES:
+                movies = observable.getPreferredMovies();
+                if(movies != null)
+                    for (ArrayList<Movie> movieList : movies) {
+                        for (Movie m : movieList) {
+                            pMovies.add(new MovieInfoPanel(observable, m));
+                        }
+                    }
+                break;
+            case UPCOMINGMOVIES:
+                movies = observable.getUpcomingMovies();
+                if(movies != null)
+                    for (ArrayList<Movie> movieList : movies) {
+                        for (Movie m : movieList) {
+                            pMovies.add(new MovieInfoPanel(observable, m));
+                        }
+                    }
+                break;
         }
-       
-        for (MovieInfoPanel movy : pMovies) {
+        
+         for (MovieInfoPanel movy : pMovies) {
             movieBox.add(movy);
             movieBox.add(Box.createVerticalGlue());
         }
 
         main.add(movieBox);
-        
+        main.revalidate();
     }
-    
+
 }

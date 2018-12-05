@@ -1,5 +1,6 @@
 package movietime;
 
+import UI.GUI.DisplayList;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Observable;
@@ -21,7 +22,16 @@ public class ObservableApp extends Observable {
     private User user;
     private final NotificationManager notificationManager;
     private NotificationService service;
+    private DisplayList display = DisplayList.PREFERREDMOVIES;
 
+    public synchronized DisplayList getDisplay() {
+        return display;
+    }
+
+    public void setDisplay(DisplayList display) {
+        this.display = display;
+    }
+    
     public ObservableApp() {
         user = new User("username", "first", "last");
         notificationManager = new NotificationManager();
@@ -220,10 +230,15 @@ public class ObservableApp extends Observable {
 
     public ArrayList<Movie> getFollowedMovies() {
         return DatabaseManager.getFollowedMovies(
-                (HashSet) user.getFavoriteMovieIDs());
+                (HashSet<Integer>) user.getFavoriteMovieIDs());
     }
 
     public ArrayList<ArrayList<Movie>> getPreferredMovies() {
         return DatabaseManager.getUpcomingMoviesByGenre(user.getPreferredGenres());
+    }
+    
+    public void update(){
+        setChanged();
+        notifyObservers();
     }
 }
