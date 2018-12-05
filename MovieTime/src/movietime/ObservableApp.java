@@ -47,6 +47,7 @@ public class ObservableApp extends Observable {
             ReadWriteObjectException {
         try {
             this.user = AuthenticationManager.authenticateUser(user);
+            service = new NotificationService(this);
             service.start();
 
         } catch (UserDoesNotExistException | ReadWriteObjectException
