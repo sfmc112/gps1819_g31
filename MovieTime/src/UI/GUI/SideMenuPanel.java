@@ -36,47 +36,22 @@ public class SideMenuPanel extends javax.swing.JPanel {
         bPreferredMovies.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         bPreferredMovies.setText("Preferred movies");
         bPreferredMovies.setMargin(new java.awt.Insets(10, 14, 10, 14));
-        bPreferredMovies.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bPreferredMoviesActionPerformed(evt);
-            }
-        });
 
         bUpcomingMovies.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         bUpcomingMovies.setText("Upcoming movies");
         bUpcomingMovies.setMargin(new java.awt.Insets(10, 14, 10, 14));
-        bUpcomingMovies.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bUpcomingMoviesActionPerformed(evt);
-            }
-        });
 
         bFollowedMovies.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         bFollowedMovies.setText("Followed movies");
         bFollowedMovies.setActionCommand("");
         bFollowedMovies.setMargin(new java.awt.Insets(10, 14, 10, 14));
-        bFollowedMovies.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bFollowedMoviesActionPerformed(evt);
-            }
-        });
 
         bSettings.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         bSettings.setText("Settings");
         bSettings.setMargin(new java.awt.Insets(10, 14, 10, 14));
-        bSettings.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSettingsActionPerformed(evt);
-            }
-        });
 
         bLogout.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bLogout.setText("Logout");
-        bLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bLogoutActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -110,26 +85,6 @@ public class SideMenuPanel extends javax.swing.JPanel {
                 .addContainerGap(175, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bFollowedMoviesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFollowedMoviesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bFollowedMoviesActionPerformed
-
-    private void bUpcomingMoviesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUpcomingMoviesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bUpcomingMoviesActionPerformed
-
-    private void bLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLogoutActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bLogoutActionPerformed
-
-    private void bPreferredMoviesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPreferredMoviesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bPreferredMoviesActionPerformed
-
-    private void bSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSettingsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bSettingsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

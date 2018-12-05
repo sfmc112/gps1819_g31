@@ -61,9 +61,6 @@
           <Insets value="[10, 14, 10, 14]"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bPreferredMoviesActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bUpcomingMovies">
       <Properties>
@@ -75,9 +72,6 @@
           <Insets value="[10, 14, 10, 14]"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bUpcomingMoviesActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bFollowedMovies">
       <Properties>
@@ -90,9 +84,6 @@
           <Insets value="[10, 14, 10, 14]"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bFollowedMoviesActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bSettings">
       <Properties>
@@ -104,9 +95,6 @@
           <Insets value="[10, 14, 10, 14]"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bSettingsActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bLogout">
       <Properties>
@@ -115,9 +103,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Logout"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bLogoutActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
