@@ -24,9 +24,6 @@ public class DisplayMoviesPanel extends JPanel implements Observer{
         observable.addObserver(this);
         
         pMovies = new ArrayList<>();
-        
-        //setPreferredSize(new Dimension(..., ...)); // Insert Here your size for the editor
-        JScrollPane scroller = new JScrollPane(this);
     }
 
     @Override
@@ -48,14 +45,12 @@ public class DisplayMoviesPanel extends JPanel implements Observer{
         }
         
         
-//        add(movieBox);
         JPanel main = new JPanel();
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
-        main.setPreferredSize(new Dimension(795, 2000));
+        main.setPreferredSize(new Dimension(780, 5000));
         main.add(movieBox);
         JScrollPane scroller = new JScrollPane(main);
         scroller.setPreferredSize(new Dimension(800, 400));
-        //scroller.add(movieBox);
         scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         add(scroller);
     }

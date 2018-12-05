@@ -3,7 +3,6 @@ package UI.GUI;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.JPanel;
-import movietime.database.Movie;
 
 public class MovieImagePanel extends JPanel {
     private Image image;
@@ -12,8 +11,7 @@ public class MovieImagePanel extends JPanel {
     }
     
     public void addImage(Image img){
-        this.image = image;
-        repaint();
+        this.image = img;
     }
     
     

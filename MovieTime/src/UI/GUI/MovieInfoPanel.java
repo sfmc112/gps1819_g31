@@ -27,8 +27,18 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
         jlGenre.setText(m.getPrimaryGenre());
         jlDirector.setText(m.getDirector());
         jlMainActors.setText(m.getCast().get(0));
-        //jpMovieImage.repaint();
+        jpMovieImage.repaint();
     }
+
+//    @Override
+//    protected void paintComponent(Graphics g) {
+//        //TODO
+//        super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
+//        
+//        g.drawImage(movie.getPoster(Movie.SIZE_RECOMMENDED), 0, 0, getWidth(), getHeight(), this);
+//    }
+    
+    
     
 
     /**
@@ -184,6 +194,6 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
     public void update(Observable o, Object arg) {
         //TODO
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        //repaint();
+        jpMovieImage.repaint();
     }
 }
