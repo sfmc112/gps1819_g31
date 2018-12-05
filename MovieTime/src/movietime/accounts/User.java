@@ -146,14 +146,8 @@ public class User implements Serializable{
         return preferredGenres.contains(genreID);
     }
     
-    public void addSetPreferredGenres(HashSet<Integer> genreSet){
-        for(Integer i : genreSet)
-            addPreferredGenre(i);
-    }
-    
-    public void removeSetPreferredGenres(HashSet<Integer> genreSet){
-        for(Integer i : genreSet)
-            removePreferredGenre(i);
+    public void updatePreferredGenres(HashSet<Integer> genreSet){
+        preferredGenres = genreSet != null? genreSet : new HashSet<>();
     }
     
     @Override

@@ -260,7 +260,7 @@ public class AppFrame extends JFrame implements Observer {
             if (pPreferredGenresRegister.jcbWestern.isSelected()) {
                 genreSet.add(Movie.WESTERN);
             }
-            observable.addSetPreferredGenres(genreSet);
+            observable.updatePreferredGenres(genreSet);
             changeToAppPanel();
         });
     }

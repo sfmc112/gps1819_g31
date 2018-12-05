@@ -111,15 +111,8 @@ public class ObservableApp extends Observable {
         return user.checkPreferredGenre(genreID);
     }
 
-    public void addSetPreferredGenres(HashSet<Integer> genreSet) {
-        user.addSetPreferredGenres(genreSet);
-        
-        setChanged();
-        notifyObservers();
-    }
-
-    public void removeSetPreferredGenres(HashSet<Integer> genreSet) {
-        user.removeSetPreferredGenres(genreSet);
+    public void updatePreferredGenres(HashSet<Integer> genreSet) {
+        user.updatePreferredGenres(genreSet);
         
         setChanged();
         notifyObservers();

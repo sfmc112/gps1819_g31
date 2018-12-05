@@ -136,106 +136,65 @@ public class AppPanel extends JPanel implements Observer{
                     // The other is going to contain the not-preferred genres then
                     // to be remove with the observable.removeSetPreferredGenre method
                     HashSet<Integer> genreSet = new HashSet<>();
-                    HashSet<Integer> removeGenreSet = new HashSet<>();
                     if(pSettingsMain.pPreferredGenres.jcbAction.isSelected())
                         genreSet.add(Movie.ACTION);
-                    else{
-                        removeGenreSet.add(Movie.ACTION);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbAdventure.isSelected())
                         genreSet.add(Movie.ADVENTURE);
-                    else{
-                        removeGenreSet.add(Movie.ADVENTURE);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbAnimation.isSelected())
                         genreSet.add(Movie.ANIMATION);
-                    else{
-                        removeGenreSet.add(Movie.ANIMATION);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbComedy.isSelected())
                         genreSet.add(Movie.COMEDY);
-                    else{
-                        removeGenreSet.add(Movie.COMEDY);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbCrime.isSelected())
                         genreSet.add(Movie.CRIME);
-                    else{
-                        removeGenreSet.add(Movie.CRIME);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbDocumentary.isSelected())
                         genreSet.add(Movie.DOCUMENTARY);
-                    else{
-                        removeGenreSet.add(Movie.DOCUMENTARY);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbDrama.isSelected())
                         genreSet.add(Movie.DRAMA);
-                    else{
-                        removeGenreSet.add(Movie.DRAMA);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbFamily.isSelected())
                         genreSet.add(Movie.FAMILY);
-                    else{
-                        removeGenreSet.add(Movie.FAMILY);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbFantasy.isSelected())
                         genreSet.add(Movie.FANTASY);
-                    else{
-                        removeGenreSet.add(Movie.FANTASY);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbHistory.isSelected())
                         genreSet.add(Movie.HISTORY);
-                    else{
-                        removeGenreSet.add(Movie.HISTORY);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbHorror.isSelected())
                         genreSet.add(Movie.HORROR);
-                    else{
-                        removeGenreSet.add(Movie.HORROR);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbMusic.isSelected())
                         genreSet.add(Movie.MUSIC);
-                    else{
-                        removeGenreSet.add(Movie.MUSIC);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbMystery.isSelected())
                         genreSet.add(Movie.MYSTERY);
-                    else{
-                        removeGenreSet.add(Movie.MYSTERY);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbRomance.isSelected())
                         genreSet.add(Movie.ROMANCE);
-                    else{
-                        removeGenreSet.add(Movie.ROMANCE);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbScienceFiction.isSelected())
                         genreSet.add(Movie.SCIENCE_FICTION);
-                    else{
-                        removeGenreSet.add(Movie.SCIENCE_FICTION);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbThriller.isSelected())
                         genreSet.add(Movie.THRILLER);
-                    else{
-                        removeGenreSet.add(Movie.THRILLER);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbTVMovie.isSelected())
                         genreSet.add(Movie.TV_MOVIE);
-                    else{
-                        removeGenreSet.add(Movie.TV_MOVIE);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbWar.isSelected())
                         genreSet.add(Movie.WAR);
-                    else{
-                        removeGenreSet.add(Movie.WAR);
-                    }
+                    
                     if(pSettingsMain.pPreferredGenres.jcbWestern.isSelected())
                         genreSet.add(Movie.WESTERN);
-                    else{
-                        removeGenreSet.add(Movie.WESTERN);
-                    }
+                    
                     System.out.println(genreSet);
-                    //System.out.println(removeGenreSet);
-                    observable.addSetPreferredGenres(new HashSet<>());
-                    observable.addSetPreferredGenres(genreSet);
+                    observable.updatePreferredGenres(genreSet);
                     //observable.removeSetPreferredGenres(removeGenreSet);
                 }
             }
