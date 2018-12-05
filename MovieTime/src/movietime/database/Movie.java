@@ -104,7 +104,7 @@ public class Movie {
         return title;
     }
 
-    public String getRelease_date() {
+    public String getReleaseDate() {
         return release_date;
     }
 

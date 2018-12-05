@@ -1,21 +1,42 @@
 package UI.GUI;
 
+import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
 import movietime.ObservableApp;
+import movietime.database.Movie;
 
 public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
 
     private ObservableApp observable;
+    private Movie movie;
 
     /**
      * Creates new form movieInfoPanel
      */
-    public MovieInfoPanel(ObservableApp obs) {
+    public MovieInfoPanel(ObservableApp obs, Movie m) {
         observable = obs;
         observable.addObserver(this);
+        movie = m;
         initComponents();
+        
+        jlMovieTitle.setText(m.getTitle());
+        jlReleaseDate.setText(m.getReleaseDate());
+        jlGenre.setText(m.getPrimaryGenre());
+        jlDirector.setText(m.getDirector());
+        jlMainActors.setText(m.getCast().get(0));
+        paintComponent(jpMovieImage.getGraphics());
+        
     }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
+        // Draw Movie
+        g.drawImage(movie.getPoster(Movie.SIZE_RECOMMENDED), 0, 0, jpMovieImage.getWidth(), jpMovieImage.getHeight(), jpMovieImage);
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -172,5 +193,6 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
     public void update(Observable o, Object arg) {
         //TODO
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        paintComponent(jpMovieImage.getGraphics());
     }
 }

@@ -49,7 +49,7 @@ public class NotificationService extends Thread {
                 while(it.hasNext()){
                     movie = DatabaseManager.getMovieByID(it.next());
                     
-                    date =  LocalDate.parse(movie.getRelease_date(), formatter);
+                    date =  LocalDate.parse(movie.getReleaseDate(), formatter);
                     date = date.minusDays(days);
                     
                     if(date.isBefore(LocalDate.now()) 

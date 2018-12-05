@@ -34,6 +34,8 @@ public class SearchPanel extends javax.swing.JPanel implements Observer {
         jtfKeyword = new javax.swing.JTextField();
         jbSearch = new javax.swing.JButton();
 
+        setMinimumSize(new java.awt.Dimension(850, 53));
+
         jcbSelectGenre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select genre" }));
 

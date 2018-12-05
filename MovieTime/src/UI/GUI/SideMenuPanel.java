@@ -24,6 +24,8 @@ public class SideMenuPanel extends javax.swing.JPanel {
         bSettings = new javax.swing.JButton();
         bLogout = new javax.swing.JButton();
 
+        setMinimumSize(new java.awt.Dimension(250, 600));
+
         bPreferredMovies.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         bPreferredMovies.setText("Preferred movies");
         bPreferredMovies.setMargin(new java.awt.Insets(10, 14, 10, 14));
@@ -79,10 +81,10 @@ public class SideMenuPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bFollowedMovies;
+    protected javax.swing.JButton bFollowedMovies;
     protected javax.swing.JButton bLogout;
-    private javax.swing.JButton bPreferredMovies;
-    private javax.swing.JButton bSettings;
-    private javax.swing.JButton bUpcomingMovies;
+    protected javax.swing.JButton bPreferredMovies;
+    protected javax.swing.JButton bSettings;
+    protected javax.swing.JButton bUpcomingMovies;
     // End of variables declaration//GEN-END:variables
 }

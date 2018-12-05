@@ -50,6 +50,9 @@ public class PreferredGenresPanel extends javax.swing.JPanel implements Observer
         bCancel = new javax.swing.JButton();
         bConfirm = new javax.swing.JButton();
 
+        setMinimumSize(new java.awt.Dimension(850, 447));
+        setPreferredSize(new java.awt.Dimension(850, 447));
+
         jcbAction.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbAction.setText("Action");
 
@@ -127,8 +130,8 @@ public class PreferredGenresPanel extends javax.swing.JPanel implements Observer
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,12 +173,12 @@ public class PreferredGenresPanel extends javax.swing.JPanel implements Observer
                         .addComponent(jcbWestern))
                     .addComponent(jcbWar)
                     .addComponent(bConfirm))
-                .addGap(67, 67, 67))
+                .addGap(65, 65, 65))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbAction)
                     .addComponent(jcbDocumentary, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,7 +217,7 @@ public class PreferredGenresPanel extends javax.swing.JPanel implements Observer
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCancel)
                     .addComponent(bConfirm))
-                .addGap(36, 36, 36))
+                .addGap(102, 102, 102))
         );
     }// </editor-fold>//GEN-END:initComponents
 
