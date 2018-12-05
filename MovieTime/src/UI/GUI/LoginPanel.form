@@ -24,8 +24,8 @@
               <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="214" max="-2" attributes="0"/>
-              <Component id="jbLogin" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
+              <Component id="jbLogin" min="-2" pref="136" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -38,9 +38,9 @@
                   <Component id="usernameLoginLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jtfUsername" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="241" max="32767" attributes="0"/>
+              <EmptySpace pref="243" max="32767" attributes="0"/>
               <Component id="jbLogin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

@@ -41,6 +41,7 @@ public class DisplayMoviesPanel extends JPanel implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         pMovies.clear();
+       
         
         //if()
         ArrayList<ArrayList<Movie>> movies = observable.getUpcomingMovies();

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI.GUI;
 
 import java.awt.BorderLayout;
@@ -18,11 +13,7 @@ import javax.swing.JPanel;
 import movietime.ObservableApp;
 import movietime.database.Movie;
 
-/**
- *
- * @author sarah
- */
-public class AppPanel extends JPanel implements Observer{
+public class AppPanel extends JPanel {
 
     private ObservableApp observable;
     private UserInfoPanel pUser;

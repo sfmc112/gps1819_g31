@@ -57,8 +57,8 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
                 .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
             .addGroup(layout.createSequentialGroup()
-                .addGap(214, 214, 214)
-                .addComponent(jbLogin)
+                .addGap(197, 197, 197)
+                .addComponent(jbLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -68,9 +68,9 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLoginLabel)
                     .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
                 .addComponent(jbLogin)
-                .addGap(160, 160, 160))
+                .addGap(158, 158, 158))
         );
     }// </editor-fold>//GEN-END:initComponents
 
