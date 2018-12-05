@@ -117,11 +117,10 @@ public class Movie {
     }
 
     public Image getPoster(String size) {
-        if(poster.length() == 0)
+        if(poster.length() > 0)
         {
             try{
-                return ImageIO.read(Resources.getResourceFile(
-                        "https://image.tmdb.org/t/p/" + 
+                return ImageIO.read(new URL("https://image.tmdb.org/t/p/" + 
                         size + "/" + poster));
             }catch(IOException e){
                 return Resources.getDefaultMoviePoster();
@@ -134,11 +133,10 @@ public class Movie {
     }
     
     public Image getBackdrop(String size) {
-        if(backdrop.length() == 0)
+        if(backdrop.length() > 0)
         {
             try{
-                return ImageIO.read(Resources.getResourceFile(
-                        "https://image.tmdb.org/t/p/" + 
+                return ImageIO.read(new URL("https://image.tmdb.org/t/p/" + 
                         size + "/" + backdrop));
             }catch(IOException e){
                 return Resources.getDefaultMoviePoster();
