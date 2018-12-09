@@ -19,7 +19,6 @@ import org.json.JSONObject;
 public class DatabaseManager implements DatabaseConstants {
 
     private static final String API_KEY = "2a3f76ac51ab2751b4d89e6da5052462";
-
     public DatabaseManager() {
     }
 
@@ -99,8 +98,11 @@ public class DatabaseManager implements DatabaseConstants {
      */
     public static ArrayList<ArrayList<Movie>> getUpcomingMoviesByGenre(
             HashSet<Integer> genres) {
-        if (genres == null || genres.isEmpty()) {
+        if (genres == null ) {
             return null;
+        }
+        if(genres.isEmpty() || genres.size() == MAX_NUMBER_OF_GENRES){
+            return getUpcomingMovies();
         }
         try {
             ArrayList<ArrayList<Movie>> movies = new ArrayList<>();

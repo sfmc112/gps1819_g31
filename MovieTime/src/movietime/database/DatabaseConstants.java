@@ -25,4 +25,5 @@ public interface DatabaseConstants {
     
     static final int MAX_CAST = 3;
     static final int MAX_PAGES = 10;
+    static final int MAX_NUMBER_OF_GENRES = 19;
 }
