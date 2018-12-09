@@ -25,7 +25,7 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
         
         jlMovieTitle.setText(m.getTitle());
         jlReleaseDate.setText(m.getReleaseDate());
-        jlGenre.setText(m.getPrimaryGenre());
+        jlGenre.setText(m.getGenresToString());
         jlDirector.setText(m.getDirector());
         jlMainActors.setText(m.getCast().get(0));
         jpMovieImage.repaint();

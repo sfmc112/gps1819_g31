@@ -112,6 +112,17 @@ public class Movie {
         return genres;
     }
 
+    public String getGenresToString() {
+        String str = "";
+        int i = 0;
+        for(Integer genre : genres){
+            i ++;
+            str += getSingleGenreAsString(genre) + " ";
+            if(i>3)
+                return str;
+        }
+        return str;    
+    }
     public String getOverview() {
         return overview;
     }
@@ -189,7 +200,7 @@ public class Movie {
             case 10770:
                 return "TV Movie";
             case 878:
-                return "Science Fiction";
+                return "Sci-Fi";
             case 10749:
                 return "Romance";
             case 9648:
