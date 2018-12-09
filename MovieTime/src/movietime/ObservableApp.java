@@ -55,14 +55,14 @@ public class ObservableApp extends Observable {
     //Authentication
     public void login(String user)
             throws UserDoesNotExistException, OpeningFileException,
-            ReadWriteObjectException {
+            ReadWriteObjectException, ValidationException {
         try {
             this.user = AuthenticationManager.authenticateUser(user);
             service = new NotificationService(this);
             service.start();
 
         } catch (UserDoesNotExistException | ReadWriteObjectException
-                | OpeningFileException e) {
+                | OpeningFileException | ValidationException e) {
             throw e;
         }
 

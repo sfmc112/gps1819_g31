@@ -24,7 +24,14 @@ public class AuthenticationManager {
      */
     public static User authenticateUser(String user)
             throws ReadWriteObjectException, OpeningFileException,
-            UserDoesNotExistException {
+            UserDoesNotExistException, ValidationException {
+        
+        if(!sizeIsValid(user,4,15))
+            throw new ValidationException("The username does not contain between "
+                    + USERNAME_MIN_SIZE + " and " + ANY_NAME_MAX_SIZE + " characters. Please, try again!");
+        else if (!spellingIsValid(user)) {
+            throw new ValidationException("The username is not valid. Starts with a number or contains a special character. Please, try again!");
+        }
         try {
             ArrayList<User> users = StorageManager.getUsersFromFile();
 

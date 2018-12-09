@@ -294,7 +294,10 @@ public class AppFrame extends JFrame implements Observer {
                 try {
                     observable.login(username);
                     changeToAppPanel();
-                } catch (UserDoesNotExistException ex) {
+                } catch (ValidationException ex){
+                    error += ex.getMessage();
+                    JOptionPane.showMessageDialog(pRegisterLogin, error, "Login error", JOptionPane.ERROR_MESSAGE);
+                }catch (UserDoesNotExistException ex) {
                     error += ex.getMessage();
                     JOptionPane.showMessageDialog(pRegisterLogin, error, "Login error", JOptionPane.ERROR_MESSAGE);
                 } catch (OpeningFileException ex) {
