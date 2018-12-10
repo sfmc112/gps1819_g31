@@ -114,6 +114,9 @@ public class Movie {
 
     public String getGenresToString() {
         String str = "";
+        if(genres.isEmpty())
+            return "not specified";
+        
         int i = 0;
         for(Integer genre : genres){
             i ++;

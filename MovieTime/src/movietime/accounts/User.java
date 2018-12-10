@@ -15,8 +15,6 @@ public class User implements Serializable{
     private HashSet<Integer> favoriteMovieIDs;
     private HashSet<Integer> preferredGenres;
     private NotificationPreferences preferences;
-    
-    //TODO: Add functions to edit preferences
 
     /**
      * Constructor without any followed movies (when it's a new user)

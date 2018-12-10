@@ -7,6 +7,7 @@ public class SideMenuPanel extends javax.swing.JPanel {
      */
     public SideMenuPanel() {
         initComponents();
+        this.setOpaque(false);
     }
 
     /**
@@ -23,8 +24,10 @@ public class SideMenuPanel extends javax.swing.JPanel {
         bFollowedMovies = new javax.swing.JButton();
         bSettings = new javax.swing.JButton();
         bLogout = new javax.swing.JButton();
+        jlSideMenu = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(250, 600));
+        setBackground(null);
+        setMaximumSize(null);
 
         bPreferredMovies.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         bPreferredMovies.setText("Preferred movies");
@@ -46,26 +49,35 @@ public class SideMenuPanel extends javax.swing.JPanel {
         bLogout.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bLogout.setText("Logout");
 
+        jlSideMenu.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jlSideMenu.setForeground(new java.awt.Color(255, 223, 0));
+        jlSideMenu.setText("Menu");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlSideMenu)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bPreferredMovies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bUpcomingMovies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bFollowedMovies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(bLogout)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(86, 86, 86)
+                .addComponent(jlSideMenu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(bPreferredMovies)
                 .addGap(18, 18, 18)
                 .addComponent(bFollowedMovies)
@@ -75,7 +87,7 @@ public class SideMenuPanel extends javax.swing.JPanel {
                 .addComponent(bSettings)
                 .addGap(58, 58, 58)
                 .addComponent(bLogout)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addGap(0, 161, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -86,5 +98,6 @@ public class SideMenuPanel extends javax.swing.JPanel {
     protected javax.swing.JButton bPreferredMovies;
     protected javax.swing.JButton bSettings;
     protected javax.swing.JButton bUpcomingMovies;
+    private javax.swing.JLabel jlSideMenu;
     // End of variables declaration//GEN-END:variables
 }

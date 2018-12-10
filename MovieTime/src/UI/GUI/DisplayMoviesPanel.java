@@ -1,7 +1,9 @@
 package UI.GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -27,18 +29,25 @@ public class DisplayMoviesPanel extends JPanel implements Observer {
         observable.addObserver(this);
 
         pMovies = new ArrayList<>();
-
+        
         movieBox = Box.createVerticalBox();
+        movieBox.setOpaque(false);
+        
         main = new JPanel();
-        //main.setLayout(new BorderLayout());
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
-        //main.setPreferredSize(new Dimension(780, 400));
-        main.setVisible(true);
+        main.setOpaque(false);
 
         scroller = new JScrollPane(main);
+        scroller.getViewport().setOpaque(false);
+        scroller.setOpaque(false);
+        scroller.getVerticalScrollBar().setBackground(new Color(0,0,0,50));
+        scroller.getVerticalScrollBar().setBorder(null);
+        scroller.setBorder(null);
+        
         scroller.setPreferredSize(new Dimension(800, 500));
         scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         add(scroller,BorderLayout.CENTER);
+
     }
 
     @Override

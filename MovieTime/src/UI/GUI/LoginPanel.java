@@ -1,16 +1,8 @@
 package UI.GUI;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import movietime.ObservableApp;
-import movietime.authentication.UserDoesNotExistException;
-import movietime.storage.OpeningFileException;
-import movietime.storage.ReadWriteObjectException;
 
 public class LoginPanel extends javax.swing.JPanel implements Observer{
 
@@ -22,6 +14,7 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
         observable = obs;
         observable.addObserver(this);
         initComponents();
+        this.setOpaque(false);
     }
 
     /**
@@ -37,11 +30,20 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
         jtfUsername = new javax.swing.JTextField();
         jbLogin = new javax.swing.JButton();
 
+        setBackground(null);
+
         usernameLoginLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        usernameLoginLabel.setForeground(new java.awt.Color(207, 181, 59));
         usernameLoginLabel.setText("Username");
 
         jtfUsername.setColumns(10);
         jtfUsername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jtfUsername.setForeground(new java.awt.Color(120, 120, 120));
+        jtfUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfUsernameActionPerformed(evt);
+            }
+        });
 
         jbLogin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jbLogin.setText("Login");
@@ -51,28 +53,32 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(usernameLoginLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(193, 193, 193))
+                .addGap(199, 199, 199))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(usernameLoginLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameLoginLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 383, Short.MAX_VALUE)
+                .addGap(106, 106, 106)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usernameLoginLabel)
+                    .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 370, Short.MAX_VALUE)
                 .addComponent(jbLogin)
-                .addGap(44, 44, 44))
+                .addGap(52, 52, 52))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtfUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfUsernameActionPerformed
+       
+    }//GEN-LAST:event_jtfUsernameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -83,7 +89,5 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        //TODO
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

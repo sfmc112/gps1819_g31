@@ -1,6 +1,8 @@
 package UI.GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -13,31 +15,34 @@ public class SettingsMainPanel extends JPanel {
 
     private JButton jbNotifications;
     private JButton jbPreferredGenres;
-
+    private static final Font buttonFont = new Font("Tahoma", Font.PLAIN,16);
+    
     protected NotificationSettingsPanel pNotificationSettings;
     protected PreferredGenresPanel pPreferredGenres;
 
     public SettingsMainPanel(ObservableApp obs) {
         jbNotifications = new JButton("Notifications");
+        jbNotifications.setFont(buttonFont);
         jbPreferredGenres = new JButton("Preferred Genres");
+        jbPreferredGenres.setFont(buttonFont);
         pNotificationSettings = new NotificationSettingsPanel(obs);
         pPreferredGenres = new PreferredGenresPanel(obs);
         
+        setOpaque(false);
         JPanel pButtons = new JPanel();
         pButtons.add(jbNotifications);
         pButtons.add(jbPreferredGenres);
+        pButtons.setOpaque(false);
         
         JPanel pSettings = new JPanel();
         pSettings.add(pNotificationSettings);
         pSettings.add(pPreferredGenres);
+        pSettings.setOpaque(false);
 
         setLayout(new BorderLayout());
-        //add(jbNotifications, BorderLayout.NORTH);
-        //add(jbPreferredGenres, BorderLayout.NORTH);
         add(pButtons, BorderLayout.NORTH);
-        //add(pNotificationSettings, BorderLayout.CENTER);
-        //add(pPreferredGenres, BorderLayout.CENTER);
         add(pSettings, BorderLayout.CENTER);
+        
         pNotificationSettings.setVisible(false);
         pPreferredGenres.setVisible(false);
 
@@ -61,6 +66,7 @@ public class SettingsMainPanel extends JPanel {
             }
         });
 
+        this.setOpaque(false);
     }
 
 }

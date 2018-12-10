@@ -17,6 +17,7 @@ public class NotificationSettingsPanel extends javax.swing.JPanel implements Obs
         observable = obs;
         observable.addObserver(this);
         initComponents();
+        this.setOpaque(false);
     }
 
     /**
@@ -37,22 +38,46 @@ public class NotificationSettingsPanel extends javax.swing.JPanel implements Obs
         bCancel = new javax.swing.JButton();
         bConfirm = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(210, 180, 140));
         setMinimumSize(new java.awt.Dimension(850, 447));
+        setOpaque(false);
 
+        alarmFreqLabel.setBackground(null);
         alarmFreqLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        alarmFreqLabel.setForeground(new java.awt.Color(255, 255, 240));
         alarmFreqLabel.setText("Alarm frequency (days):");
 
+        shownInfoLabel.setBackground(null);
         shownInfoLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        shownInfoLabel.setForeground(new java.awt.Color(255, 255, 240));
         shownInfoLabel.setText("Info to be displayed:");
 
+        jcbGenre.setBackground(null);
         jcbGenre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jcbGenre.setForeground(new java.awt.Color(255, 255, 240));
         jcbGenre.setText("Genre");
+        jcbGenre.setIconTextGap(10);
+        jcbGenre.setMaximumSize(new java.awt.Dimension(69, 31));
+        jcbGenre.setMinimumSize(new java.awt.Dimension(69, 31));
+        jcbGenre.setOpaque(false);
 
+        jcbDirector.setBackground(null);
         jcbDirector.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jcbDirector.setForeground(new java.awt.Color(255, 255, 240));
         jcbDirector.setText("Director");
+        jcbDirector.setIconTextGap(10);
+        jcbDirector.setMaximumSize(new java.awt.Dimension(69, 31));
+        jcbDirector.setMinimumSize(new java.awt.Dimension(69, 31));
+        jcbDirector.setOpaque(false);
 
+        jcbMainActors.setBackground(null);
         jcbMainActors.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jcbMainActors.setForeground(new java.awt.Color(255, 255, 240));
         jcbMainActors.setText("Main actors");
+        jcbMainActors.setIconTextGap(10);
+        jcbMainActors.setMaximumSize(new java.awt.Dimension(69, 31));
+        jcbMainActors.setMinimumSize(new java.awt.Dimension(69, 31));
+        jcbMainActors.setOpaque(false);
 
         jsDays.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
@@ -71,47 +96,46 @@ public class NotificationSettingsPanel extends javax.swing.JPanel implements Obs
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(197, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(263, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(alarmFreqLabel)
                             .addComponent(shownInfoLabel))
-                        .addGap(76, 76, 76)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbMainActors)
-                            .addComponent(jcbDirector)
-                            .addComponent(jcbGenre)
+                            .addComponent(jcbMainActors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbDirector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcbGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jsDays, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(225, 225, 225))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(bCancel)
                         .addGap(18, 18, 18)
-                        .addComponent(bConfirm)))
-                .addGap(88, 88, 88))
+                        .addComponent(bConfirm)
+                        .addGap(67, 67, 67))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap(78, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(alarmFreqLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jsDays, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71)
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(shownInfoLabel)
-                    .addComponent(jcbGenre))
+                    .addComponent(jcbGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jcbDirector)
+                .addComponent(jcbDirector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jcbMainActors)
-                .addGap(32, 32, 32)
+                .addComponent(jcbMainActors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCancel)
                     .addComponent(bConfirm))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addGap(42, 42, 42))
         );
     }// </editor-fold>//GEN-END:initComponents
 
