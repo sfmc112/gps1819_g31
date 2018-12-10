@@ -30,15 +30,19 @@ public class DisplayMoviesPanel extends JPanel implements Observer {
 
         movieBox = Box.createVerticalBox();
         main = new JPanel();
-        //main.setLayout(new BorderLayout());
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
-        //main.setPreferredSize(new Dimension(780, 400));
-        main.setVisible(true);
+        
+        main.setOpaque(false);
 
         scroller = new JScrollPane(main);
+        scroller.setOpaque(false);
+        main.setOpaque(false);
+        this.setOpaque(false);
+        
         scroller.setPreferredSize(new Dimension(800, 500));
         scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         add(scroller,BorderLayout.CENTER);
+
     }
 
     @Override

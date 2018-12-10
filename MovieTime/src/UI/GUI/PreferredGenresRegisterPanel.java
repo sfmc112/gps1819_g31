@@ -5,18 +5,10 @@
  */
 package UI.GUI;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.HashSet;
 import java.util.Observable;
 import java.util.Observer;
 import movietime.ObservableApp;
-import movietime.database.Movie;
 
-/**
- *
- * @author sarah
- */
 public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements Observer {
 
     private ObservableApp observable;
@@ -28,6 +20,26 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
         observable = obs;
         observable.addObserver(this);
         initComponents();
+        this.setOpaque(false);
+        jcbAction.setOpaque(false);
+        jcbAdventure.setOpaque(false);
+        jcbAnimation.setOpaque(false);
+        jcbComedy.setOpaque(false);
+        jcbCrime.setOpaque(false);
+        jcbDocumentary.setOpaque(false);
+        jcbDrama.setOpaque(false);
+        jcbFamily.setOpaque(false);
+        jcbFantasy.setOpaque(false);
+        jcbHistory.setOpaque(false);
+        jcbHorror.setOpaque(false);
+        jcbMusic.setOpaque(false);
+        jcbMystery.setOpaque(false);
+        jcbRomance.setOpaque(false);
+        jcbScienceFiction.setOpaque(false);
+        jcbTVMovie.setOpaque(false);
+        jcbThriller.setOpaque(false);
+        jcbWar.setOpaque(false);
+        jcbWestern.setOpaque(false);
     }
 
     /**
@@ -61,7 +73,10 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
         jcbThriller = new javax.swing.JCheckBox();
         jcbWestern = new javax.swing.JCheckBox();
 
+        setBackground(null);
+
         prefGenresSelectionLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        prefGenresSelectionLabel.setForeground(new java.awt.Color(255, 215, 0));
         prefGenresSelectionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         prefGenresSelectionLabel.setText("Select your favourite movie genres");
         prefGenresSelectionLabel.setToolTipText("");
@@ -71,73 +86,116 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
         confirmPrefGenresButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         confirmPrefGenresButton.setText("Confirm");
 
-        jcbAction.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbAction.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbAction.setForeground(new java.awt.Color(255, 255, 240));
         jcbAction.setText("Action");
+        jcbAction.setIconTextGap(15);
+        jcbAction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbActionActionPerformed(evt);
+            }
+        });
 
-        jcbAdventure.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbAdventure.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbAdventure.setForeground(new java.awt.Color(255, 255, 240));
         jcbAdventure.setText("Adventure");
+        jcbAdventure.setIconTextGap(15);
 
-        jcbAnimation.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbAnimation.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbAnimation.setForeground(new java.awt.Color(255, 255, 240));
         jcbAnimation.setText("Animation");
+        jcbAnimation.setIconTextGap(15);
 
-        jcbComedy.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbComedy.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbComedy.setForeground(new java.awt.Color(255, 255, 240));
         jcbComedy.setText("Comedy");
+        jcbComedy.setIconTextGap(15);
 
-        jcbCrime.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbCrime.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbCrime.setForeground(new java.awt.Color(255, 255, 240));
         jcbCrime.setText("Crime");
+        jcbCrime.setIconTextGap(15);
 
-        jcbDocumentary.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbDocumentary.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbDocumentary.setForeground(new java.awt.Color(255, 255, 240));
         jcbDocumentary.setText("Documentary");
+        jcbDocumentary.setIconTextGap(15);
 
-        jcbDrama.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbDrama.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbDrama.setForeground(new java.awt.Color(255, 255, 240));
         jcbDrama.setText("Drama");
+        jcbDrama.setIconTextGap(15);
 
-        jcbFamily.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbFamily.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbFamily.setForeground(new java.awt.Color(255, 255, 240));
         jcbFamily.setText("Family");
+        jcbFamily.setIconTextGap(15);
 
-        jcbFantasy.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbFantasy.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbFantasy.setForeground(new java.awt.Color(255, 255, 240));
         jcbFantasy.setText("Fantasy");
+        jcbFantasy.setIconTextGap(15);
 
-        jcbWar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbWar.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbWar.setForeground(new java.awt.Color(255, 255, 240));
         jcbWar.setText("War");
+        jcbWar.setIconTextGap(15);
 
-        jcbHistory.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbHistory.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbHistory.setForeground(new java.awt.Color(255, 255, 240));
         jcbHistory.setText("History");
+        jcbHistory.setIconTextGap(15);
 
-        jcbHorror.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbHorror.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbHorror.setForeground(new java.awt.Color(255, 255, 240));
         jcbHorror.setText("Horror");
+        jcbHorror.setIconTextGap(15);
 
-        jcbMusic.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbMusic.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbMusic.setForeground(new java.awt.Color(255, 255, 240));
         jcbMusic.setText("Music");
+        jcbMusic.setIconTextGap(15);
 
-        jcbMystery.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbMystery.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbMystery.setForeground(new java.awt.Color(255, 255, 240));
         jcbMystery.setText("Mystery");
+        jcbMystery.setIconTextGap(15);
 
-        jcbRomance.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbRomance.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbRomance.setForeground(new java.awt.Color(255, 255, 240));
         jcbRomance.setText("Romance");
+        jcbRomance.setIconTextGap(15);
 
-        jcbScienceFiction.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbScienceFiction.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbScienceFiction.setForeground(new java.awt.Color(255, 255, 240));
         jcbScienceFiction.setText("Science Fiction");
+        jcbScienceFiction.setIconTextGap(15);
 
-        jcbTVMovie.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbTVMovie.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbTVMovie.setForeground(new java.awt.Color(255, 255, 240));
         jcbTVMovie.setText("TV Movie");
+        jcbTVMovie.setIconTextGap(15);
 
-        jcbThriller.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbThriller.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbThriller.setForeground(new java.awt.Color(255, 255, 240));
         jcbThriller.setText("Thriller");
+        jcbThriller.setIconTextGap(15);
 
-        jcbWestern.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jcbWestern.setFont(new java.awt.Font("Tahoma", 0, 23)); // NOI18N
+        jcbWestern.setForeground(new java.awt.Color(255, 255, 240));
         jcbWestern.setText("Western");
+        jcbWestern.setIconTextGap(15);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(274, 274, 274)
+                .addGap(268, 268, 268)
                 .addComponent(prefGenresSelectionLabel)
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(214, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(confirmPrefGenresButton)
@@ -149,43 +207,37 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
                             .addComponent(jcbAdventure)
                             .addComponent(jcbAction)
                             .addComponent(jcbCrime))
-                        .addGap(80, 80, 80)
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcbDocumentary)
+                            .addComponent(jcbDrama)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jcbFantasy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jcbFamily, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jcbHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcbScienceFiction)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jcbDocumentary)
-                                    .addComponent(jcbDrama))
-                                .addGap(80, 80, 80)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jcbMusic)
-                                    .addComponent(jcbHorror)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jcbFantasy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jcbFamily, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jcbHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jcbHorror)
+                                    .addComponent(jcbMystery)
+                                    .addComponent(jcbRomance))
                                 .addGap(80, 80, 80)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jcbMystery)
-                                    .addComponent(jcbRomance)
-                                    .addComponent(jcbScienceFiction))))
-                        .addGap(80, 80, 80)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jcbThriller)
-                                    .addGap(20, 20, 20))
-                                .addComponent(jcbTVMovie)
-                                .addComponent(jcbWestern))
-                            .addComponent(jcbWar))
-                        .addGap(187, 187, 187))))
+                                    .addComponent(jcbTVMovie)
+                                    .addComponent(jcbWestern)
+                                    .addComponent(jcbWar)
+                                    .addComponent(jcbThriller))))
+                        .addGap(183, 183, 183))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(28, 28, 28)
                 .addComponent(prefGenresSelectionLabel)
-                .addGap(126, 126, 126)
+                .addGap(143, 143, 143)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbAction)
                     .addComponent(jcbDocumentary, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,33 +250,44 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
                     .addComponent(jcbMusic)
                     .addComponent(jcbTVMovie))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jcbFamily)
-                            .addComponent(jcbAnimation)
-                            .addComponent(jcbMystery)
-                            .addComponent(jcbWestern))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jcbFantasy)
-                            .addComponent(jcbComedy))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jcbCrime)
-                            .addComponent(jcbHistory)
-                            .addComponent(jcbScienceFiction)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(83, 83, 83)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jcbRomance)
-                            .addComponent(jcbWar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(134, 134, 134)
+                        .addComponent(jcbWar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jcbMystery)
+                                    .addGap(85, 85, 85)
+                                    .addComponent(jcbScienceFiction))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(57, 57, 57)
+                                    .addComponent(jcbRomance)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jcbFamily)
+                                    .addComponent(jcbAnimation)
+                                    .addComponent(jcbWestern))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jcbFantasy)
+                                    .addComponent(jcbComedy))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jcbCrime)
+                                    .addComponent(jcbHistory))))))
+                .addGap(148, 148, 148)
                 .addComponent(confirmPrefGenresButton)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jcbActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbActionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbActionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

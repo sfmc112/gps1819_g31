@@ -26,6 +26,7 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
         observable = obs;
         observable.addObserver(this);
         initComponents();
+        this.setOpaque(false);
     }
 
     /**
@@ -46,25 +47,35 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
         registerButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
 
+        setBackground(null);
         setPreferredSize(new java.awt.Dimension(550, 680));
 
+        usernameRegisterLabel.setBackground(null);
         usernameRegisterLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        usernameRegisterLabel.setForeground(new java.awt.Color(207, 181, 59));
         usernameRegisterLabel.setText("Username");
 
         jtfUsername.setColumns(10);
         jtfUsername.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jtfUsername.setForeground(new java.awt.Color(120, 120, 120));
 
+        firstNameLabel.setBackground(null);
         firstNameLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        firstNameLabel.setForeground(new java.awt.Color(207, 181, 59));
         firstNameLabel.setText("First name");
 
         jtfFirstName.setColumns(10);
         jtfFirstName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jtfFirstName.setForeground(new java.awt.Color(120, 120, 120));
 
+        lastNameLabel.setBackground(null);
         lastNameLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lastNameLabel.setForeground(new java.awt.Color(207, 181, 59));
         lastNameLabel.setText("Last name");
 
         jtfLastName.setColumns(10);
         jtfLastName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jtfLastName.setForeground(new java.awt.Color(120, 120, 120));
 
         registerButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         registerButton.setText("Register");
@@ -100,16 +111,17 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
                             .addComponent(jtfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
+                        .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(usernameRegisterLabel)
                             .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -121,10 +133,8 @@ public class RegisterPanel extends javax.swing.JPanel implements Observer {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lastNameLabel)
                             .addComponent(jtfLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addComponent(registerButton)
                 .addGap(90, 90, 90))
         );

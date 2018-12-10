@@ -2,8 +2,10 @@ package UI.GUI;
 
 import java.awt.AWTException;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Point;
 import java.awt.SystemTray;
 import java.awt.event.ActionEvent;
@@ -14,15 +16,15 @@ import java.awt.event.WindowEvent;
 import java.util.HashSet;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import movietime.ObservableApp;
 import movietime.authentication.UserAlreadyExistsException;
 import movietime.authentication.UserDoesNotExistException;
@@ -80,15 +82,21 @@ public class AppFrame extends JFrame implements Observer {
 
         Container cp = getContentPane();
         JPanel pMain = new JPanel();
+        pMain.setOpaque(false);
+        JLabel background=new JLabel(new ImageIcon("C:\\Users\\Olympus\\Desktop\\movieTheatre3.png"));//TODO: change
+        background.setLayout(new FlowLayout());
 
+        pMain.add(background);
         //createBarMenus();
         pRegisterLogin = new RegisterLoginPanel(observable);
+        pRegisterLogin.setOpaque(false);
         pPreferredGenresRegister = new PreferredGenresRegisterPanel(observable);
+        pPreferredGenresRegister.setOpaque(false);
         appPanel = new AppPanel(observable);
 
-        pMain.add(appPanel);
-        pMain.add(pPreferredGenresRegister);
-        pMain.add(pRegisterLogin);
+        background.add(appPanel);
+        background.add(pPreferredGenresRegister);
+        background.add(pRegisterLogin);
 
         cp.add(pMain, BorderLayout.CENTER);
 

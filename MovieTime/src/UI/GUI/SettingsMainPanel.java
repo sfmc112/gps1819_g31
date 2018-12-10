@@ -1,6 +1,7 @@
 package UI.GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -13,13 +14,16 @@ public class SettingsMainPanel extends JPanel {
 
     private JButton jbNotifications;
     private JButton jbPreferredGenres;
-
+    private static final Font buttonFont = new Font("Tahoma", Font.PLAIN,16);
+    
     protected NotificationSettingsPanel pNotificationSettings;
     protected PreferredGenresPanel pPreferredGenres;
 
     public SettingsMainPanel(ObservableApp obs) {
         jbNotifications = new JButton("Notifications");
+        jbNotifications.setFont(buttonFont);
         jbPreferredGenres = new JButton("Preferred Genres");
+        jbPreferredGenres.setFont(buttonFont);
         pNotificationSettings = new NotificationSettingsPanel(obs);
         pPreferredGenres = new PreferredGenresPanel(obs);
         
@@ -61,6 +65,7 @@ public class SettingsMainPanel extends JPanel {
             }
         });
 
+        this.setOpaque(false);
     }
 
 }

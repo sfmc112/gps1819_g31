@@ -15,6 +15,7 @@ public class UserInfoPanel extends javax.swing.JPanel implements Observer{
         observable.addObserver(this);
         
         initComponents();
+        this.setOpaque(false);
     }
 
     /**
@@ -26,48 +27,47 @@ public class UserInfoPanel extends javax.swing.JPanel implements Observer{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jlSideMenu = new javax.swing.JLabel();
         jlFirstName = new javax.swing.JLabel();
         jlLastName = new javax.swing.JLabel();
         jlFirstName1 = new javax.swing.JLabel();
 
-        jlSideMenu.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jlSideMenu.setText("Menu");
+        setBackground(null);
 
-        jlFirstName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jlFirstName.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        jlFirstName.setForeground(new java.awt.Color(153, 101, 21));
         jlFirstName.setText("First name");
 
-        jlLastName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jlLastName.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        jlLastName.setForeground(new java.awt.Color(153, 101, 21));
         jlLastName.setText("Last name");
 
-        jlFirstName1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jlFirstName1.setText("Hello,");
+        jlFirstName1.setBackground(new java.awt.Color(255, 250, 250));
+        jlFirstName1.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        jlFirstName1.setForeground(new java.awt.Color(204, 204, 204));
+        jlFirstName1.setText("hello,");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jlSideMenu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 624, Short.MAX_VALUE)
+                .addContainerGap(818, Short.MAX_VALUE)
                 .addComponent(jlFirstName1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlFirstName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlLastName)
-                .addGap(32, 32, 32))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlSideMenu)
                     .addComponent(jlFirstName)
                     .addComponent(jlLastName)
                     .addComponent(jlFirstName1))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -76,7 +76,6 @@ public class UserInfoPanel extends javax.swing.JPanel implements Observer{
     private javax.swing.JLabel jlFirstName;
     private javax.swing.JLabel jlFirstName1;
     private javax.swing.JLabel jlLastName;
-    private javax.swing.JLabel jlSideMenu;
     // End of variables declaration//GEN-END:variables
 
     @Override

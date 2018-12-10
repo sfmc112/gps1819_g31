@@ -5,6 +5,7 @@
  */
 package UI.GUI;
 
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -27,9 +28,11 @@ public class RegisterLoginPanel extends JPanel {
     public RegisterLoginPanel(ObservableApp obs) {
         pLogin = new LoginPanel(obs);
         pRegister = new RegisterPanel(obs);
+        JLabel jlSpace = new JLabel("\n");
+        jlSpace.setFont(new Font("Tahoma", Font.PLAIN, 20));
         jlTitle = new JLabel("Welcome to Movie Time");
-        jlTitle.setFont(titleFont);
-
+        jlTitle.setForeground(new Color(255,223,0));
+        jlTitle.setFont(titleFont);  
         Box left = Box.createVerticalBox();
         left.add(pRegister);
         left.add(Box.createVerticalGlue());
@@ -47,12 +50,19 @@ public class RegisterLoginPanel extends JPanel {
 
         Box top = Box.createHorizontalBox();
         top.add(Box.createHorizontalGlue());
-        top.add(jlTitle);
+        Box topV = Box.createVerticalBox();
+        topV.add(jlSpace);
+        topV.add(Box.createVerticalGlue());
+        topV.add(jlTitle);
+        top.add(topV);
         top.add(Box.createHorizontalGlue());
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(top);
         add(main);
+        
+        pLogin.setOpaque(false);
+
     }
 
 }

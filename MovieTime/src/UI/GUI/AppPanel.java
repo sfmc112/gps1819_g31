@@ -1,5 +1,8 @@
 package UI.GUI;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
@@ -15,19 +18,19 @@ public class AppPanel extends JPanel {
     private ObservableApp observable;
     private UserInfoPanel pUser;
     protected SideMenuPanel pSideMenu;
-    private SearchPanel pSearch;
+    //private SearchPanel pSearch;
     private SettingsMainPanel pSettingsMain;
     private DisplayMoviesPanel pDisplayMovies;
-
+    private Image bgImage;
+    
     public AppPanel(ObservableApp obs) {
         observable = obs;
         
         pUser = new UserInfoPanel(obs);
         pSideMenu = new SideMenuPanel();
-        pSearch = new SearchPanel(obs);
+        //pSearch = new SearchPanel(obs);
         pSettingsMain = new SettingsMainPanel(obs);
         pDisplayMovies = new DisplayMoviesPanel(obs);
-        
         JPanel pSettingsOrDisplayMovies = new JPanel();
         pSettingsOrDisplayMovies.add(pSettingsMain);
         pSettingsOrDisplayMovies.add(pDisplayMovies);
@@ -35,13 +38,21 @@ public class AppPanel extends JPanel {
         pSettingsMain.setVisible(false);
         pDisplayMovies.setVisible(false);
         
+        //leave all pannels without background
+        pUser.setOpaque(false);
+        pSideMenu.setOpaque(false);
+        pSettingsMain.setOpaque(false);
+        pDisplayMovies.setOpaque(false);
+        pSettingsOrDisplayMovies.setOpaque(false);
+        this.setOpaque(false);
+        
         // Inside Layout
         Box left = Box.createVerticalBox();
         left.add(pSideMenu);
         left.add(Box.createVerticalGlue());
         
         Box center = Box.createVerticalBox();
-        center.add(pSearch);
+        //center.add(pSearch);
         center.add(Box.createVerticalGlue());
         center.add(pSettingsOrDisplayMovies);
         center.add(Box.createVerticalGlue());
@@ -69,7 +80,7 @@ public class AppPanel extends JPanel {
     }
     
     public void setToMainWindow(){
-        pSearch.setVisible(false);
+        //pSearch.setVisible(false);
         pSettingsMain.setVisible(false);
         pDisplayMovies.setVisible(true);
     }
@@ -210,16 +221,14 @@ public class AppPanel extends JPanel {
     }
 
     private void changeToSettings(){
-        pSearch.setVisible(false);
+        //pSearch.setVisible(false);
         pSettingsMain.setVisible(true);
         pDisplayMovies.setVisible(false);
     }
     
     private void changeToDisplayMovies(){
-        pSearch.setVisible(true);
+        //pSearch.setVisible(true);
         pSettingsMain.setVisible(false);
         pDisplayMovies.setVisible(true);
     }
-
-    
 }

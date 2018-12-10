@@ -1,5 +1,6 @@
 package UI.GUI;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -33,6 +34,8 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
         createListeners();
         
         update(observable,null);
+        this.setOpaque(false);
+        this.setBackground(new Color(0, 0, 0, 25));
     }
     
     
@@ -81,7 +84,9 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
         jbFollow = new javax.swing.JButton();
         jpMovieImage = new UI.GUI.MovieImagePanel();
 
-        setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        setBackground(new java.awt.Color(180, 180, 180));
+        setBorder(new javax.swing.border.LineBorder(new java.awt.Color(128, 0, 0), 1, true));
+        setMaximumSize(new java.awt.Dimension(750, 225));
         setMinimumSize(new java.awt.Dimension(750, 225));
         setPreferredSize(new java.awt.Dimension(750, 225));
         setRequestFocusEnabled(false);
@@ -121,6 +126,8 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
             }
         });
 
+        jpMovieImage.setMaximumSize(new java.awt.Dimension(153, 8));
+
         javax.swing.GroupLayout jpMovieImageLayout = new javax.swing.GroupLayout(jpMovieImage);
         jpMovieImage.setLayout(jpMovieImageLayout);
         jpMovieImageLayout.setHorizontalGroup(
@@ -129,7 +136,7 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
         );
         jpMovieImageLayout.setVerticalGroup(
             jpMovieImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 192, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -154,18 +161,18 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
                             .addComponent(jlMainActors)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jlGenre)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                                 .addComponent(jbFollow, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(jlMovieTitle)))
-                .addGap(45, 45, 45))
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlMovieTitle)
                         .addGap(18, 18, 18)
@@ -192,10 +199,9 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
                                         .addGap(87, 87, 87)
                                         .addComponent(jlDirector)))
                                 .addGap(18, 18, 18)
-                                .addComponent(jlMainActors)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jpMovieImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+                                .addComponent(jlMainActors))))
+                    .addComponent(jpMovieImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
     }// </editor-fold>//GEN-END:initComponents
 
