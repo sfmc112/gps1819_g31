@@ -1,7 +1,5 @@
 package UI.GUI;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -75,8 +73,6 @@ public class AppPanel extends JPanel {
         setActionForPreferredMoviesButtonFromSideMenuPanel();
         setActionForNotificationSettingsConfirmationFromNotificationPanel();
         setActionForPreferredGenresSettingsConfirmationFromPreferredGenresPanel();
-        
-        //TODO finish..
     }
     
     public void setToMainWindow(){

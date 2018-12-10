@@ -25,6 +25,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 import movietime.ObservableApp;
 import movietime.authentication.UserAlreadyExistsException;
 import movietime.authentication.UserDoesNotExistException;
@@ -83,7 +85,7 @@ public class AppFrame extends JFrame implements Observer {
         Container cp = getContentPane();
         JPanel pMain = new JPanel();
         pMain.setOpaque(false);
-        JLabel background=new JLabel(new ImageIcon("C:\\Users\\Olympus\\Desktop\\movieTheatre3.png"));//TODO: change
+        JLabel background=new JLabel(new ImageIcon(Resources.getBackground()));
         background.setLayout(new FlowLayout());
 
         pMain.add(background);
@@ -158,7 +160,6 @@ public class AppFrame extends JFrame implements Observer {
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
 
-        //TODO: Finde better way to display the top menus
         JMenuItem helpItem = new JMenuItem("Help");
         helpItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
 

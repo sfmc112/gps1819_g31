@@ -54,6 +54,7 @@ public class PreferredGenresPanel extends javax.swing.JPanel implements Observer
 
         setBackground(null);
         setMinimumSize(new java.awt.Dimension(850, 447));
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(850, 447));
 
         jcbAction.setBackground(null);
@@ -107,6 +108,11 @@ public class PreferredGenresPanel extends javax.swing.JPanel implements Observer
         jcbMusic.setBackground(null);
         jcbMusic.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jcbMusic.setText("Music");
+        jcbMusic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMusicActionPerformed(evt);
+            }
+        });
 
         jcbMystery.setBackground(null);
         jcbMystery.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -254,6 +260,10 @@ public class PreferredGenresPanel extends javax.swing.JPanel implements Observer
     private void bConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConfirmActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bConfirmActionPerformed
+
+    private void jcbMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMusicActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbMusicActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

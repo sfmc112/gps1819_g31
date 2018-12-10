@@ -20,8 +20,6 @@ public class NotificationManager {
         trayIcon.setToolTip(NAME);
     }
     
-    //TODO: Add thread to periodically check if a movie is coming out.
-    
     public void displayPopup(Movie movie, NotificationPreferences preferences){
         StringBuilder builder = new StringBuilder();
         builder.append("Release Date: ").append(movie.getReleaseDate());

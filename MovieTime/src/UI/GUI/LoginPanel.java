@@ -77,7 +77,7 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtfUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfUsernameActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jtfUsernameActionPerformed
 
 
@@ -89,7 +89,5 @@ public class LoginPanel extends javax.swing.JPanel implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        //TODO
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
