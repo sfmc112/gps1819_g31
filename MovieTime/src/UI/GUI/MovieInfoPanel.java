@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.ImageIcon;
 import movietime.ObservableApp;
 import movietime.database.Movie;
 
@@ -12,7 +13,7 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
 
     private ObservableApp observable;
     private Movie movie;
-
+    
     /**
      * Creates new form movieInfoPanel
      */
@@ -34,7 +35,7 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
         createListeners();
         
         update(observable,null);
-        //this.setOpaque(false);
+        this.setOpaque(false);
         this.setBackground(new Color(0, 0, 0, 25));
     }
     
@@ -220,8 +221,11 @@ public class MovieInfoPanel extends javax.swing.JPanel implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if(observable.isMovieBeingFollowed(movie.getId())){
+            //jbFollow.setIcon(Resources.getFollowedIcon());
+            
             jbFollow.setText("Unfollow");
         } else {
+            //jbFollow.setIcon(Resources.getUnfollowedIcon());
             jbFollow.setText("Follow");
         }
         
