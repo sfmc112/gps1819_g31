@@ -8,6 +8,7 @@ package UI.GUI;
 import java.util.Observable;
 import java.util.Observer;
 import movietime.ObservableApp;
+import movietime.database.Movie;
 
 public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements Observer {
 
@@ -316,6 +317,24 @@ public class PreferredGenresRegisterPanel extends javax.swing.JPanel implements 
 
     @Override
     public void update(Observable o, Object arg) {
-        //
+        jcbAction.setSelected(observable.checkPreferredGenre(Movie.ACTION));
+        jcbAdventure.setSelected(observable.checkPreferredGenre(Movie.ADVENTURE));
+        jcbAnimation.setSelected(observable.checkPreferredGenre(Movie.ANIMATION));
+        jcbComedy.setSelected(observable.checkPreferredGenre(Movie.COMEDY));
+        jcbCrime.setSelected(observable.checkPreferredGenre(Movie.CRIME));
+        jcbDocumentary.setSelected(observable.checkPreferredGenre(Movie.DOCUMENTARY));
+        jcbDrama.setSelected(observable.checkPreferredGenre(Movie.DRAMA));
+        jcbFamily.setSelected(observable.checkPreferredGenre(Movie.FAMILY));
+        jcbFantasy.setSelected(observable.checkPreferredGenre(Movie.FANTASY));
+        jcbHistory.setSelected(observable.checkPreferredGenre(Movie.HISTORY));
+        jcbHorror.setSelected(observable.checkPreferredGenre(Movie.HORROR));
+        jcbMusic.setSelected(observable.checkPreferredGenre(Movie.MUSIC));
+        jcbMystery.setSelected(observable.checkPreferredGenre(Movie.MYSTERY));
+        jcbRomance.setSelected(observable.checkPreferredGenre(Movie.ROMANCE));
+        jcbScienceFiction.setSelected(observable.checkPreferredGenre(Movie.SCIENCE_FICTION));
+        jcbThriller.setSelected(observable.checkPreferredGenre(Movie.THRILLER));
+        jcbTVMovie.setSelected(observable.checkPreferredGenre(Movie.TV_MOVIE));
+        jcbWar.setSelected(observable.checkPreferredGenre(Movie.WAR));
+        jcbWestern.setSelected(observable.checkPreferredGenre(Movie.WESTERN));
     }
 }

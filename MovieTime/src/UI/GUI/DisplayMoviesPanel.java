@@ -54,6 +54,7 @@ public class DisplayMoviesPanel extends JPanel implements Observer {
     public void update(Observable o, Object arg) {
         pMovies.clear();
         movieBox.removeAll();
+        scroller.getVerticalScrollBar().setValue(0);
         
         ArrayList<ArrayList<Movie>> movies = null;
 
