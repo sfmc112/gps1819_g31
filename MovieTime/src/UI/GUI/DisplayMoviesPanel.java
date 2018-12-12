@@ -40,7 +40,7 @@ public class DisplayMoviesPanel extends JPanel implements Observer {
         scroller = new JScrollPane(main);
         scroller.getViewport().setOpaque(false);
         scroller.setOpaque(false);
-        scroller.getVerticalScrollBar().setBackground(new Color(0,0,0,50));
+        scroller.getVerticalScrollBar().setBackground(new Color(0,0,0,200));
         scroller.getVerticalScrollBar().setBorder(null);
         scroller.setBorder(null);
         
@@ -49,12 +49,16 @@ public class DisplayMoviesPanel extends JPanel implements Observer {
         add(scroller,BorderLayout.CENTER);
 
     }
+    
+    public void resetScroll(){
+        scroller.getVerticalScrollBar().setValue(0);
+        scroller.repaint();
+    }
 
     @Override
     public void update(Observable o, Object arg) {
         pMovies.clear();
         movieBox.removeAll();
-        scroller.getVerticalScrollBar().setValue(0);
         
         ArrayList<ArrayList<Movie>> movies = null;
 

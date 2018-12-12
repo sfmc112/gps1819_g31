@@ -188,6 +188,7 @@ public class AppFrame extends JFrame implements Observer {
                 observable.createUser(username, firstName, lastName);
                 observable.login(username);
                 changeToPreferredGenresRegisterPanel();
+                appPanel.resetScroll();
             } catch (UserAlreadyExistsException ex){
                 error += ex.getMessage();
                 JOptionPane.showMessageDialog(pRegisterLogin.pRegister, error, "Register error", JOptionPane.ERROR_MESSAGE);
@@ -303,6 +304,7 @@ public class AppFrame extends JFrame implements Observer {
                 try {
                     observable.login(username);
                     changeToAppPanel();
+                    appPanel.resetScroll();
                 } catch (ValidationException ex){
                     error += ex.getMessage();
                     JOptionPane.showMessageDialog(pRegisterLogin, error, "Login error", JOptionPane.ERROR_MESSAGE);

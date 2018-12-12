@@ -216,6 +216,10 @@ public class AppPanel extends JPanel {
         });
     }
 
+    public void resetScroll(){
+        pDisplayMovies.resetScroll();
+    }
+    
     private void changeToSettings(){
         //pSearch.setVisible(false);
         pSettingsMain.setVisible(true);
